@@ -104,7 +104,7 @@ def show_plant(id):
                 setattr(plant, attr, request.get_json().get(attr))
             db.session.add(plant)
             db.session.commit()
-            return make_response(plant.to_dict(), 200)
+            return make_response(plant.tplanto_dict(), 200)
         elif request.method == "DELETE":
             db.session.delete(plant)
             db.session.commit()
@@ -134,6 +134,67 @@ def show_group(id):
         if request.method == "GET":
             return make_response(jsonify(group.to_dict()), 200)
     return make_response(jsonify({"Error": f"Group No. {id} not found."}), 404)
+
+@app.route("/plant_families", methods=["GET", "POST"])
+def plant_familys():
+    plant_families = Plant_Family.query.all()
+    if request.method == "GET":
+        return make_response(jsonify([n.to_dict() for n in plant_families]), 200)
+    elif request.method == "POST":
+        new_plant_family = Plant_Family(
+            name = request.get_json()["name"],
+            description = request.get_json()["description"],
+            image = request.get_json()["image"]
+        )
+        db.session.add(new_plant_family)
+        db.session.commit()
+        return make_response(jsonify(new_plant_family.to_dict(), 201))
+    return make_response(jsonify({"text": "Method not allowed"}), 405)
+
+@app.route("/plant_families/<int:id>", methods=["GET"])
+def show_plant_family(id):
+    plant_family = Plant_Family.query.filter(Plant_Family.id == id).first()
+    if plant_family:
+        if request.method == "GET":
+            return make_response(jsonify(plant_family.to_dict()), 200)
+    return make_response(jsonify({"Error": f"Plant Family No. {id} not found."}), 404)
+
+@app.route("/articles", methods=["GET", "POST"])
+def articles():
+    articles = Article.query.all()
+    if request.method == "GET":
+        return make_response(jsonify([n.to_dict() for n in articles]), 200)
+    elif request.method == "POST":
+        new_article = Article(
+            success_rating = request.get_json()["success_rating"],
+            body = request.get_json()["body"],
+            likes = 0,
+            user_id = request.get_json()["user_id"],
+            plant_id = request.get_json()["plant_id"]
+        )
+        db.session.add(new_article)
+        db.session.commit()
+        return make_response(new_article.to_dict(), 201)
+    return make_response(jsonify({"text": "Method not allowed"}, 405))
+
+@app.route("/articles/<int:id>", methods=["GET", "PATCH", "DELETE"])
+def show_article(id):
+    article = Article.query.filter(Article.id == id).first()
+    if article:
+        if request.method == "GET":
+            return make_response(jsonify(article.to_dict()), 200)
+        elif request.method == "PATCH":
+            for attr in request.get_json():
+                setattr(article, attr, request.get_json().get(attr))
+            db.session.add(article)
+            db.session.commit()
+            return make_response(article.to_dict(), 200)
+        elif request.method == "DELETE":
+            db.session.delete(article)
+            db.session.commit()
+            return make_response({"message": f"Article No. {id} has been deleted."})
+    else:
+        return make_response(jsonify({"Error": f"Article No. {id} not found."}))
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

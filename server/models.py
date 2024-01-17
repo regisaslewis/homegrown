@@ -64,7 +64,7 @@ class Plant(db.Model, SerializerMixin):
 class Group(db.Model, SerializerMixin):
     __tablename__ = "groups"
 
-    serialize_rules = ("-user.group",)
+    serialize_rules = ("-users.group",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -79,6 +79,8 @@ class Group(db.Model, SerializerMixin):
 class Plant_Family(db.Model, SerializerMixin):
     __tablename__ = "plant_families"
 
+    serialize_rules = ("-plants.family",)
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String)
@@ -91,6 +93,8 @@ class Plant_Family(db.Model, SerializerMixin):
     
 class Article(db.Model, SerializerMixin):
     __tablename__ = "articles"
+
+    serialize_rules = ("-user.articles", "-plant.articles",)
 
     id = db.Column(db.Integer, primary_key=True)
     success_rating = db.Column(db.Integer)
