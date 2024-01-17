@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import Navigation from "./Navigation"
+import Home from "./Home"
+import Signup from "./Signup"
+import Login from "./Login"
+import Users from "./Users"
+import Groups from "./Groups"
+import Plants from "./Plants"
+import Plant_Families from "./Plant_Families"
+import Articles from "./Articles"
 
 function App() {
   return (
