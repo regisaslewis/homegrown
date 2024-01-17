@@ -83,6 +83,7 @@ class Plant_Family(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    description = db.Column(db.String)
     image = db.Column(db.String)
 
     plants = db.relationship("Plant", back_populates="family", cascade="all, delete-orphan")
