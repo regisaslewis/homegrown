@@ -1,21 +1,15 @@
 #!/usr/bin/env python3
-
-# Standard library imports
-
-# Remote library imports
-from flask import request
+from flask import Flask, request, make_response, jsonify, session
 from flask_restful import Resource
+import copy
 
-# Local imports
-from config import app, db, api
-# Add your model imports
+from config import app, db
+from models import User, Plant, Group, Plant_Family, Article
 
-
-# Views go here!
 
 @app.route('/')
 def index():
-    return '<h1>Project Server</h1>'
+    return '<h1>HomeGrown Server</h1>'
 
 
 if __name__ == '__main__':
