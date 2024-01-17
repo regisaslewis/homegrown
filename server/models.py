@@ -45,6 +45,8 @@ class User(db.Model, SerializerMixin):
     
 class Plant(db.Model, SerializerMixin):
     __tablename__ = "plants"
+
+    serialize_rules = ("-users.plants", "-family.plants", "-articles.plant",)
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True)
@@ -61,6 +63,8 @@ class Plant(db.Model, SerializerMixin):
 
 class Group(db.Model, SerializerMixin):
     __tablename__ = "groups"
+
+    serialize_rules = ("-user.group",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
