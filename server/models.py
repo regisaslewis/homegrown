@@ -13,7 +13,7 @@ user_plants = db.Table(
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
-    serialize_rules = ("",)
+    serialize_rules = ("-plants.users", "-plants.articles", "-plants.family", "-group.users", "-articles",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
@@ -45,9 +45,7 @@ class User(db.Model, SerializerMixin):
     
 class Plant(db.Model, SerializerMixin):
     __tablename__ = "plants"
-
-    serialize_rules = ("",)
-
+    
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True)
     description = db.Column(db.String)
@@ -64,8 +62,6 @@ class Plant(db.Model, SerializerMixin):
 class Group(db.Model, SerializerMixin):
     __tablename__ = "groups"
 
-    serialize_rules = ("",)
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String)
@@ -79,8 +75,6 @@ class Group(db.Model, SerializerMixin):
 class Plant_Family(db.Model, SerializerMixin):
     __tablename__ = "plant_families"
 
-    serialize_rules = ("",)
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String)
@@ -93,8 +87,6 @@ class Plant_Family(db.Model, SerializerMixin):
     
 class Article(db.Model, SerializerMixin):
     __tablename__ = "articles"
-
-    serialize_rules = ("",)
 
     id = db.Column(db.Integer, primary_key=True)
     success_rating = db.Column(db.Integer)
