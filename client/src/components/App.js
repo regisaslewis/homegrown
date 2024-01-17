@@ -26,7 +26,7 @@ function App() {
           <Plants />
         </Route>
         <Route exact path="/plant_families">
-          <Plant Families />
+          <Plant_Families />
         </Route>
         <Route exact path="/articles">
           <Articles />
