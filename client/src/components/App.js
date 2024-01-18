@@ -7,7 +7,7 @@ import Login from "./Login"
 import Users from "./Users"
 import Groups from "./Groups"
 import Plants from "./Plants"
-import Plant_Families from "./Plant_Families"
+import PlantFamilies from "./PlantFamilies"
 import Articles from "./Articles"
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
           <Plants />
         </Route>
         <Route exact path="/plant_families">
-          <Plant_Families />
+          <PlantFamilies />
         </Route>
         <Route exact path="/articles">
           <Articles />
