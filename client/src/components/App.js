@@ -11,10 +11,26 @@ import PlantFamilies from "./PlantFamilies"
 import Articles from "./Articles"
 
 function App() {
+
+const buttonOn = {
+  color: "white",
+  backgroundColor: "black",
+  transform: "scale(.95)",
+  zIndex: "-1"
+}
+
+const buttonOff = {
+  color: "black",
+  backgroundColor: "lightgray"
+}
+
   return (
     <div>
       <h1>HomeGrown Frontend</h1>
-      <Navigation />
+      <Navigation
+        buttonOn = {buttonOn}
+        buttonOff = {buttonOff}
+      />
       <Switch>
         <Route exact path="/">
           {<Home />}{/* Conditional Redirect to "/signup" based on user here. */}
