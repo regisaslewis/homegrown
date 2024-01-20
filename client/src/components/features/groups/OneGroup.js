@@ -10,7 +10,7 @@ function OneGroup({groupItem}) {
         <div>
             <p>name: {name}</p>
             <p>description: {description}</p>
-            Users: {usersList}
+            users: {usersList}
             <p>__________________________</p>
         </div>
     )
