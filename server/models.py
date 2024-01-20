@@ -13,7 +13,7 @@ user_plants = db.Table(
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
-    serialize_rules = ("-plants.users", "-plants.articles", "-plants.family", "-group.users", "-articles",)
+    serialize_rules = ("-plants.users", "-plants.articles", "-plants.family", "-group.users", "-articles.user", "-articles.plant.users",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
@@ -46,7 +46,7 @@ class User(db.Model, SerializerMixin):
 class Plant(db.Model, SerializerMixin):
     __tablename__ = "plants"
 
-    serialize_rules = ("-users.plants", "-family.plants", "-articles.plant",)
+    serialize_rules = ("-users.plants", "-family.plants", "-articles.plant", "-articles.user.plant",)
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True)

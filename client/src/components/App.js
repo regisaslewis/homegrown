@@ -4,11 +4,11 @@ import Navigation from "./Navigation"
 import Home from "./Home"
 import Signup from "./Signup"
 import Login from "./Login"
-import Users from "./Users"
-import Groups from "./Groups"
-import Plants from "./Plants"
-import PlantFamilies from "./PlantFamilies"
-import Articles from "./Articles"
+import Users from "./features/users/Users"
+import Groups from "./features/groups/Groups"
+import Plants from "./features/plants/Plants";
+import PlantFamilies from "./features/plant_families/PlantFamilies"
+import Articles from "./features/articles/Articles"
 
 function App() {
 
