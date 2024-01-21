@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import buttonReducer from "../src/components/features/buttonSlice";
+import buttonReducer from "./components/features/navigation/buttonSlice";
 import usersReducer from "./components/features/users/usersSlice";
 import plantsReducer from "./components/features/plants/plantsSlice";
 import groupsReducer from "./components/features/groups/groupsSlice";

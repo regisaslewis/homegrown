@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Navigation from "./Navigation"
+import React, { useEffect, useState } from "react"
+import { Switch, Route, Redirect } from "react-router-dom"
+import Navigation from "./features/navigation/Navigation"
 import Home from "./Home"
 import Signup from "./Signup"
-import Login from "./Login"
+import Login from "./features/forms/Login"
 import Users from "./features/users/Users"
 import Groups from "./features/groups/Groups"
 import Plants from "./features/plants/Plants";
