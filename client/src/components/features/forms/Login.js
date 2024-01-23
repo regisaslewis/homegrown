@@ -51,7 +51,7 @@ function Login() {
                 {formik.errors.password ? <p style={{"color": "red"}}>{formik.errors.password}</p> : ""}
                 <button type="submit">Submit</button>
             </form>
-            current user = {Object.keys(currentUser).length > 0 && typeof(currentUser) === "object" ? currentUser.name : "Nobody"} 
+            current user = {currentUser.name ? currentUser.name : "Nobody"} 
         </div>
     )
 }

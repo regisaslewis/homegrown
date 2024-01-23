@@ -1,5 +1,5 @@
 import React from "react"
-import { Switch, Route, Redirect, useHistory } from "react-router-dom"
+import { NavLink, Switch, Route, Redirect, useHistory } from "react-router-dom"
 import Navigation from "./features/navigation/Navigation"
 import { useSelector, useDispatch } from "react-redux"
 
@@ -12,13 +12,14 @@ import PlantFamilies from "./features/plant_families/PlantFamilies"
 import Articles from "./features/articles/Articles"
 
 import { getCurrentUser, logOutUser } from "./features/users/currentUserSlice"
+import { getCurrentButton, switchButton } from "./features/navigation/buttonSlice"
 
 function App() {
 
   const dispatch = useDispatch();
   const history = useHistory();
   const currentUser = useSelector(getCurrentUser)
-  const loggedTest = Object.keys(currentUser).length > 0 && typeof(currentUser) === "object"
+  const buttonStyle = useSelector(getCurrentButton)
 
   const buttonOn = {
     color: "white",
@@ -31,6 +32,14 @@ function App() {
     color: "black",
     backgroundColor: "lightgray"
   }
+  
+  function switchOn(num) {
+    if (buttonStyle === num) {
+        return buttonOn
+    } else {
+        return buttonOff
+    }
+}
 
   function handleLogout() {
     dispatch(logOutUser());
@@ -40,6 +49,13 @@ function App() {
   return (
     <div>
       <h1>HomeGrown Frontend</h1>
+      {currentUser.name ?
+            <NavLink to="/" exact>
+                <button style={switchOn(1)} onClick={() => dispatch(switchButton(1))}>Home</button>
+            </NavLink>:
+            <NavLink to="/greet" exact>
+                <button style={switchOn(2)} onClick={() => dispatch(switchButton(2))}>Login/Signup</button>
+            </NavLink>}
       <button onClick={handleLogout}>Logout</button>
       <Navigation
         buttonOn = {buttonOn}
@@ -47,12 +63,12 @@ function App() {
       />
       <Switch>
         <Route exact path="/">
-          {loggedTest ?
+          {currentUser.name ?
           <Home /> : 
           <Redirect to="/greet" />}
         </Route>
         <Route exact path="/greet">
-          {!loggedTest ?
+          {!currentUser.name ?
           <Greet /> : 
           <Redirect to="/" exact />}
         </Route>
