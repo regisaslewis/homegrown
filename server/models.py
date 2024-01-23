@@ -20,7 +20,7 @@ class User(db.Model, SerializerMixin):
     climate = db.Column(db.String)
     experience_level = db.Column(db.String)
     group_id = db.Column(db.Integer, db.ForeignKey("groups.id"))
-    _password_hash = db.column(db.String)
+    _password_hash = db.Column(db.String)
 
     group = db.relationship("Group", back_populates="users")
     plants = db.relationship("Plant", secondary=user_plants, back_populates="users")

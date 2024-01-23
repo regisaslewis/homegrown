@@ -31,7 +31,7 @@ export const addNewUser = createAsyncThunk(
             return err.message
         }
     }
-    )
+)
 
 const usersSlice = createSlice({
     name: "users",
@@ -51,9 +51,11 @@ const usersSlice = createSlice({
             state.error = action.error.message
         })
         .addCase(addNewUser.fulfilled, (state, action) => {
-            state.users.push(action.payload)
-            console.log(action.payload)
+            state.users.push(action.payload[0])
         })
+        // .addCase(loginUser.fulfilled, (state.action) => {
+
+        // })
     }
 })
 

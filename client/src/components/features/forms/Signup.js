@@ -14,9 +14,9 @@ function Signup() {
 
     const formSchema = yup.object().shape({
         name: yup.string().required("Must enter a name.").min(4).max(16),
-        climate: yup.string().required("Must enter a climate.").min(5),
+        climate: yup.string().required("Must enter a climate.").min(3),
         experience_level: yup.string().required("Must enter experience level."),
-        password: yup.string().required("Must enter a password."),
+        password: yup.string().required("Must enter a password.").min(5).max(20),
         confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords must match.").required("Passwords must match.")
     })
 
@@ -33,8 +33,8 @@ function Signup() {
         validateOnBlur: false,
         onSubmit: (values) => {
                 try {
-                dispatch(addNewUser(values)).unwrap();
-                history.push("/users")
+                dispatch(addNewUser(values));
+                history.push("/")
             } catch (err) {
                 console.error("Failed to add user", err)
             }
@@ -47,14 +47,19 @@ function Signup() {
             <form autoComplete="off" onSubmit={formik.handleSubmit}>
                 <label>Name:</label>
                 <input name="name" value={formik.values.name} onChange={formik.handleChange} />
+                {formik.errors.name ? <b style={{"color": "red"}}>{formik.errors.name}</b> : ""}
                 <label>Climate:</label>
                 <input name="climate" value={formik.values.climate} onChange={formik.handleChange} />
+                {formik.errors.climate ? <b style={{"color": "red"}}>{formik.errors.climate}</b> : ""}
                 <label>Experience Level:</label>
                 <input name="experience_level" value={formik.values.experience_level} onChange={formik.handleChange} />
+                {formik.errors.experience_level ? <b style={{"color": "red"}}>{formik.errors.experience_level}</b> : ""}
                 <label>Password:</label>
                 <input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" />
+                {formik.errors.password ? <b style={{"color": "red"}}>{formik.errors.password}</b> : ""}
                 <label>Confirm Password:</label>
                 <input name="confirmPassword" value={formik.values.confirmPassword} onChange={formik.handleChange} type="password" />
+                {formik.errors.confirmPassword ? <b style={{"color": "red"}}>{formik.errors.confirmPassword}</b> : ""}
                 <button type="submit">Submit</button>
             </form>
         </div>

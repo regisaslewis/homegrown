@@ -29,6 +29,8 @@ def login():
             if user.authenticate(password_hash):
                 session["user_id"] = user.id
                 return jsonify(user.to_dict())
+            else:
+                return jsonify({"Error": "Invalid Password"}), 401
             if user is None:
                 return jsonify({"Error": "Not a valid user."}), 401
 
