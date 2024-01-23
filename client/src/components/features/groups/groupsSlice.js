@@ -21,6 +21,18 @@ export const fetchGroups = createAsyncThunk(
     } 
 )
 
+export const addNewGroup = createAsyncThunk(
+    "group/addNewGroup",
+    async (initialInfo) => {
+        try {
+            const response = await axios.post(GROUPS_URL, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message
+        }
+    }
+)
+
 const groupsSlice = createSlice({
     name: "groups",
     initialState,
@@ -37,6 +49,9 @@ const groupsSlice = createSlice({
         .addCase(fetchGroups.rejected, (state, action) => {
             state.status = "failed"
             state.error = action.error.message
+        })
+        .addCase(addNewGroup.fulfilled, (state, action) => {
+            state.groups.push(action.payload[0])
         })
     }
 })

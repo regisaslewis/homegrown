@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OneGroup from "./OneGroup";
+import NewGroupForm from "../forms/NewGroupForm";
 
 import { fetchGroups, selectAllGroups, getGroupsStatus, getGroupsError } from "./groupsSlice";
 import { switchButton } from "../navigation/buttonSlice";
@@ -34,6 +35,7 @@ function Groups() {
     return (
         <div>
             <h2>Groups Page</h2>
+            <NewGroupForm />
             {items}
         </div>
     )

@@ -20,8 +20,8 @@ if __name__ == '__main__':
 
         users = [monica, thorton, angelica]
 
-        pnw_superstars = Group(name="PNW Superstars", description="Representing Top-Left USA", users=[monica, thorton])
-        van_dwellers = Group(name="The Caravan", description="Green-thumb Nomads", users=[angelica])
+        pnw_superstars = Group(name="PNW Superstars", description="Representing Top-Left USA", users=[monica, thorton], group_creator=monica.name)
+        van_dwellers = Group(name="The Caravan", description="Green-thumb Nomads", users=[angelica], group_creator=angelica.name)
 
         groups = [pnw_superstars, van_dwellers]
 

@@ -57,7 +57,6 @@ function Signup() {
                 {formik.errors.password ? <b style={{"color": "red"}}>{formik.errors.password}</b> : ""}</label>                
                 <label>Confirm Password:<input name="confirmPassword" value={formik.values.confirmPassword} onChange={formik.handleChange} type="password" />
                 {formik.errors.confirmPassword ? <b style={{"color": "red"}}>{formik.errors.confirmPassword}</b> : ""}</label>
-                
                 <button type="submit">Submit</button>
             </form>
         </div>

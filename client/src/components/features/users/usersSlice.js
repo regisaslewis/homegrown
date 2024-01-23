@@ -23,9 +23,9 @@ export const fetchUsers = createAsyncThunk(
 
 export const addNewUser = createAsyncThunk(
     "users/addNewUser",
-    async (initialUser) => {
+    async (initialInfo) => {
         try {
-            const response = await axios.post(USERS_URL, initialUser)
+            const response = await axios.post(USERS_URL, initialInfo)
             return response.data
         } catch (err) {
             return err.message
@@ -53,9 +53,6 @@ const usersSlice = createSlice({
         .addCase(addNewUser.fulfilled, (state, action) => {
             state.users.push(action.payload[0])
         })
-        // .addCase(loginUser.fulfilled, (state.action) => {
-
-        // })
     }
 })
 
