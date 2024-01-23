@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPlantFamilies, selectAllPlantFamilies, getPlantFamiliesStatus, getPlantFamiliesError } from "./plantFamiliesSlice";
 import OnePlantFamily from "./OnePlantFamily";
+
+import { fetchPlantFamilies, selectAllPlantFamilies, getPlantFamiliesStatus, getPlantFamiliesError } from "./plantFamiliesSlice";
+import { switchButton } from "../navigation/buttonSlice";
 
 function PlantFamilies() {
 
@@ -9,6 +11,10 @@ function PlantFamilies() {
     const allPlantFamilies = useSelector(selectAllPlantFamilies);
     const plantFamiliesStatus = useSelector(getPlantFamiliesStatus);
     const error = useSelector(getPlantFamiliesError)
+
+    useEffect(() => {
+        dispatch(switchButton(7))
+    }, [dispatch])
 
     useEffect(() => {
         if (plantFamiliesStatus === "idle") {

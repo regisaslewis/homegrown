@@ -1,5 +1,5 @@
 import React  from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -32,28 +32,26 @@ function Login() {
             try {
                 if (allUserNames.includes(formik.values.name)) {
                     dispatch(loginUser(values));
+                    history.push("/")
                 }
             } catch (err) {
                 console.error("failed to log in", err)
             }
         }
 
-    
-
     })
     return (
         <div>
             <h2>Login Page</h2>
             <form autoComplete="off" onSubmit={formik.handleSubmit}>
-                <label>Name:</label>
-                <input name="name" value={formik.values.name} onChange={formik.handleChange} />
+                <label>Name:<input name="name" value={formik.values.name} onChange={formik.handleChange} /></label>                
                 {formik.errors.name ? <p style={{"color": "red"}}>{formik.errors.name}</p> : ""}
-                <label>Password:</label>
-                <input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" />
+                <label>Password:<input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" /></label>
+                
                 {formik.errors.password ? <p style={{"color": "red"}}>{formik.errors.password}</p> : ""}
                 <button type="submit">Submit</button>
             </form>
-            current user = {Object.keys(currentUser).length > 0 ? currentUser.name : "Nobody"} 
+            current user = {Object.keys(currentUser).length > 0 && typeof(currentUser) === "object" ? currentUser.name : "Nobody"} 
         </div>
     )
 }

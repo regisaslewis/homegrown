@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPlants, selectAllPlants, getPlantsStatus, getPlantsError } from "./plantsSlice";
 import OnePlant from "./OnePlant";
+
+
+import { fetchPlants, selectAllPlants, getPlantsStatus, getPlantsError } from "./plantsSlice";
+import { switchButton } from "../navigation/buttonSlice";
 
 function Plants() {
 
@@ -9,6 +12,10 @@ function Plants() {
     const allPlants = useSelector(selectAllPlants);
     const plantsStatus = useSelector(getPlantsStatus);
     const error = useSelector(getPlantsError)
+
+    useEffect(() => {
+        dispatch(switchButton(6))
+    }, [dispatch])
 
     useEffect(() => {
         if (plantsStatus === "idle") {

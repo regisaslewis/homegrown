@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUsers, selectAllUsers, getUsersStatus, getUsersError } from "./usersSlice";
 import OneUser from "./OneUser";
+
+import { fetchUsers, selectAllUsers, getUsersStatus, getUsersError } from "./usersSlice";
+import { switchButton } from "../navigation/buttonSlice";
 
 function Users() {
 
@@ -9,6 +11,10 @@ function Users() {
     const allUsers = useSelector(selectAllUsers);
     const usersStatus = useSelector(getUsersStatus);
     const error = useSelector(getUsersError)
+
+    useEffect(() => {
+        dispatch(switchButton(4))
+    }, [dispatch])
 
     useEffect(() => {
         if (usersStatus === "idle") {

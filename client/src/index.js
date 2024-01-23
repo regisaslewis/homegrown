@@ -6,8 +6,10 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom/";
 import { store } from "./store";
 import { fetchUsers } from "./components/features/users/usersSlice";
+import { checkSession } from "./components/features/users/currentUserSlice";
 
 store.dispatch(fetchUsers());
+store.dispatch(checkSession());
 
 const container = document.getElementById("root");
 const root = createRoot(container);

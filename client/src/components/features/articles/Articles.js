@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError } from "./articlesSlice";
 import OneArticle from "./OneArticle";
+
+import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError } from "./articlesSlice";
+import { switchButton } from "../navigation/buttonSlice";
 
 function Articles() {
 
@@ -9,6 +11,10 @@ function Articles() {
     const allArticles = useSelector(selectAllArticles);
     const articlesStatus = useSelector(getArticlesStatus);
     const error = useSelector(getArticlesError)
+    
+    useEffect(() => {
+        dispatch(switchButton(8))
+    }, [dispatch])
 
     useEffect(() => {
         if (articlesStatus === "idle") {

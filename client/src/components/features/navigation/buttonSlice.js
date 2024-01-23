@@ -14,6 +14,7 @@ export const buttonSlice = createSlice({
     }
 })
 
+export const getCurrentButton = state => state.button.buttonNum;
 export const { switchButton } = buttonSlice.actions;
 
 export default buttonSlice.reducer;

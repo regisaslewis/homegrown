@@ -1,13 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { getCurrentUser } from "./features/users/currentUserSlice";
+import { switchButton } from "./features/navigation/buttonSlice";
 
 
 function Home() {
 
-const loggedUser = useSelector(getCurrentUser)
-const userConditional = Object.keys(loggedUser).length > 0 ? loggedUser.name : ""
+    const dispatch = useDispatch();
+    const loggedUser = useSelector(getCurrentUser);
+    const userConditional = Object.keys(loggedUser).length > 0 ? loggedUser.name : ""
+
+    useEffect(() => {
+        dispatch(switchButton(1))
+    }, [dispatch])
 
     return (
         <div>

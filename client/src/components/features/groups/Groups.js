@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchGroups, selectAllGroups, getGroupsStatus, getGroupsError } from "./groupsSlice";
 import OneGroup from "./OneGroup";
+
+import { fetchGroups, selectAllGroups, getGroupsStatus, getGroupsError } from "./groupsSlice";
+import { switchButton } from "../navigation/buttonSlice";
 
 function Groups() {
 
@@ -9,6 +11,10 @@ function Groups() {
     const allGroups = useSelector(selectAllGroups);
     const groupsStatus = useSelector(getGroupsStatus);
     const error = useSelector(getGroupsError)
+    
+    useEffect(() => {
+        dispatch(switchButton(5))
+    }, [dispatch])
 
     useEffect(() => {
         if (groupsStatus === "idle") {

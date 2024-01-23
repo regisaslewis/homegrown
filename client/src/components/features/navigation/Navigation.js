@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { switchButton } from "./buttonSlice";
+import { getCurrentButton, switchButton } from "./buttonSlice";
 
 function Navigation({ buttonOn, buttonOff}) {
 
-    const buttonStyle = useSelector(state => state.button.buttonNum)
+    const buttonStyle = useSelector(getCurrentButton)
     const dispatch = useDispatch();
 
     function switchOn(num) {
@@ -22,11 +22,8 @@ function Navigation({ buttonOn, buttonOff}) {
             <NavLink to="/" exact>
                 <button style={switchOn(1)} onClick={() => dispatch(switchButton(1))}>Home</button>
             </NavLink>
-            <NavLink to="/login" exact>
-                <button style={switchOn(2)} onClick={() => dispatch(switchButton(2))}>Login</button>
-            </NavLink>
-            <NavLink to="/signup" exact>
-                <button style={switchOn(3)} onClick={() => dispatch(switchButton(3))}>Signup</button>
+            <NavLink to="/greet" exact>
+                <button style={switchOn(2)} onClick={() => dispatch(switchButton(2))}>Login/Signup</button>
             </NavLink>
             <NavLink to="/users" exact>
                 <button style={switchOn(4)} onClick={() => dispatch(switchButton(4))}>Users</button>
