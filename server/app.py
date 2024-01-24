@@ -85,6 +85,7 @@ def plants():
             name = request.get_json()["name"],
             description = request.get_json()["description"],
             image = request.get_json()["image"],
+            family_id = request.get_json()["family_id"]
         )
         db.session.add(new_plant)
         db.session.commit()

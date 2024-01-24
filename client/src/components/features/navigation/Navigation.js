@@ -3,13 +3,11 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getCurrentButton, switchButton } from "./buttonSlice";
-import { getCurrentUser } from "../users/currentUserSlice";
 
 function Navigation({ buttonOn, buttonOff}) {
 
     const buttonStyle = useSelector(getCurrentButton)
     const dispatch = useDispatch();
-    const currentUser = useSelector(getCurrentUser)
 
     function switchOn(num) {
         if (buttonStyle === num) {

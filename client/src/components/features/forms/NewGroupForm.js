@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from "yup";
@@ -9,7 +8,6 @@ import { addNewGroup } from '../groups/groupsSlice';
 
 function NewGroupForm() {
 
-    const history = useHistory();
     const dispatch = useDispatch();
     const currentUser = useSelector(getCurrentUser);
 
@@ -51,6 +49,7 @@ function NewGroupForm() {
                 <input name="group_creator" defaultValue={formik.values.group_creator = currentUser.name} type='hidden' />
                 <button type="submit">Submit</button>
             </form>
+            <p>____________________</p>
         </div>
     )
 }
