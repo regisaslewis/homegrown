@@ -21,6 +21,18 @@ export const fetchArticles = createAsyncThunk(
     } 
 )
 
+export const addNewArticle = createAsyncThunk(
+    "articles/addNewArticle",
+    async (initialInfo) => {
+        try {
+            const response = await axios.post(ARTICLES_URL, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
+
 const articlesSlice = createSlice({
     name: "articles",
     initialState,
@@ -37,6 +49,9 @@ const articlesSlice = createSlice({
         .addCase(fetchArticles.rejected, (state, action) => {
             state.status = "failed"
             state.error = action.error.message
+        })
+        .addCase(addNewArticle.fulfilled, (state, action) => {
+            state.articles.push(action.payload)
         })
     }
 })

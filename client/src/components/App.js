@@ -49,6 +49,7 @@ function App() {
   return (
     <div>
       <h1>HomeGrown Frontend</h1>
+      <p>Current User: {currentUser.name ? currentUser.name : "nobody"}</p>
       {currentUser.name ?
             <NavLink to="/" exact>
                 <button style={switchOn(1)} onClick={() => dispatch(switchButton(1))}>Home</button>

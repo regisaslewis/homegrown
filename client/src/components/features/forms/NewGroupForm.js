@@ -34,6 +34,8 @@ function NewGroupForm() {
         }
     })
 
+    formik.values.group_creator = currentUser.name
+
     return (
         <div>
             <h3>NewGroupForm goes here.</h3>
@@ -46,7 +48,6 @@ function NewGroupForm() {
                     <input name="description" value={formik.values.description} onChange={formik.handleChange} />
                     {formik.errors.description ? <b>{formik.errors.description}</b> : ""}
                 </label>
-                <input name="group_creator" defaultValue={formik.values.group_creator = currentUser.name} type='hidden' />
                 <button type="submit">Submit</button>
             </form>
             <p>____________________</p>

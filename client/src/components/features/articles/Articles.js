@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import OneArticle from "./OneArticle";
 
 import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError } from "./articlesSlice";
+import NewArticleForm from "../forms/NewArticleForm";
 import { switchButton } from "../navigation/buttonSlice";
 
 function Articles() {
@@ -34,6 +35,7 @@ function Articles() {
     return (
         <div>
             <h2>Articles Page</h2>
+            <NewArticleForm />
             {items}
         </div>
     )
