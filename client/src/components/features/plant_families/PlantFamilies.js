@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OnePlantFamily from "./OnePlantFamily";
+import NewPlantFamilyForm from "../forms/NewPlantFamilyForm";
 
 import { fetchPlantFamilies, selectAllPlantFamilies, getPlantFamiliesStatus, getPlantFamiliesError } from "./plantFamiliesSlice";
 import { switchButton } from "../navigation/buttonSlice";
@@ -34,6 +35,7 @@ function PlantFamilies() {
     return (
         <div>
             <h2>PlantFamilies Page</h2>
+            <NewPlantFamilyForm />
             {items}
         </div>
     )

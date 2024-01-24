@@ -21,6 +21,18 @@ export const fetchPlantFamilies = createAsyncThunk(
     } 
 )
 
+export const addNewPlantFamily = createAsyncThunk(
+    "plantFamilies/addNewPlantFamily",
+    async (initialInfo) => {
+        try {
+            const response = await axios.post(PLANT_FAMILIES_URL, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message
+        }
+    }
+)
+
 const plantFamiliesSlice = createSlice({
     name: "plantFamilies",
     initialState,
@@ -37,6 +49,9 @@ const plantFamiliesSlice = createSlice({
         .addCase(fetchPlantFamilies.rejected, (state, action) => {
             state.status = "failed"
             state.error = action.error.message
+        })
+        .addCase(addNewPlantFamily.fulfilled, (state, action) => {
+            state.plantFamilies.push(action.payload[0])
         })
     }
 })

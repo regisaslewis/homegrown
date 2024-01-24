@@ -2,15 +2,23 @@ import React from "react";
 
 function OnePlantFamily({plantFamilyItem}) {
 
-    const { name, description, plants } = plantFamilyItem
-    
-    const plantFamilyPlants = plants.map(e => <p key={e.id}>{e.name}</p>)
+    const { name, description, plants, image } = plantFamilyItem
+
+    function plantFamilyPlants() {
+        if (plants.length > 0) {
+            return plants.map(e => <p key={e.id}>{e.name}</p>)
+        } else {
+            return "None yet"
+        }
+    }
 
     return (
         <div>
             <p>name: {name}</p>
             <p>description: {description}</p>
-            plants: {plantFamilyPlants}
+            image: <img alt={name} src={image} style={{"maxWidth": "50px"}} />
+            <br />
+            plants: {plantFamilyPlants()}
             <p>__________________________</p>
         </div>
     )

@@ -56,7 +56,7 @@ function App() {
             <NavLink to="/greet" exact>
                 <button style={switchOn(2)} onClick={() => dispatch(switchButton(2))}>Login/Signup</button>
             </NavLink>}
-      <button onClick={handleLogout}>Logout</button>
+      <button style={buttonOff} onClick={handleLogout}>Logout</button>
       <Navigation
         buttonOn = {buttonOn}
         buttonOff = {buttonOff}
