@@ -16,7 +16,7 @@ function NewArticleForm() {
     const plantOptions = allPlants.map(e => <option key={e.id} value={e.id}>{e.name}</option>)
 
     const formSchema = yup.object().shape({
-        success_rating: yup.number().required().min(1).max(5),
+        success_rating: yup.number().positive().integer().required().min(1).max(5),
         body: yup.string().required("Please describe your care").min(5),
         likes: yup.number(),
         user_id: yup.number(),

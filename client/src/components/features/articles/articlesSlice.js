@@ -33,6 +33,20 @@ export const addNewArticle = createAsyncThunk(
     }
 )
 
+export const editArticle = createAsyncThunk(
+    "articles/editArticle",
+    async (initialInfo) => {
+        const { id } = initialInfo;
+        
+        try {
+            const response = await axios.patch(`${ARTICLES_URL}/${id}`, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message
+        }
+    }
+)
+
 const articlesSlice = createSlice({
     name: "articles",
     initialState,
@@ -53,11 +67,26 @@ const articlesSlice = createSlice({
         .addCase(addNewArticle.fulfilled, (state, action) => {
             state.articles.push(action.payload)
         })
+        .addCase(editArticle.fulfilled, (state, action) => {            
+            const { id } = action.payload;
+            const articles = state.articles.filter(e => e.id !== id);
+            state.articles = [...articles, action.payload]
+            state.articles.sort((a, b) => {
+                if (a.id < b.id) {
+                    return -1
+                } else if (a.id > b.id) {
+                    return 1
+                }
+                return 0;
+            })
+        })
     }
 })
 
 export const selectAllArticles = state => state.articles.articles;
 export const getArticlesStatus = state => state.articles.status;
 export const getArticlesError = state => state.articles.error;
+
+export const selectArticleById = (state, id) => state.articles.articles.find(e => e.id === id) 
 
 export default articlesSlice.reducer
