@@ -1,11 +1,13 @@
 
 from app import app
-from models import db, User, Plant, Group, Plant_Family, Article, user_plants
+from models import db, User, Plant, Group, Plant_Family, Article, user_plants, user_liked_articles, user_disliked_articles
 
 if __name__ == '__main__':
     with app.app_context():
         print("Removing contents...")
         db.session.query(user_plants).delete()
+        db.session.query(user_liked_articles).delete()
+        db.session.query(user_disliked_articles).delete()
         db.session.commit()
         User.query.delete()
         Plant.query.delete()
@@ -44,6 +46,14 @@ if __name__ == '__main__':
         a4 = Article(user=angelica, plant=fiddle, success_rating=3, likes=0, body="Bout fifty-fifty with these suckers.  Everytime I hit the road, it's a coin flip whether or not these crybabies are gonna throw in the towel.  Still gonna keep tryin.  Old girl like me don't mind the setbacks.")
 
         articles = [a1, a2, a3, a4]
+
+        thorton.liked_articles.append(a1)
+        thorton.disliked_articles.append(a2)
+        monica.liked_articles.append(a3)
+        monica.disliked_articles.append(a4)
+        angelica.liked_articles.append(a1)
+        angelica.liked_articles.append(a3)
+        angelica.disliked_articles.append(a2)
 
         db.session.add_all(users)
         db.session.add_all(groups)

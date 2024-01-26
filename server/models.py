@@ -10,6 +10,20 @@ user_plants = db.Table(
     db.Column("plant_id", db.Integer, db.ForeignKey("plants.id"))
 )
 
+user_liked_articles = db.Table(
+    "users_liked_articles",
+    metadata,
+    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("article_id", db.Integer, db.ForeignKey("articles.id"))
+)
+
+user_disliked_articles = db.Table(
+    "users_disliked_articles",
+    metadata,
+    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("article_id", db.Integer, db.ForeignKey("articles.id"))
+)
+
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
@@ -21,6 +35,8 @@ class User(db.Model, SerializerMixin):
     experience_level = db.Column(db.String)
     group_id = db.Column(db.Integer, db.ForeignKey("groups.id"))
     _password_hash = db.Column(db.String)
+    liked_articles = db.relationship("Article", secondary=user_liked_articles)
+    disliked_articles = db.relationship("Article", secondary=user_disliked_articles)
 
     group = db.relationship("Group", back_populates="users")
     plants = db.relationship("Plant", secondary=user_plants, back_populates="users")
