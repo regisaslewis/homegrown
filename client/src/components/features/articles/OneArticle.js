@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectArticleById, getEditFormVisibility, setEditFormVisibility } from "./articlesSlice";
+import { getCurrentUser } from "../users/currentUserSlice";
 
 import EditArticleForm from "../forms/EditArticleForm";
 
@@ -10,6 +11,7 @@ function OneArticle({articleItem}) {
     const article = useSelector(state => selectArticleById(state, Number(id)))
     const dispatch = useDispatch();
     const editFormVisibility = useSelector(getEditFormVisibility)
+    const currentUser = useSelector(getCurrentUser)
 
     function handleClick(num) {
         dispatch(setEditFormVisibility(num))
@@ -17,6 +19,8 @@ function OneArticle({articleItem}) {
     function handleCancel() {
         dispatch(setEditFormVisibility(0));
     }
+
+    
     
     return (
         <div>
@@ -34,7 +38,14 @@ function OneArticle({articleItem}) {
             <div style={editFormVisibility === id ? {"display" : "block"} : {"display" : "none"}}>
                 <EditArticleForm articleItem={articleItem} />
             </div>
+            {article.user.name !== currentUser.name ?
+            <div>
+                <button disabled={false}>Like</button>
+                <button>Dislike</button>
+            </div>:
+            ""            }
             <p>__________________________</p>
+            
         </div>
     )
 }
