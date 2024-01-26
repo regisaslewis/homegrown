@@ -27,7 +27,7 @@ user_disliked_articles = db.Table(
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
-    serialize_rules = ("-plants.users", "-plants.articles", "-plants.family", "-group.users", "-articles.user", "-articles.plant.users",)
+    serialize_rules = ("-plants.users", "-plants.articles", "-plants.family", "-group.users", "-articles.user", "-articles.plant.users", "-liked_articles.user", "-liked_articles.plant", "-disliked_articles.user", "-disliked_articles.plant",)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
