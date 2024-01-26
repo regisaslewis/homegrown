@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OneArticle from "./OneArticle";
 
-import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError } from "./articlesSlice";
+import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility } from "./articlesSlice";
 import NewArticleForm from "../forms/NewArticleForm";
 import { switchButton } from "../navigation/buttonSlice";
 
@@ -12,7 +12,7 @@ function Articles() {
     const allArticles = useSelector(selectAllArticles);
     const articlesStatus = useSelector(getArticlesStatus);
     const error = useSelector(getArticlesError)
-    const [formVisibility, setFormVisibilty] = useState(false)
+    const newFormVisibility = useSelector(getNewFormVisibility)
     
     useEffect(() => {
         dispatch(switchButton(8))
@@ -33,18 +33,14 @@ function Articles() {
         items = <p>{error}</p>
     }
 
-    function handleVisibility() {
-        setFormVisibilty(!formVisibility)
-    }
-
     return (
         <div>
             <h2>Articles Page</h2>
-            <button onClick={handleVisibility}>{formVisibility ? "Cancel" : "Add New Article" }</button>
-            <div style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
+            <button onClick={() => dispatch(setNewFormVisibility())}>{newFormVisibility ? "Cancel" : "Add New Article" }</button>
+            <div style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
                 <NewArticleForm />
             </div>
-            <div style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+            <div style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                 {items}
             </div> 
         </div>

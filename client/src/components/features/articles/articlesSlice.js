@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
+    newFormVisibility: false,
+    editFormVisibility: 0,
     articles: [],
     status: "idle",
     error: null
@@ -37,7 +39,6 @@ export const editArticle = createAsyncThunk(
     "articles/editArticle",
     async (initialInfo) => {
         const { id } = initialInfo;
-        
         try {
             const response = await axios.patch(`${ARTICLES_URL}/${id}`, initialInfo)
             return response.data
@@ -47,10 +48,32 @@ export const editArticle = createAsyncThunk(
     }
 )
 
+export const deleteArticle = createAsyncThunk(
+    "articles/deleteArticle",
+    async (initialInfo) => {
+        const { id } = initialInfo;
+        try {
+            const response = await axios.delete(`${ARTICLES_URL}/${id}`)
+            if (response.status === 200) return initialInfo;
+            console.log(response.status)
+            return `${response.status}: ${response.statusText}`
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
+
 const articlesSlice = createSlice({
     name: "articles",
     initialState,
-    reducers: {},
+    reducers: {
+        setNewFormVisibility: (state) => {
+            state.newFormVisibility = !state.newFormVisibility
+        },
+        setEditFormVisibility: (state, action) => {
+            state.editFormVisibility = action.payload
+        }
+    },
     extraReducers (builder) {
         builder
         .addCase(fetchArticles.pending, (state, action) => {
@@ -80,9 +103,18 @@ const articlesSlice = createSlice({
                 return 0;
             })
         })
+        .addCase(deleteArticle.fulfilled, (state, action) => {
+            const { id } = action.payload;
+            const articles = state.articles.filter(e => e.id !== id);
+            state.articles = articles
+        })
     }
 })
 
+export const { setNewFormVisibility, setEditFormVisibility } = articlesSlice.actions;
+
+export const getNewFormVisibility = state => state.articles.newFormVisibility;
+export const getEditFormVisibility = state => state.articles.editFormVisibility;
 export const selectAllArticles = state => state.articles.articles;
 export const getArticlesStatus = state => state.articles.status;
 export const getArticlesError = state => state.articles.error;

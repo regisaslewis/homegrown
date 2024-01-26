@@ -5,7 +5,7 @@ import * as yup from "yup";
 
 import { getCurrentUser } from '../users/currentUserSlice';
 import { selectAllPlants } from '../plants/plantsSlice';
-import { addNewArticle } from '../articles/articlesSlice';
+import { addNewArticle, setNewFormVisibility } from '../articles/articlesSlice';
 
 function NewArticleForm() {
 
@@ -37,6 +37,7 @@ function NewArticleForm() {
         onSubmit: (values) => {
             try {
                 dispatch(addNewArticle(values))
+                dispatch(setNewFormVisibility())
             } catch (err) {
                 console.error("Article did not post.", err)
             }

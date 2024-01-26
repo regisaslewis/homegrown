@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { selectArticleById, editArticle } from '../articles/articlesSlice';
+import { selectArticleById, editArticle, deleteArticle, setEditFormVisibility } from '../articles/articlesSlice';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 
@@ -24,6 +24,7 @@ function EditArticleForm({articleItem}) {
         onSubmit: (values) => {
             try {
                 dispatch(editArticle(values))
+                dispatch(setEditFormVisibility(0))
             } catch (err) {
                 console.error("Could not edit", err)
             }
@@ -33,6 +34,10 @@ function EditArticleForm({articleItem}) {
      formik.values.user_id = article.user.id;
      formik.values.plant_id = article.plant.id;
      formik.values.likes = article.likes;
+
+     function handleDelete() {
+        dispatch(deleteArticle({id: id}))
+     }
     return (
         <div>
             <h4>EditArticleForm</h4>
@@ -52,6 +57,7 @@ function EditArticleForm({articleItem}) {
                 </label>
                 <button type="submit">Submit</button>
             </form>
+            <button onClick={handleDelete}>Delete Article</button>
         </div>
     )
 }
