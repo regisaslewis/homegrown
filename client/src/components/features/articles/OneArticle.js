@@ -33,8 +33,8 @@ function OneArticle({articleItem}) {
             }
             <div style={editFormVisibility === id ? {"display" : "block"} : {"display" : "none"}}>
                 <EditArticleForm articleItem={articleItem} />
-                <p>__________________________</p>
-            </div>   
+            </div>
+            <p>__________________________</p>
         </div>
     )
 }
