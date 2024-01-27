@@ -230,6 +230,7 @@ def articles():
             success_rating = request.get_json()["success_rating"],
             body = request.get_json()["body"],
             likes = 0,
+            dislikes = 0,
             user_id = request.get_json()["user_id"],
             plant_id = request.get_json()["plant_id"]
         )
