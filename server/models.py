@@ -116,6 +116,7 @@ class Article(db.Model, SerializerMixin):
     success_rating = db.Column(db.Integer)
     body = db.Column(db.String)
     likes = db.Column(db.Integer)
+    dislikes = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     plant_id = db.Column(db.Integer, db.ForeignKey("plants.id"))
 

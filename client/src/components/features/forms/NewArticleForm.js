@@ -19,6 +19,7 @@ function NewArticleForm() {
         success_rating: yup.number().positive().integer().required().min(1).max(5),
         body: yup.string().required("Please describe your care").min(5),
         likes: yup.number(),
+        dislikes: yup.number(),
         user_id: yup.number(),
         plant_id: yup.number(),
     })
@@ -28,6 +29,7 @@ function NewArticleForm() {
             success_rating: 1,
             body: "",
             likes: 0,
+            dislikes: 0,
             user_id: 0,
             plant_id: 1,
         },

@@ -47,6 +47,58 @@ export const checkSession = createAsyncThunk(
     }
 )
 
+export const likeArticle = createAsyncThunk(
+    "articles/likeArticle",
+    async (initialInfo) => {
+        const { user_id, article_id } = initialInfo
+        try {
+            const response = await axios.post(`/users/${user_id}/liked_article/${article_id}`, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
+
+export const removeLike = createAsyncThunk(
+    "articles/removeLike",
+    async (initialInfo) => {
+        const { user_id, article_id } = initialInfo
+        try {
+            const response = await axios.delete(`/users/${user_id}/liked_article/${article_id}`, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
+
+export const dislikeArticle = createAsyncThunk(
+    "articles/dislikeArticle",
+    async (initialInfo) => {
+        const { user_id, article_id } = initialInfo
+        try {
+            const response = await axios.post(`/users/${user_id}/disliked_article/${article_id}`, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
+
+export const removeDislike = createAsyncThunk(
+    "articles/removeDislike",
+    async (initialInfo) => {
+        const { user_id, article_id } = initialInfo
+        try {
+            const response = await axios.delete(`/users/${user_id}/disliked_article/${article_id}`, initialInfo)
+            return response.data
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
+
 const currentUserSlice =  createSlice({
     name: "currentUser",
     initialState,
@@ -76,6 +128,22 @@ const currentUserSlice =  createSlice({
         })
         .addCase(checkSession.rejected, (state, action) =>{
             state.error = action.error.message;
+        })
+        .addCase(likeArticle.fulfilled, (state, action) => {
+            if (typeof(action.payload) === "object")
+            state.currentUser.liked_articles.push(action.payload)
+        })
+        .addCase(dislikeArticle.fulfilled, (state, action) => {
+            if (typeof(action.payload) === "object")
+            state.currentUser.disliked_articles.push(action.payload)
+        })
+        .addCase(removeLike.fulfilled, (state, action) => {
+            const removeFromLike = state.currentUser.liked_articles.filter(e => e.id !== action.payload.id)
+            state.currentUser.liked_articles = removeFromLike
+        })
+        .addCase(removeDislike.fulfilled, (state, action) => {
+            const removeFromDislike = state.currentUser.disliked_articles.filter(e => e.id !== action.payload.id)
+            state.currentUser.disliked_articles = removeFromDislike
         })
     }
 })

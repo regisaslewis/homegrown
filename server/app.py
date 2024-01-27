@@ -75,7 +75,7 @@ def show_user(id):
             return make_response({"message": f"User No.{id} deleted."})
     return make_response(jsonify({"Error": f"User No. {id} not found."}), 404)
 
-@app.route("/users/<int:id>/<int:article_id>", methods=["GET", "POST", "DELETE"])
+@app.route("/users/<int:id>/liked_article/<int:article_id>", methods=["GET", "POST", "DELETE"])
 def show_liked_article(id, article_id):
     user = User.query.filter(User.id == id).first()
     article = Article.query.filter(Article.id == article_id).first()
@@ -85,7 +85,7 @@ def show_liked_article(id, article_id):
                 if article in user.liked_articles:
                     return make_response(jsonify(article.to_dict()), 200)
                 else:
-                    return make_response({"message": f"{user.name} has not liked this article."}, 200)
+                    return make_response({"error": f"{user.name} has not liked this article."}, 401)
             if request.method == "POST":
                 if article not in user.liked_articles:
                     user.liked_articles.append(article)
@@ -93,14 +93,43 @@ def show_liked_article(id, article_id):
                     db.session.commit()
                     return make_response(jsonify(article.to_dict()), 201)
                 else:
-                    return make_response({"message" : f"{user.name} has already liked this article."})
+                    return make_response({"error" : f"{user.name} has already liked this article."}, 403)
             if request.method == "DELETE":
                 if article in user.liked_articles:
                     user.liked_articles.remove(article)
                     db.session.commit()
-                    return make_response({"message": f"Article No {article.id} removed from {user.name}'s liked articles."})
+                    return make_response(jsonify(article.to_dict()), 201)
                 else:
                     return make_response({"message": "Cannot remove articles not liked."})
+        return make_response({"Error": f"Article #{article_id} not found"}, 404)
+    return make_response({"Error": f"User #{id} not found"}, 404)
+
+@app.route("/users/<int:id>/disliked_article/<int:article_id>", methods=["GET", "POST", "DELETE"])
+def show_disliked_article(id, article_id):
+    user = User.query.filter(User.id == id).first()
+    article = Article.query.filter(Article.id == article_id).first()
+    if user:
+        if article:
+            if request.method == "GET":
+                if article in user.disliked_articles:
+                    return make_response(jsonify(article.to_dict()), 200)
+                else:
+                    return make_response({"error": f"{user.name} has not disliked this article."}, 401)
+            if request.method == "POST":
+                if article not in user.disliked_articles:
+                    user.disliked_articles.append(article)
+                    db.session.add(user)
+                    db.session.commit()
+                    return make_response(jsonify(article.to_dict()), 201)
+                else:
+                    return make_response({"error" : f"{user.name} has already disliked this article."}, 403)
+            if request.method == "DELETE":
+                if article in user.disliked_articles:
+                    user.disliked_articles.remove(article)
+                    db.session.commit()
+                    return make_response(jsonify(article.to_dict()), 201)
+                else:
+                    return make_response({"message": "Cannot remove articles not disliked."})
         return make_response({"Error": f"Article #{article_id} not found"}, 404)
     return make_response({"Error": f"User #{id} not found"}, 404)
 

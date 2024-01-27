@@ -40,10 +40,10 @@ if __name__ == '__main__':
         
         plant_families = [large, leafy, succulent]
 
-        a1 = Article(user=monica, plant=fiddle, success_rating=2, likes=10, body="I made the mistake of moving it during a prolonged overcast period.  Even after I returned it to its initial location, it never regained it's vibrance, slowly drooping and yellowing.  Now only a few leaves remain.")
-        a2 = Article(user=monica, plant=money, success_rating=5, likes=8, body="By repurposing an old Lazy-Susan, I just walk in and do a quarter rotation every morning for my eight sweet Money babies.  A sprinkle of water every Tuesday and they're golden!")
-        a3 = Article(user=thorton, plant=aloe, success_rating=1, likes=3, body="Didja know you could drown a plant that's 95% water?  Guess some of us gotta learn the hard way, boy howdy.")
-        a4 = Article(user=angelica, plant=fiddle, success_rating=3, likes=0, body="Bout fifty-fifty with these suckers.  Everytime I hit the road, it's a coin flip whether or not these crybabies are gonna throw in the towel.  Still gonna keep tryin.  Old girl like me don't mind the setbacks.")
+        a1 = Article(user=monica, plant=fiddle, success_rating=2, likes=10, dislikes=5, body="I made the mistake of moving it during a prolonged overcast period.  Even after I returned it to its initial location, it never regained it's vibrance, slowly drooping and yellowing.  Now only a few leaves remain.")
+        a2 = Article(user=monica, plant=money, success_rating=5, likes=8, dislikes=2, body="By repurposing an old Lazy-Susan, I just walk in and do a quarter rotation every morning for my eight sweet Money babies.  A sprinkle of water every Tuesday and they're golden!")
+        a3 = Article(user=thorton, plant=aloe, success_rating=1, likes=3, dislikes=1, body="Didja know you could drown a plant that's 95% water?  Guess some of us gotta learn the hard way, boy howdy.")
+        a4 = Article(user=angelica, plant=fiddle, success_rating=3, likes=12, dislikes=10, body="Bout fifty-fifty with these suckers.  Everytime I hit the road, it's a coin flip whether or not these crybabies are gonna throw in the towel.  Still gonna keep tryin.  Old girl like me don't mind the setbacks.")
 
         articles = [a1, a2, a3, a4]
 

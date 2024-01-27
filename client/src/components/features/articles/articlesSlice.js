@@ -72,7 +72,8 @@ const articlesSlice = createSlice({
         },
         setEditFormVisibility: (state, action) => {
             state.editFormVisibility = action.payload
-        }
+        },
+
     },
     extraReducers (builder) {
         builder
@@ -111,7 +112,7 @@ const articlesSlice = createSlice({
     }
 })
 
-export const { setNewFormVisibility, setEditFormVisibility } = articlesSlice.actions;
+export const { setLiked, setNewFormVisibility, setEditFormVisibility } = articlesSlice.actions;
 
 export const getNewFormVisibility = state => state.articles.newFormVisibility;
 export const getEditFormVisibility = state => state.articles.editFormVisibility;
