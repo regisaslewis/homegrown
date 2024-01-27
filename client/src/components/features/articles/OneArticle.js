@@ -22,7 +22,7 @@ function OneArticle({articleItem}) {
         } else {
             setLiked(0)
         }
-    }, [])
+    }, [article.id, currentUser.disliked_articles, currentUser.liked_articles])
 
     function handleClick(num) {
         dispatch(setEditFormVisibility(num))
