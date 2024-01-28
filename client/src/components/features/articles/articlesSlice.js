@@ -112,7 +112,7 @@ const articlesSlice = createSlice({
     }
 })
 
-export const { setLiked, setNewFormVisibility, setEditFormVisibility } = articlesSlice.actions;
+export const { setNewFormVisibility, setEditFormVisibility } = articlesSlice.actions;
 
 export const getNewFormVisibility = state => state.articles.newFormVisibility;
 export const getEditFormVisibility = state => state.articles.editFormVisibility;

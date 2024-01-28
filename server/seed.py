@@ -28,7 +28,7 @@ if __name__ == '__main__':
         groups = [pnw_superstars, van_dwellers]
 
         fiddle = Plant(name="Fiddle-Leaf Fig", description="Tricky Green", image="https://www.afw.com/images/thumbs/0116275_fiddle-leaf-fig-tree.jpeg", users=[monica, angelica])
-        aloe = Plant(name="Aloe Vera", description="Universal Salve", image="https://abanahomes.com/wp-content/uploads/2022/07/indoor-plant-aloe-vera-1024x683.jpg", users=[thorton, angelica])
+        aloe = Plant(name="Aloe Vera", description="Universal Salve", image="https://abanahomes.com/wp-content/uploads/2022/07/indoor-plant-aloe-vera-1024x683.jpg", users=[thorton, monica, angelica])
         money = Plant(name="Money Tree", description="Cha-Ching", image="https://www.realsimple.com/thmb/Wfcx19y6fCJbGuQoXzoJB3gAecI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1345463551-4ab50ed56e9c433c9d6571d7e51707cf.jpg", users=[monica, thorton, angelica])
 
 

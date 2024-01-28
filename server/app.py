@@ -232,7 +232,7 @@ def articles():
             likes = 0,
             dislikes = 0,
             user_id = request.get_json()["user_id"],
-            plant_id = request.get_json()["plant_id"]
+            plant_id = (request.get_json()["plant_id"])
         )
         db.session.add(new_article)
         db.session.commit()

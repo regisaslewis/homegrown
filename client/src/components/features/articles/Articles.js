@@ -5,6 +5,7 @@ import OneArticle from "./OneArticle";
 import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility } from "./articlesSlice";
 import NewArticleForm from "../forms/NewArticleForm";
 import { switchButton } from "../navigation/buttonSlice";
+import { checkSession, getCurrentUser } from "../users/currentUserSlice";
 
 function Articles() {
 
@@ -13,6 +14,7 @@ function Articles() {
     const articlesStatus = useSelector(getArticlesStatus);
     const error = useSelector(getArticlesError)
     const newFormVisibility = useSelector(getNewFormVisibility)
+    const currentUser = useSelector(getCurrentUser)
     
     useEffect(() => {
         dispatch(switchButton(8))
@@ -23,6 +25,10 @@ function Articles() {
             dispatch(fetchArticles())
         }
     }, [articlesStatus, dispatch])
+
+    useEffect(() => {
+        dispatch(checkSession());
+    }, [dispatch, currentUser.name])
 
     let items;
     if (articlesStatus === "loading") {
@@ -36,10 +42,13 @@ function Articles() {
     return (
         <div>
             <h2>Articles Page</h2>
-            <button onClick={() => dispatch(setNewFormVisibility())}>{newFormVisibility ? "Cancel" : "Add New Article" }</button>
-            <div style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
+            {currentUser.name ? <button onClick={() => dispatch(setNewFormVisibility())}>{newFormVisibility ? "Cancel" : "Add New Article" }</button> : <p>Log in to add articles</p>}
+            {currentUser.name ?
+             <div style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
                 <NewArticleForm />
-            </div>
+            </div> : 
+             ""}
+            
             <div style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                 {items}
             </div> 

@@ -15,14 +15,16 @@ function OneArticle({articleItem}) {
     const [liked, setLiked] = useState(0)
 
     useEffect(() => {
-        if (currentUser.liked_articles.find(e => e.id === article.id)) {
-            setLiked(1)
-        } else if (currentUser.disliked_articles.find(e => e.id === article.id)) {
-            setLiked(2)
-        } else {
-            setLiked(0)
+        if (currentUser.name) {
+            if (currentUser.liked_articles.find(e => e.id === article.id)) {
+                setLiked(1)
+            } else if (currentUser.disliked_articles.find(e => e.id === article.id)) {
+                setLiked(2)
+            } else {
+                setLiked(0)
+            }
         }
-    }, [article.id, currentUser.disliked_articles, currentUser.liked_articles])
+    }, [article.id, currentUser.name, currentUser.disliked_articles, currentUser.liked_articles])
 
     function handleClick(num) {
         dispatch(setEditFormVisibility(num))
@@ -40,10 +42,10 @@ function OneArticle({articleItem}) {
                 dispatch(editArticle({id: article.id, dislikes: dislikeMinus})) 
             }
             let likesPlus = article.likes + 1
+            setLiked(2)
             dispatch(editArticle({id: article.id, likes: likesPlus}))
-            dispatch(likeArticle({user_id, article_id}))
             dispatch(removeDislike({user_id, article_id}))
-            setLiked(1)
+            dispatch(likeArticle({user_id, article_id}))
         } else {
             setLiked(0)
         }
@@ -58,10 +60,10 @@ function OneArticle({articleItem}) {
                 dispatch(editArticle({id: article.id, likes: likeMinus})) 
             }
             let dislikesPlus = article.dislikes + 1
+            setLiked(1)
             dispatch(editArticle({id: article.id, dislikes: dislikesPlus}))
-            dispatch(dislikeArticle({user_id, article_id}))
             dispatch(removeLike({user_id, article_id}))
-            setLiked(2)
+            dispatch(dislikeArticle({user_id, article_id}))
         } else {
             setLiked(0)
         }

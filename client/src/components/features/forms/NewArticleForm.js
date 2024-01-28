@@ -1,19 +1,28 @@
-import React from 'react';
+import React from'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 
 import { getCurrentUser } from '../users/currentUserSlice';
-import { selectAllPlants } from '../plants/plantsSlice';
+import { checkSession } from '../users/currentUserSlice';
 import { addNewArticle, setNewFormVisibility } from '../articles/articlesSlice';
 
 function NewArticleForm() {
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getCurrentUser);
-    const allPlants = useSelector(selectAllPlants)
 
-    const plantOptions = allPlants.map(e => <option key={e.id} value={e.id}>{e.name}</option>)
+    function findOptions() {
+        if (currentUser.articles) {
+            let currentUserArticlePlants = currentUser.articles.map(e => e.plant_id)
+            let po = currentUser.plants.filter(e => !currentUserArticlePlants.includes(e.id))
+            if (po.length) {
+                return po.map(e => <option key={e.id} value={Number(e.id)}>{e.name}</option>);
+            } else {
+                return <option>No New Plants</option>
+            }
+        }
+    }
 
     const formSchema = yup.object().shape({
         success_rating: yup.number().positive().integer().required().min(1).max(5),
@@ -21,7 +30,7 @@ function NewArticleForm() {
         likes: yup.number(),
         dislikes: yup.number(),
         user_id: yup.number(),
-        plant_id: yup.number(),
+        plant_id: yup.number().positive().integer().required(),
     })
 
     const formik = useFormik({
@@ -31,17 +40,23 @@ function NewArticleForm() {
             likes: 0,
             dislikes: 0,
             user_id: 0,
-            plant_id: 1,
         },
         validationSchema: formSchema,
         validateOnChange: false,
         validateOnBlur: false,
-        onSubmit: (values) => {
-            try {
-                dispatch(addNewArticle(values))
-                dispatch(setNewFormVisibility())
-            } catch (err) {
-                console.error("Article did not post.", err)
+        onSubmit: (values, {resetForm}) => {
+            if (values.plant_id) {
+                try {
+                    dispatch(addNewArticle(values))
+                    dispatch(checkSession())
+                    dispatch(setNewFormVisibility())
+                } catch (err) {
+                    console.error("Article did not post.", err)
+                } finally {
+                    resetForm();
+                }
+            } else {
+                console.error("not a proper selection")
             }
         }
     })
@@ -66,8 +81,9 @@ function NewArticleForm() {
                     {formik.errors.body ? <b>{formik.errors.body}</b> : ""}
                 </label>
                 <label>Pick a Plant:
-                    <select name="plant_id" value={formik.values.plant_id} onChange={formik.handleChange}>
-                        {plantOptions}    
+                    <select type="number" name="plant_id" value={formik.values.plant_id} onChange={formik.handleChange}>
+                        <option>Select a Plant:</option>
+                        {findOptions()}
                     </select>
                 </label>
                 <button type="submit">Submit</button>
