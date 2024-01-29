@@ -13,6 +13,8 @@ function OneArticle({articleItem}) {
     const editFormVisibility = useSelector(getEditFormVisibility)
     const currentUser = useSelector(getCurrentUser)
     const [liked, setLiked] = useState(0)
+    const user_id = currentUser.id
+    const article_id = article.id
 
     useEffect(() => {
         if (currentUser.name) {
@@ -35,14 +37,11 @@ function OneArticle({articleItem}) {
 
     function handleLike() {
         if (liked !== 1) {
-            const user_id = currentUser.id
-            const article_id = article.id
             if (currentUser.disliked_articles.find(e => e.id === article.id)) {
-                let dislikeMinus = article.dislikes -1
-                dispatch(editArticle({id: article.id, dislikes: dislikeMinus})) 
+                let dislikesMinus = article.dislikes - 1
+                dispatch(editArticle({id: article.id, dislikes: dislikesMinus})) 
             }
             let likesPlus = article.likes + 1
-            setLiked(2)
             dispatch(editArticle({id: article.id, likes: likesPlus}))
             dispatch(removeDislike({user_id, article_id}))
             dispatch(likeArticle({user_id, article_id}))
@@ -56,16 +55,34 @@ function OneArticle({articleItem}) {
             const user_id = currentUser.id
             const article_id = article.id
             if (currentUser.liked_articles.find(e => e.id === article.id)) {
-                let likeMinus = article.likes -1
-                dispatch(editArticle({id: article.id, likes: likeMinus})) 
+                let likesMinus = article.likes - 1
+                dispatch(editArticle({id: article.id, likes: likesMinus})) 
             }
             let dislikesPlus = article.dislikes + 1
-            setLiked(1)
             dispatch(editArticle({id: article.id, dislikes: dislikesPlus}))
             dispatch(removeLike({user_id, article_id}))
             dispatch(dislikeArticle({user_id, article_id}))
         } else {
             setLiked(0)
+        }
+    }
+
+    function allowVote() {
+        if (currentUser.name) {
+            if (article.user.name !== currentUser.name) {
+                return (
+                    <div>
+                        <button onClick={() => handleLike()} disabled={liked === 1 ? true : false}>Like</button>                
+                        <button onClick={() => handleDislike()} disabled={liked === 2 ? true: false}>Dislike</button>
+                    </div>
+                )
+            } else {
+                return ""
+            }
+        } else {
+            return (
+                <p>Log in to like/dislike.</p>
+            )
         }
     }
     
@@ -79,19 +96,18 @@ function OneArticle({articleItem}) {
                 <p>likes: {article.likes}</p>
                 <p>dislikes: {article.dislikes}</p>
             </div>
-            {editFormVisibility !== id ?
-            <button onClick={() => handleClick(id)}>Edit Article</button> :
-            <button onClick={() => handleCancel()}>Cancel</button>
-            }
+            {article.user_id === currentUser.id ?
+            <div>
+                {editFormVisibility !== id ?
+                <button onClick={() => handleClick(id)}>Edit Article</button> :
+                <button onClick={() => handleCancel()}>Cancel</button>
+                }
+            </div>:
+            ""}
             <div style={editFormVisibility === id ? {"display" : "block"} : {"display" : "none"}}>
                 <EditArticleForm articleItem={articleItem} />
             </div>
-            {article.user.name !== currentUser.name ?
-            <div>
-                <button onClick={() => handleLike()} disabled={liked === 1 ? true : false}>Like</button>                
-                <button onClick={() => handleDislike()} disabled={liked === 2 ? true: false}>Dislike</button>
-            </div>:
-            ""}
+            {allowVote()}
             <p>__________________________</p>
             
         </div>

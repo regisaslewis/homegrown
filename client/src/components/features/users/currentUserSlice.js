@@ -133,12 +133,14 @@ const currentUserSlice =  createSlice({
             state.error = action.error.message;
         })
         .addCase(likeArticle.fulfilled, (state, action) => {
-            if (typeof(action.payload) === "object")
-            state.currentUser.liked_articles.push(action.payload)
+            if (typeof(action.payload) === "object") {
+                state.currentUser.liked_articles.push(action.payload)
+            }
         })
         .addCase(dislikeArticle.fulfilled, (state, action) => {
-            if (typeof(action.payload) === "object")
-            state.currentUser.disliked_articles.push(action.payload)
+            if (typeof(action.payload) === "object") {
+                state.currentUser.disliked_articles.push(action.payload);
+            }
         })
         .addCase(removeLike.fulfilled, (state, action) => {
             const removeFromLike = state.currentUser.liked_articles.filter(e => e.id !== action.payload.id)
