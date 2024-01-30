@@ -33,6 +33,19 @@ export const addNewPlant = createAsyncThunk(
     }
 )
 
+export const linkUser = createAsyncThunk(
+    "plants/linkUser",
+    async (initialInfo) => {
+        const { id } = initialInfo
+        try {
+            const response = await axios.post(`${PLANTS_URL}/${id}`, initialInfo);
+            return response.data;
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
+
 const plantsSlice = createSlice({
     name: "plants",
     initialState,
@@ -52,6 +65,19 @@ const plantsSlice = createSlice({
         })
         .addCase(addNewPlant.fulfilled, (state, action) => {
             state.plants.push(action.payload[0])
+        })
+        .addCase(linkUser.fulfilled, (state, action) => {
+            const { id } = action.payload[0]
+            const plants = state.plants.filter(e => e.id !== id)
+            state.plants = [...plants, action.payload[0]]
+            state.plants.sort((a, b) => {
+                if (a.id < b.id) {
+                    return -1
+                } else if (a.id > b.id) {
+                    return 1
+                }
+                return 0;
+            })
         })
     }
 })

@@ -39,7 +39,6 @@ function NewArticleForm() {
             body: "",
             likes: 0,
             dislikes: 0,
-            user_id: 0,
         },
         validationSchema: formSchema,
         validateOnChange: false,
@@ -60,8 +59,6 @@ function NewArticleForm() {
             }
         }
     })
-
-    formik.values.user_id = currentUser.id
 
     return (
         <div>

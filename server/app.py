@@ -157,15 +157,17 @@ def show_plant(id):
         if request.method == "GET":
             return make_response(jsonify(plant.to_dict()), 200)
         elif request.method == "POST":
-            plant.users.append(User.query.filter_by(id = session["user_id"]).first())
+            user = User.query.filter(User.id == session["user_id"]).first()
+            plant.users.append(user)
             db.session.add(plant)
             db.session.commit()
+            return make_response(jsonify(plant.to_dict(), 201))
         elif request.method == "PATCH":
             for attr in request.get_json():
                 setattr(plant, attr, request.get_json().get(attr))
             db.session.add(plant)
             db.session.commit()
-            return make_response(plant.tplanto_dict(), 200)
+            return make_response(plant.to_dict(), 200)
         elif request.method == "DELETE":
             db.session.delete(plant)
             db.session.commit()
@@ -231,7 +233,7 @@ def articles():
             body = request.get_json()["body"],
             likes = 0,
             dislikes = 0,
-            user_id = request.get_json()["user_id"],
+            user_id = session["user_id"],
             plant_id = (request.get_json()["plant_id"])
         )
         db.session.add(new_article)

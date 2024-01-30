@@ -41,6 +41,7 @@ export const editArticle = createAsyncThunk(
         const { id } = initialInfo;
         try {
             const response = await axios.patch(`${ARTICLES_URL}/${id}`, initialInfo)
+            console.log(response.data)
             return response.data
         } catch (err) {
             return err.message

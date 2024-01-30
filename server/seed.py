@@ -30,12 +30,13 @@ if __name__ == '__main__':
         fiddle = Plant(name="Fiddle-Leaf Fig", description="Tricky Green", image="https://www.afw.com/images/thumbs/0116275_fiddle-leaf-fig-tree.jpeg", users=[monica, angelica])
         aloe = Plant(name="Aloe Vera", description="Universal Salve", image="https://abanahomes.com/wp-content/uploads/2022/07/indoor-plant-aloe-vera-1024x683.jpg", users=[thorton, monica, angelica])
         money = Plant(name="Money Tree", description="Cha-Ching", image="https://www.realsimple.com/thmb/Wfcx19y6fCJbGuQoXzoJB3gAecI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1345463551-4ab50ed56e9c433c9d6571d7e51707cf.jpg", users=[monica, thorton, angelica])
+        rubber = Plant(name="Rubber Plant", description="Bouncy", image="https://cdn.apartmenttherapy.info/image/upload/v1665497422/gen-workflow/product-database/bloomscape_burgundy-rubber-tree_lg_stone.jpg")
 
 
-        plants = [fiddle, aloe, money]
+        plants = [fiddle, aloe, money, rubber]
 
         large = Plant_Family(name="Large", description="Expansive", image="https://en-gb.bakker.com/cdn/shop/articles/unnamed_05eb7209-c23e-42c3-a1d3-93feec6c7804.jpg?v=1651487894&width=1100", plants=[fiddle])
-        leafy = Plant_Family(name="Leafy", description="Broad and Beautiful", image="https://gardenerspath.com/wp-content/uploads/2019/12/Calathea.jpg", plants=[money])
+        leafy = Plant_Family(name="Leafy", description="Broad and Beautiful", image="https://gardenerspath.com/wp-content/uploads/2019/12/Calathea.jpg", plants=[money, rubber])
         succulent = Plant_Family(name="Succulent", description="Sturdy", image="https://wingardsmarket.com/wp-content/uploads/2021/07/image001.png", plants=[aloe])
         
         plant_families = [large, leafy, succulent]
