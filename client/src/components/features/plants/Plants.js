@@ -5,6 +5,7 @@ import OnePlant from "./OnePlant";
 
 import { fetchPlants, selectAllPlants, getPlantsStatus, getPlantsError } from "./plantsSlice";
 import { switchButton } from "../navigation/buttonSlice";
+import { getCurrentUser } from "../users/currentUserSlice";
 
 function Plants() {
 
@@ -12,6 +13,7 @@ function Plants() {
     const allPlants = useSelector(selectAllPlants);
     const plantsStatus = useSelector(getPlantsStatus);
     const error = useSelector(getPlantsError)
+    const currentUser = useSelector(getCurrentUser)
 
     useEffect(() => {
         dispatch(switchButton(6))
@@ -35,7 +37,10 @@ function Plants() {
     return (
         <div>
             <h2>Plants Page</h2>
-            <NewPlantForm />
+            {currentUser.name ?
+                <NewPlantForm /> :
+                <p>Log in to add new plant</p>
+            }
             {items}
         </div>
     )

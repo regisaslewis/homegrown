@@ -5,6 +5,7 @@ import NewGroupForm from "../forms/NewGroupForm";
 
 import { fetchGroups, selectAllGroups, getGroupsStatus, getGroupsError } from "./groupsSlice";
 import { switchButton } from "../navigation/buttonSlice";
+import { getCurrentUser } from "../users/currentUserSlice";
 
 function Groups() {
 
@@ -12,6 +13,7 @@ function Groups() {
     const allGroups = useSelector(selectAllGroups);
     const groupsStatus = useSelector(getGroupsStatus);
     const error = useSelector(getGroupsError)
+    const currentUser = useSelector(getCurrentUser)
     
     useEffect(() => {
         dispatch(switchButton(5))
@@ -35,7 +37,10 @@ function Groups() {
     return (
         <div>
             <h2>Groups Page</h2>
-            <NewGroupForm />
+            {currentUser.name ? 
+                <NewGroupForm /> : 
+                <p>Log in to add a Group</p>
+            }
             {items}
         </div>
     )
