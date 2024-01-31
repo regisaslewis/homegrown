@@ -111,6 +111,9 @@ const currentUserSlice =  createSlice({
         },
         addPlant: (state, action) => {
             state.currentUser.plants.push(action.payload)
+        },
+        changeGroup: (state, action) => {
+            state.currentUser.group = action.payload
         }
     },
     extraReducers (builder) {
@@ -156,7 +159,7 @@ const currentUserSlice =  createSlice({
     }
 })
 
-export const { setUser, addArticle, addPlant } = currentUserSlice.actions;
+export const { setUser, addArticle, addPlant, changeGroup } = currentUserSlice.actions;
 
 export const getCurrentUser = state => state.currentUser.currentUser;
 export const getCurrentUserStatus = state => state.currentUser.status;

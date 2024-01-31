@@ -56,7 +56,6 @@ export const deleteArticle = createAsyncThunk(
         try {
             const response = await axios.delete(`${ARTICLES_URL}/${id}`)
             if (response.status === 200) return initialInfo;
-            console.log(response.status)
             return `${response.status}: ${response.statusText}`
         } catch (err) {
             return err.message;

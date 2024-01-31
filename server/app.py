@@ -57,18 +57,23 @@ def users():
         return make_response(jsonify(new_user.to_dict(), 201))
     return make_response(jsonify({"text": "Method not allowed"}), 405)
 
-@app.route("/users/<int:id>", methods=["GET", "PATCH", "DELETE"])
+@app.route("/users/<int:id>", methods=["GET", "POST", "PATCH", "DELETE"])
 def show_user(id):
     user = User.query.filter(User.id == id).first()
     if user:
         if request.method == "GET":
             return make_response(jsonify(user.to_dict()), 200)
-        elif request.method == "PATCH":
-            for attr in request.get_json():
-                setattr(user, attr, request.get_json().get(attr))
+        elif request.method == "POST":
+            user.group = request.get_data(["group"])
             db.session.add(user)
             db.session.commit()
-            return make_response(user.to_dict(), 200)
+            return make_response(jsonify(user.to_dict()), 200)
+        elif request.method == "PATCH":
+            for attr in request.get_data():
+                setattr(user, attr, request.get_data([attr]))
+            db.session.add(user)
+            db.session.commit()
+            return make_response(jsonify(user.to_dict()), 200)
         elif request.method == "DELETE":
             db.session.delete(user)
             db.session.commit()
@@ -190,16 +195,22 @@ def groups():
         return make_response(jsonify(new_group.to_dict(), 201))
     return make_response(jsonify({"text": "Method not allowed"}), 405)
 
-@app.route("/groups/<int:id>", methods=["GET"])
+@app.route("/groups/<int:id>", methods=["GET", "POST"])
 def show_group(id):
     group = Group.query.filter(Group.id == id).first()
+    user = User.query.filter(User.id == session["user_id"]).first()
     if group:
         if request.method == "GET":
             return make_response(jsonify(group.to_dict()), 200)
+        if request.method == "POST":
+            group.users.append(user)
+            db.session.add(group)
+            db.session.commit()
+            return make_response(jsonify(group.to_dict(), 201))
     return make_response(jsonify({"Error": f"Group No. {id} not found."}), 404)
 
 @app.route("/plant_families", methods=["GET", "POST"])
-def plant_familys():
+def plant_families():
     plant_families = Plant_Family.query.all()
     if request.method == "GET":
         return make_response(jsonify([n.to_dict() for n in plant_families]), 200)

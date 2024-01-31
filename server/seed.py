@@ -24,8 +24,9 @@ if __name__ == '__main__':
 
         pnw_superstars = Group(name="PNW Superstars", description="Representing Top-Left USA", users=[monica, thorton], group_creator=monica.name)
         van_dwellers = Group(name="The Caravan", description="Green-thumb Nomads", users=[angelica], group_creator=angelica.name)
+        the_swamp = Group(name="The Swamp", description="Born in the Muck")
 
-        groups = [pnw_superstars, van_dwellers]
+        groups = [pnw_superstars, van_dwellers, the_swamp]
 
         fiddle = Plant(name="Fiddle-Leaf Fig", description="Tricky Green", image="https://www.afw.com/images/thumbs/0116275_fiddle-leaf-fig-tree.jpeg", users=[monica, angelica])
         aloe = Plant(name="Aloe Vera", description="Universal Salve", image="https://abanahomes.com/wp-content/uploads/2022/07/indoor-plant-aloe-vera-1024x683.jpg", users=[thorton, monica, angelica])
