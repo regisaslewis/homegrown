@@ -1,8 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { getCurrentUser } from "../users/currentUserSlice";
 
 function OneGroup({groupItem}) {
 
     const { name, description, users, group_creator } = groupItem
+    const currentUser = useSelector(getCurrentUser)
 
     const usersList = users.map(e => <p key={e.id}>{e.name}</p>)
 
@@ -17,4 +21,4 @@ function OneGroup({groupItem}) {
     )
 }
 
-export default OneGroup
+export default OneGroup;

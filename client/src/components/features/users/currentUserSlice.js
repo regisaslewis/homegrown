@@ -48,7 +48,7 @@ export const checkSession = createAsyncThunk(
 )
 
 export const likeArticle = createAsyncThunk(
-    "articles/likeArticle",
+    "currentUser/likeArticle",
     async (initialInfo) => {
         const { user_id, article_id } = initialInfo
         try {
@@ -61,7 +61,7 @@ export const likeArticle = createAsyncThunk(
 )
 
 export const removeLike = createAsyncThunk(
-    "articles/removeLike",
+    "currentUser/removeLike",
     async (initialInfo) => {
         const { user_id, article_id } = initialInfo
         try {
@@ -74,7 +74,7 @@ export const removeLike = createAsyncThunk(
 )
 
 export const dislikeArticle = createAsyncThunk(
-    "articles/dislikeArticle",
+    "currentUser/dislikeArticle",
     async (initialInfo) => {
         const { user_id, article_id } = initialInfo
         try {
@@ -87,7 +87,7 @@ export const dislikeArticle = createAsyncThunk(
 )
 
 export const removeDislike = createAsyncThunk(
-    "articles/removeDislike",
+    "currentUser/removeDislike",
     async (initialInfo) => {
         const { user_id, article_id } = initialInfo
         try {
