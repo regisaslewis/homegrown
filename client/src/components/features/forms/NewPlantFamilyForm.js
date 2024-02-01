@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 
-import { addNewPlantFamily } from '../plant_families/plantFamiliesSlice';
+import { addNewPlantFamily, setFormVisibility } from '../plant_families/plantFamiliesSlice';
 
 function NewPlantFamilyForm() {
 
@@ -27,6 +27,7 @@ function NewPlantFamilyForm() {
         onSubmit: (values) => {
             try {
                 dispatch(addNewPlantFamily(values))
+                dispatch(setFormVisibility())
             } catch (err) {
                 console.error("Didn't add plant family", err)
             }

@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
     groups: [],
+    formVisibility: false,
     status: "idle",
     error: null
 }
@@ -49,7 +50,11 @@ export const addCurrentUser = createAsyncThunk(
 const groupsSlice = createSlice({
     name: "groups",
     initialState,
-    reducers: {},
+    reducers: {
+        setFormVisibility: (state) => {
+            state.formVisibility = !state.formVisibility
+        }
+    },
     extraReducers (builder) {
         builder
         .addCase(fetchGroups.pending, (state, action) => {
@@ -82,6 +87,9 @@ const groupsSlice = createSlice({
     }
 })
 
+export const { setFormVisibility } = groupsSlice.actions;
+
+export const getFormVisibility = state => state.groups.formVisibility;
 export const selectAllGroups = state => state.groups.groups;
 export const getGroupsStatus = state => state.groups.status;
 export const getGroupsError = state => state.groups.error;

@@ -18,22 +18,21 @@ function Navigation({ buttonOn, buttonOff}) {
     }
 
     return (
-        <div>
-            <h2>Navigation Page</h2>            
+        <div id="navButtons">        
             <NavLink to="/users" exact>
-                <button style={switchOn(4)} onClick={() => dispatch(switchButton(4))}>Users</button>
+                <button className="navBut" style={switchOn(4)} onClick={() => dispatch(switchButton(4))}>Users</button>
             </NavLink>
             <NavLink to="/groups" exact>
-                <button style={switchOn(5)} onClick={() => dispatch(switchButton(5))}>Groups</button>
+                <button className="navBut" style={switchOn(5)} onClick={() => dispatch(switchButton(5))}>Groups</button>
             </NavLink>
             <NavLink to="/plants" exact>
-                <button style={switchOn(6)} onClick={() => dispatch(switchButton(6))}>Plants</button>
+                <button className="navBut" style={switchOn(6)} onClick={() => dispatch(switchButton(6))}>Plants</button>
             </NavLink>
             <NavLink to="/plant_families" exact>
-                <button style={switchOn(7)} onClick={() => dispatch(switchButton(7))}>Plant Families</button>
+                <button className="navBut" style={switchOn(7)} onClick={() => dispatch(switchButton(7))}>Plant Families</button>
             </NavLink>
             <NavLink to="/articles" exact>
-                <button style={switchOn(8)} onClick={() => dispatch(switchButton(8))}>Articles</button>
+                <button className="navBut" style={switchOn(8)} onClick={() => dispatch(switchButton(8))}>Articles</button>
             </NavLink>
         </div>
     )

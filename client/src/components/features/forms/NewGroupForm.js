@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from "yup";
 
 import { getCurrentUser } from '../users/currentUserSlice';
-import { addNewGroup } from '../groups/groupsSlice';
+import { addNewGroup, setFormVisibility } from '../groups/groupsSlice';
 
 function NewGroupForm() {
 
@@ -28,6 +28,7 @@ function NewGroupForm() {
         onSubmit: (values) => {
             try {
                 dispatch(addNewGroup(values))
+                dispatch(setFormVisibility())
             } catch (err) {
                 console.error("Group not added", err)
             }

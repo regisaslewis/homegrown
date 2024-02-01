@@ -39,16 +39,36 @@ function Articles() {
         items = <p>{error}</p>
     }
 
+    function newArticleButton() {
+        if (currentUser.name) {
+            if (!newFormVisibility) {
+                return <button onClick={() => dispatch(setNewFormVisibility())}>Add New Article</button>
+            }
+        } else {
+            return <p>Log in to add Articles</p>
+        }
+    }
+
+    function cancelButton() {
+        if (currentUser.name) {
+            if (newFormVisibility) {
+                return <button onClick={() => dispatch(setNewFormVisibility())}>Cancel</button>
+            }
+        }
+    }
+
     return (
         <div>
             <h2>Articles Page</h2>
-            {currentUser.name ? <button onClick={() => dispatch(setNewFormVisibility())}>{newFormVisibility ? "Cancel" : "Add New Article" }</button> : <p>Log in to add articles</p>}
-            {currentUser.name ?
-             <div style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
-                <NewArticleForm />
-            </div> : 
-             ""}
-            
+            <div>
+                {newArticleButton()}
+                {currentUser.name ?
+                <div className="form" style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
+                    <NewArticleForm />
+                    {cancelButton()}
+                </div> : 
+                ""}
+            </div>
             <div style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                 {items}
             </div> 

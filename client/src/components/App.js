@@ -24,8 +24,9 @@ function App() {
 
   const buttonOn = {
     color: "black",
+    border: "none",
     backgroundColor: "rgb(162, 229, 212)",
-    transform: "scale(.95)",
+    borderRadius: "40px 0 0 40px",
     zIndex: "-1"
   }
 
@@ -48,47 +49,55 @@ function App() {
 
   return (
     <div>
-      <h1>HomeGrown Frontend</h1>
-      <p>Current User: {currentUser.name ? currentUser.name : "nobody"}</p>
-      {currentUser.name ?
-            <NavLink to="/" exact>
-                <button style={switchOn(1)} onClick={() => dispatch(switchButton(1))}>Home</button>
-            </NavLink>:
-            <NavLink to="/greet" exact>
-                <button style={switchOn(2)} onClick={() => dispatch(switchButton(2))}>Login/Signup</button>
-            </NavLink>}
-      <button style={buttonOff} onClick={handleLogout}>Logout</button>
-      <Navigation
-        buttonOn = {buttonOn}
-        buttonOff = {buttonOff}
-      />
-      <Switch>
-        <Route exact path="/">
+      <div id="overhead">
+        <h1>HomeGrown Frontend</h1>
+        <p>Current User: {currentUser.name ? currentUser.name : "nobody"}</p>
+      </div>
+      <div id="userButtons">
           {currentUser.name ?
-          <Home /> : 
-          <Redirect to="/greet" />}
-        </Route>
-        <Route exact path="/greet">
-          {!currentUser.name ?
-          <Greet /> : 
-          <Redirect to="/" exact />}
-        </Route>
-        <Route exact path="/users">
-          <Users />
-        </Route>
-        <Route exact path="/groups">
-          <Groups />
-        </Route>
-        <Route exact path="/plants">
-          <Plants />
-        </Route>
-        <Route exact path="/plant_families">
-          <PlantFamilies />
-        </Route>
-        <Route exact path="/articles">
-          <Articles />
-        </Route>
-      </Switch>
+                <NavLink to="/" exact>
+                    <button style={switchOn(1)} onClick={() => dispatch(switchButton(1))}>Home</button>
+                </NavLink>:
+                <NavLink to="/greet" exact>
+                    <button style={switchOn(2)} onClick={() => dispatch(switchButton(2))}>Login/Signup</button>
+                </NavLink>}
+          {currentUser.name ? <button style={buttonOff} onClick={handleLogout}>Logout</button> : ""}
+        </div>
+      <div id="navigation">
+        <Navigation
+          buttonOn = {buttonOn}
+          buttonOff = {buttonOff}
+        />
+      </div>
+      <div id="currentView">
+        <Switch>
+          <Route exact path="/">
+            {currentUser.name ?
+            <Home /> : 
+            <Redirect to="/greet" />}
+          </Route>
+          <Route exact path="/greet">
+            {!currentUser.name ?
+            <Greet /> : 
+            <Redirect to="/" exact />}
+          </Route>
+          <Route exact path="/users">
+            <Users />
+          </Route>
+          <Route exact path="/groups">
+            <Groups />
+          </Route>
+          <Route exact path="/plants">
+            <Plants />
+          </Route>
+          <Route exact path="/plant_families">
+            <PlantFamilies />
+          </Route>
+          <Route exact path="/articles">
+            <Articles />
+          </Route>
+        </Switch>
+      </div>
     </div>
   )
 }

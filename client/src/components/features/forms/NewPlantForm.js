@@ -4,7 +4,7 @@ import { Formik, useFormik } from 'formik';
 import * as yup from "yup";
 
 import { addNewPlant } from '../plants/plantsSlice';
-import { selectAllPlantFamilies } from '../plant_families/plantFamiliesSlice';
+import { selectAllPlantFamilies, setFormVisibility } from '../plant_families/plantFamiliesSlice';
 
 function NewPlantForm() {
 
@@ -32,6 +32,7 @@ function NewPlantForm() {
         onSubmit:(values) => {
             try {
                 dispatch(addNewPlant(values))
+                dispatch(setFormVisibility());
             } catch (err) {
                 console.error("Did not add new Plant.", err)
             }

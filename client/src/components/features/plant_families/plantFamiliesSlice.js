@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
     plantFamilies: [],
+    formVisibility: false,
     status: "idle",
     error: null
 }
@@ -36,7 +37,11 @@ export const addNewPlantFamily = createAsyncThunk(
 const plantFamiliesSlice = createSlice({
     name: "plantFamilies",
     initialState,
-    reducers: {},
+    reducers: {
+        setFormVisibility: (state) => {
+            state.formVisibility = !state.formVisibility
+        }
+    },
     extraReducers (builder) {
         builder
         .addCase(fetchPlantFamilies.pending, (state, action) => {
@@ -56,6 +61,9 @@ const plantFamiliesSlice = createSlice({
     }
 })
 
+export const { setFormVisibility } = plantFamiliesSlice.actions;
+
+export const getFormVisibility = state => state.plantFamilies.formVisibility;
 export const selectAllPlantFamilies = state => state.plantFamilies.plantFamilies;
 export const getPlantFamiliesStatus = state => state.plantFamilies.status;
 export const getPlantFamiliesError = state => state.plantFamilies.error;
