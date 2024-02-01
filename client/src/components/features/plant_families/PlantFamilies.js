@@ -38,7 +38,7 @@ function PlantFamilies() {
     function newPFButton() {
         if (currentUser.name) {
             if (!formVisibility) {
-                return <button onClick={() => dispatch(setFormVisibility())}>Add New Plant Family</button>
+                return <button onClick={() => dispatch(setFormVisibility(true))}>Add New Plant Family</button>
             }
         } else {
             return <p>Log in to add Plant Families</p>
@@ -48,7 +48,7 @@ function PlantFamilies() {
     function cancelButton() {
         if (currentUser.name) {
             if (formVisibility) {
-                return <button onClick={() => dispatch(setFormVisibility())}>Cancel</button>
+                return <button onClick={() => dispatch(setFormVisibility(false))}>Cancel</button>
             }
         }
     }

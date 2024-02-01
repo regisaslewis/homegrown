@@ -51,8 +51,8 @@ const plantsSlice = createSlice({
     name: "plants",
     initialState,
     reducers: {
-        setFormVisibility: (state) => {
-            state.formVisibility = !state.formVisibility
+        setFormVisibility: (state, action) => {
+            state.formVisibility = action.payload
         }
     },
     extraReducers (builder) {

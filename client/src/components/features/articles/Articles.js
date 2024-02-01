@@ -42,7 +42,7 @@ function Articles() {
     function newArticleButton() {
         if (currentUser.name) {
             if (!newFormVisibility) {
-                return <button onClick={() => dispatch(setNewFormVisibility())}>Add New Article</button>
+                return <button onClick={() => dispatch(setNewFormVisibility(true))}>Add New Article</button>
             }
         } else {
             return <p>Log in to add Articles</p>
@@ -52,7 +52,7 @@ function Articles() {
     function cancelButton() {
         if (currentUser.name) {
             if (newFormVisibility) {
-                return <button onClick={() => dispatch(setNewFormVisibility())}>Cancel</button>
+                return <button onClick={() => dispatch(setNewFormVisibility(false))}>Cancel</button>
             }
         }
     }

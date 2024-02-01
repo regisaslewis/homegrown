@@ -32,7 +32,7 @@ function NewPlantForm() {
         onSubmit:(values) => {
             try {
                 dispatch(addNewPlant(values))
-                dispatch(setFormVisibility());
+                dispatch(setFormVisibility(false));
             } catch (err) {
                 console.error("Did not add new Plant.", err)
             }

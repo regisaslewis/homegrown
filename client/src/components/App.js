@@ -14,6 +14,10 @@ import Articles from "./features/articles/Articles"
 
 import { getCurrentUser, logOutUser } from "./features/users/currentUserSlice"
 import { getCurrentButton, switchButton } from "./features/navigation/buttonSlice"
+import { setFormVisibility as groupFormVisibility } from "./features/groups/groupsSlice"
+import { setFormVisibility as plantFormVisibility } from "./features/plants/plantsSlice"
+import { setFormVisibility as pfFormVisibility } from "./features/plant_families/plantFamiliesSlice"
+import { setNewFormVisibility } from "./features/articles/articlesSlice"
 
 function App() {
 
@@ -47,6 +51,18 @@ function App() {
     history.push("/greet")
   }
 
+  function formsOff() {
+    dispatch(setNewFormVisibility(false))
+    dispatch(groupFormVisibility(false))
+    dispatch(plantFormVisibility(false))
+    dispatch(pfFormVisibility(false))
+  }
+
+  function switchClose(num) {
+    dispatch(switchButton(num))
+    formsOff()
+  }
+
   return (
     <div>
       <div id="overhead">
@@ -56,10 +72,10 @@ function App() {
       <div id="userButtons">
           {currentUser.name ?
                 <NavLink to="/" exact>
-                    <button style={switchOn(1)} onClick={() => dispatch(switchButton(1))}>Home</button>
+                    <button style={switchOn(1)} onClick={() => switchClose(1)}>Home</button>
                 </NavLink>:
                 <NavLink to="/greet" exact>
-                    <button style={switchOn(2)} onClick={() => dispatch(switchButton(2))}>Login/Signup</button>
+                    <button style={switchOn(2)} onClick={() => switchClose(2)}>Login/Signup</button>
                 </NavLink>}
           {currentUser.name ? <button style={buttonOff} onClick={handleLogout}>Logout</button> : ""}
         </div>

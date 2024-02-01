@@ -67,8 +67,8 @@ const articlesSlice = createSlice({
     name: "articles",
     initialState,
     reducers: {
-        setNewFormVisibility: (state) => {
-            state.newFormVisibility = !state.newFormVisibility
+        setNewFormVisibility: (state, action) => {
+            state.newFormVisibility = action.payload
         },
         setEditFormVisibility: (state, action) => {
             state.editFormVisibility = action.payload

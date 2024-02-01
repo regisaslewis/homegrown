@@ -34,7 +34,7 @@ function Groups() {
     function newGroupButton() {
         if (currentUser.name) {
             if (!formVisibility) {
-                return <button onClick={() => dispatch(setFormVisibility())}>Add New Group</button>
+                return <button onClick={() => dispatch(setFormVisibility(true))}>Add New Group</button>
             }
         } else {
             return <p>Log in to add Group</p>
@@ -44,7 +44,7 @@ function Groups() {
     function cancelButton() {
         if (currentUser.name) {
             if (formVisibility) {
-                return <button onClick={() => dispatch(setFormVisibility())}>Cancel</button>
+                return <button onClick={() => dispatch(setFormVisibility(false))}>Cancel</button>
             }
         }
     }

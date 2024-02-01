@@ -28,7 +28,7 @@ function NewGroupForm() {
         onSubmit: (values) => {
             try {
                 dispatch(addNewGroup(values))
-                dispatch(setFormVisibility())
+                dispatch(setFormVisibility(false))
             } catch (err) {
                 console.error("Group not added", err)
             }

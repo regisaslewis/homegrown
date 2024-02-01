@@ -27,7 +27,7 @@ function NewPlantFamilyForm() {
         onSubmit: (values) => {
             try {
                 dispatch(addNewPlantFamily(values))
-                dispatch(setFormVisibility())
+                dispatch(setFormVisibility(false))
             } catch (err) {
                 console.error("Didn't add plant family", err)
             }

@@ -48,7 +48,7 @@ function NewArticleForm() {
                 try {
                     dispatch(addNewArticle(values))
                     dispatch(checkSession())
-                    dispatch(setNewFormVisibility())
+                    dispatch(setNewFormVisibility(false))
                 } catch (err) {
                     console.error("Article did not post.", err)
                 } finally {
