@@ -44,20 +44,25 @@ function Signup() {
     })
 
     return (
-        <div>
-            <h2>Signup Page</h2>
+        <div id="signup" className="formContainer">
+            <h2 className="formTitle">Signup</h2>
             <form autoComplete="off" onSubmit={formik.handleSubmit}>
-                <label>Name:<input name="name" value={formik.values.name} onChange={formik.handleChange} />
-                {formik.errors.name ? <b style={{"color": "red"}}>{formik.errors.name}</b> : ""}</label>
-                <label>Climate:<input name="climate" value={formik.values.climate} onChange={formik.handleChange} />
-                {formik.errors.climate ? <b style={{"color": "red"}}>{formik.errors.climate}</b> : ""}</label>                
-                <label>Experience Level:<input name="experience_level" value={formik.values.experience_level} onChange={formik.handleChange} />
-                {formik.errors.experience_level ? <b style={{"color": "red"}}>{formik.errors.experience_level}</b> : ""}</label>                
-                <label>Password:<input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" />
-                {formik.errors.password ? <b style={{"color": "red"}}>{formik.errors.password}</b> : ""}</label>                
-                <label>Confirm Password:<input name="confirmPassword" value={formik.values.confirmPassword} onChange={formik.handleChange} type="password" />
-                {formik.errors.confirmPassword ? <b style={{"color": "red"}}>{formik.errors.confirmPassword}</b> : ""}</label>
-                <button type="submit">Submit</button>
+                <label>Name:</label>
+                <input name="name" value={formik.values.name} onChange={formik.handleChange} />
+                {formik.errors.name ? <b style={{"color": "red"}}>{formik.errors.name}</b> : ""}
+                <label>Climate:</label>
+                <input name="climate" value={formik.values.climate} onChange={formik.handleChange} />
+                {formik.errors.climate ? <b style={{"color": "red"}}>{formik.errors.climate}</b> : ""}                
+                <label>Experience Level:</label>
+                <input name="experience_level" value={formik.values.experience_level} onChange={formik.handleChange} />
+                {formik.errors.experience_level ? <b style={{"color": "red"}}>{formik.errors.experience_level}</b> : ""}                
+                <label>Password:</label>
+                <input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" />
+                {formik.errors.password ? <b style={{"color": "red"}}>{formik.errors.password}</b> : ""}                
+                <label>Confirm Password:</label>
+                <input name="confirmPassword" value={formik.values.confirmPassword} onChange={formik.handleChange} type="password" />
+                {formik.errors.confirmPassword ? <b style={{"color": "red"}}>{formik.errors.confirmPassword}</b> : ""}
+                <button className="submitBut" type="submit">Submit</button>
             </form>
         </div>
     )

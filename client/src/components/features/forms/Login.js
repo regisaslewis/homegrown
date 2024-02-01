@@ -39,15 +39,16 @@ function Login() {
 
     })
     return (
-        <div>
-            <h2>Login Page</h2>
+        <div id="login" className="formContainer">
+            <h2 className="formTitle">Login</h2>
             <form autoComplete="off" onSubmit={formik.handleSubmit}>
-                <label>Name:<input name="name" value={formik.values.name} onChange={formik.handleChange} /></label>                
+                <label>Name:</label>
+                <input name="name" value={formik.values.name} onChange={formik.handleChange} />                
                 {formik.errors.name ? <p style={{"color": "red"}}>{formik.errors.name}</p> : ""}
-                <label>Password:<input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" /></label>
-                
+                <label>Password:</label>
+                <input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" />
                 {formik.errors.password ? <p style={{"color": "red"}}>{formik.errors.password}</p> : ""}
-                <button type="submit">Submit</button>
+                <button class="submitBut" type="submit">Submit</button>
             </form>
         </div>
     )

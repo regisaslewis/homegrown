@@ -132,6 +132,7 @@ label {
     width: 500px;
     position: fixed;
     border-radius: 5px;
+    box-shadow: -2px 2px 2px 1px black;
     top: 250px;
     left: 30%;
     z-index: 9;
@@ -158,4 +159,32 @@ label {
     margin: auto 12% 10px auto;
     display: flex;
     justify-content: end;
+}
+
+#login, #signup {
+    position: static;
+    margin: 30px auto;
+    height: min-content;
+}
+
+#getInForms {
+    display: grid;
+    grid-template-rows: 5fr 1fr 20fr;
+    margin: 40px auto 0 auto;
+    width: 600px;
+}
+
+#or {
+    background-color: rgb(220, 83, 124);
+    color: white;
+    font-size: 30px;
+    width: 90px;
+    height: 50px;
+    margin: auto;
+    border: solid 4px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: -2px 2px black;
 }

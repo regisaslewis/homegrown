@@ -14,8 +14,9 @@ function Greet() {
     }, [dispatch])
     
   return (
-    <div>
+    <div id="getInForms">
         <Login />
+        <p id="or">OR</p>
         <Signup />
     </div>
   )
