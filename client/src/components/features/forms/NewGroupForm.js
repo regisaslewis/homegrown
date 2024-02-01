@@ -39,17 +39,16 @@ function NewGroupForm() {
 
     return (
         <div>
-            <h3>NewGroupForm goes here.</h3>
+            <h3 className='formTitle'>Add a new Group.</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
                 <label>Name:</label>
                 <input name="name" value={formik.values.name} onChange={formik.handleChange} />
                 {formik.errors.name ? <b>{formik.errors.name}</b> : ""}
                 <label>Description:</label>
-                <input name="description" value={formik.values.description} onChange={formik.handleChange} />
+                <textarea name="description" value={formik.values.description} onChange={formik.handleChange} />
                 {formik.errors.description ? <b>{formik.errors.description}</b> : ""}
                 <button className='submitBut' type="submit">Submit</button>
             </form>
-            <p>____________________</p>
         </div>
     )
 }

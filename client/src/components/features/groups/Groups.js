@@ -56,7 +56,7 @@ function Groups() {
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewGroupForm />
-                    {cancelButton()}
+                    <div className="cancelBut">{cancelButton()}</div>
             </div> : 
             ""}
             <div style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>

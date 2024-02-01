@@ -50,7 +50,7 @@ function App() {
   return (
     <div>
       <div id="overhead">
-        <h1>HomeGrown Frontend</h1>
+        <h1>HomeGrown</h1>
         <p>Current User: {currentUser.name ? currentUser.name : "nobody"}</p>
       </div>
       <div id="userButtons">

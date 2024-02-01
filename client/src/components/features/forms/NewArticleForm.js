@@ -62,7 +62,7 @@ function NewArticleForm() {
 
     return (
         <div>
-            <h3>NewArticleForm goes here</h3>
+            <h3 className='formTitle'>NewArticleForm goes here</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
                 <label>Success Rating:</label>
                 <select name="success_rating" type="number" value={formik.values.success_rating} onChange={formik.handleChange}>
