@@ -58,7 +58,7 @@ function PlantFamilies() {
             <h2>PlantFamilies Page</h2>
             {newPFButton()}
             {currentUser.name ?
-            <div className="form" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
+            <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewPlantFamilyForm />
                     {cancelButton()}
             </div> : 

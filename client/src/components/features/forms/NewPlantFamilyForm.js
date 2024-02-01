@@ -38,18 +38,15 @@ function NewPlantFamilyForm() {
         <div>
             <h3>NewPlantFamilyForm goes here</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
-                <label>Name:
-                    <input name="name" value={formik.values.name} onChange={formik.handleChange} />
-                    {formik.errors.name ? <b>{formik.errors.name}</b>: ""}
-                </label>
-                <label>Description:
-                    <input name="description" value={formik.values.description} onChange={formik.handleChange} />
-                    {formik.errors.description ? <b>{formik.errors.description}</b>: ""}
-                </label>
-                <label>Image:
-                    <input name="image" value={formik.values.image} onChange={formik.handleChange} />
-                </label>
-                <button type='submit'>Submit</button>
+                <label>Name:</label>
+                <input name="name" value={formik.values.name} onChange={formik.handleChange} />
+                {formik.errors.name ? <b>{formik.errors.name}</b>: ""}
+                <label>Description:</label>
+                <input name="description" value={formik.values.description} onChange={formik.handleChange} />
+                {formik.errors.description ? <b>{formik.errors.description}</b>: ""}
+                <label>Image:</label>
+                <input name="image" value={formik.values.image} onChange={formik.handleChange} />
+                <button className='submitBut' type='submit'>Submit</button>
             </form>
             </div>
     )

@@ -64,29 +64,26 @@ function NewArticleForm() {
         <div>
             <h3>NewArticleForm goes here</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
-                <label>Success Rating:
-                    <select name="success_rating" type="number" value={formik.values.success_rating} onChange={formik.handleChange}>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </label>
-                <label>Body:
-                    <textarea name='body' value={formik.values.body} onChange={formik.handleChange} />
-                    {formik.errors.body ? <b>{formik.errors.body}</b> : ""}
-                </label>
-                <label>Pick a Plant:
-                    <select type="number" name="plant_id" value={formik.values.plant_id} onChange={formik.handleChange}>
-                        <option>Select a Plant:</option>
-                        {findOptions()}
-                    </select>
-                </label>
-                <button type="submit">Submit</button>
+                <label>Success Rating:</label>
+                <select name="success_rating" type="number" value={formik.values.success_rating} onChange={formik.handleChange}>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <label>Body:</label>
+                <textarea name='body' value={formik.values.body} onChange={formik.handleChange} />
+                {formik.errors.body ? <b>{formik.errors.body}</b> : ""}
+                <label>Pick a Plant:</label>
+                <select type="number" name="plant_id" value={formik.values.plant_id} onChange={formik.handleChange}>
+                    <option>Select a Plant:</option>
+                    {findOptions()}
+                </select>
+                <button className='submitBut' type="submit">Submit</button>
             </form>
         </div>
     )
 }
 
-export default NewArticleForm
+export default NewArticleForm;

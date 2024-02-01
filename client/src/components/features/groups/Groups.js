@@ -54,7 +54,7 @@ function Groups() {
             <h2>Groups Page</h2>
             {newGroupButton()}
             {currentUser.name ?
-            <div className="form" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
+            <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewGroupForm />
                     {cancelButton()}
             </div> : 

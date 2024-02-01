@@ -58,9 +58,9 @@ function Plants() {
             <h2>Plants Page</h2>
             {newPlantButton()}
             {currentUser.name ?
-            <div className="form" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
+            <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewPlantForm />
-                    {cancelButton()}
+                    <div className="cancelBut">{cancelButton()}</div>
             </div> : 
             ""}
             <div style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>

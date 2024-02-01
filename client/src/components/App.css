@@ -5,6 +5,10 @@ body {
 
 button {
     background-color: white;
+    height: 35px;
+    border: none;
+    box-shadow: -2px 2px 1px black;
+    border-radius: 5px;
 }
 
 button:hover {
@@ -25,10 +29,8 @@ button:hover {
 }
 
 #userButtons {
-    border-radius: 0 0 20px 20px;
     width: max-content;
     height: min-content;
-    padding: 5px 10px;
     position: fixed;
     top: 93px;
     right: 15px;
@@ -83,10 +85,44 @@ button:hover {
     border-right: solid 2px black;
 }
 
-.form {
+.formContainer {
     background-color: bisque;
     width: 500px;
     position: fixed;
+    border-radius: 5px;
     top: 250px;
+    left: 30%;
     z-index: 9;
+}
+
+.formTitle {
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: rgb(220, 83, 124);
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 5px;
+}
+
+form {
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    justify-items: stretch;
+    padding: 0 10%;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.submitBut {
+    margin: 10px auto 5px auto;
+    width: 80px;
+}
+
+.cancelBut {
+    margin: auto 12% 10px auto;
+    display: flex;
+    justify-content: end;
 }

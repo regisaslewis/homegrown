@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import * as yup from "yup";
 
-import { addNewPlant } from '../plants/plantsSlice';
-import { selectAllPlantFamilies, setFormVisibility } from '../plant_families/plantFamiliesSlice';
+import { addNewPlant, setFormVisibility } from '../plants/plantsSlice';
+import { selectAllPlantFamilies } from '../plant_families/plantFamiliesSlice';
 
 function NewPlantForm() {
 
@@ -41,28 +41,23 @@ function NewPlantForm() {
     
     return (
         <div>
-            <h3>NewPlantForm goes here</h3>
+            <h3 className='formTitle'>Add a Plant to the Library</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
-                <label>Name:
-                    <input name='name' value={formik.values.name} onChange={formik.handleChange} />
-                    {formik.errors.name ? <b>{formik.errors.name}</b>: ""}
-                </label>
-                <label>Description:
-                    <input name='description' value={formik.values.description} onChange={formik.handleChange} />
-                    {formik.errors.description ? <b>{formik.errors.description}</b>: ""}
-                </label>
-                <label>Image:
-                    <input name='image' value={formik.values.image} onChange={formik.handleChange} />
-                    {formik.errors.image ? <b>{formik.errors.image}</b>: ""}
-                </label>
-                <label>Plant Family:
+                <label>Name:</label>
+                <input name='name' value={formik.values.name} onChange={formik.handleChange} />
+                {formik.errors.name ? <b>{formik.errors.name}</b>: ""}                
+                <label>Description:</label>
+                <textarea name='description' value={formik.values.description} onChange={formik.handleChange} />
+                {formik.errors.description ? <b>{formik.errors.description}</b>: ""}                
+                <label>Image:</label>                    
+                <input name='image' value={formik.values.image} onChange={formik.handleChange} />
+                {formik.errors.image ? <b>{formik.errors.image}</b>: ""}
+                <label>Plant Family:</label>
                 <select name="family_id" type="number" value={formik.values.family_id} onChange={formik.handleChange}>
-                    {familyOptions}
-                </select>
-                </label>
-                <button type="submit">Submit</button>
+                {familyOptions}
+                </select>                
+                <button className='submitBut' type="submit">Submit</button>
             </form>
-            <p>______________________</p>
         </div>
     )
 }

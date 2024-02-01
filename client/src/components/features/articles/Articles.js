@@ -63,7 +63,7 @@ function Articles() {
             <div>
                 {newArticleButton()}
                 {currentUser.name ?
-                <div className="form" style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
+                <div className="formContainer" style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewArticleForm />
                     {cancelButton()}
                 </div> : 
