@@ -3,6 +3,7 @@ import { NavLink, Switch, Route, Redirect, useHistory } from "react-router-dom"
 import Navigation from "./features/navigation/Navigation"
 import { useSelector, useDispatch } from "react-redux"
 
+import "./App.css"
 import Home from "./Home"
 import Greet from "./features/forms/Greet"
 import Users from "./features/users/Users"
@@ -22,15 +23,14 @@ function App() {
   const buttonStyle = useSelector(getCurrentButton)
 
   const buttonOn = {
-    color: "white",
-    backgroundColor: "black",
+    color: "black",
+    backgroundColor: "rgb(162, 229, 212)",
     transform: "scale(.95)",
     zIndex: "-1"
   }
 
   const buttonOff = {
     color: "black",
-    backgroundColor: "lightgray"
   }
   
   function switchOn(num) {

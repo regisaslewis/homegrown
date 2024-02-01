@@ -13,12 +13,18 @@ import { fetchPlantFamilies } from "./components/features/plant_families/plantFa
 import { fetchArticles } from "./components/features/articles/articlesSlice";
 import { checkSession } from "./components/features/users/currentUserSlice";
 
-store.dispatch(checkSession());
-store.dispatch(fetchUsers());
-store.dispatch(fetchGroups());
-store.dispatch(fetchPlants());
-store.dispatch(fetchPlantFamilies());
-store.dispatch(fetchArticles());
+function dispatchAll() {
+    if (store) {
+        store.dispatch(fetchGroups());
+        store.dispatch(fetchArticles());
+        store.dispatch(fetchUsers());
+        store.dispatch(fetchPlants());
+        store.dispatch(fetchPlantFamilies());
+        store.dispatch(checkSession());
+    }
+}
+
+dispatchAll();
 
 const container = document.getElementById("root");
 const root = createRoot(container);

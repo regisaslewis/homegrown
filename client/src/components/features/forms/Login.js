@@ -6,14 +6,12 @@ import * as yup from "yup";
 
 import { selectAllUsers } from "../users/usersSlice";
 import { loginUser } from "../users/currentUserSlice";
-import { getCurrentUser } from "../users/currentUserSlice";
 
 function Login() {
 
     const history = useHistory();
     const dispatch = useDispatch();
     const allUserNames = useSelector(selectAllUsers).map(e => e.name)
-    const currentUser = useSelector(getCurrentUser)
 
     const formSchema = yup.object().shape({
         name: yup.string().test({ message: () => "Not a registered user.", test(value) {return allUserNames.includes(value)}}).required("Must enter a username."),
