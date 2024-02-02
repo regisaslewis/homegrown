@@ -102,6 +102,7 @@ label {
     left: 0;
     width: 180px;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 #navigation::-webkit-scrollbar {
@@ -114,6 +115,7 @@ label {
     bottom: 0;
     left: 180px;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 #currentView::-webkit-scrollbar {
@@ -173,7 +175,7 @@ label {
 .cancelBut {
     margin: auto 12% 10px auto;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 #login, #signup {

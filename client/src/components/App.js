@@ -7,6 +7,8 @@ import "./App.css"
 import Home from "./Home"
 import Greet from "./features/forms/Greet"
 import Users from "./features/users/Users"
+import OneUserFull from "./features/users/OneUserFull"
+import OneArticleFull from "./features/articles/OneArticleFull"
 import Groups from "./features/groups/Groups"
 import Plants from "./features/plants/Plants";
 import PlantFamilies from "./features/plant_families/PlantFamilies"
@@ -100,6 +102,9 @@ function App() {
           <Route exact path="/users">
             <Users />
           </Route>
+          <Route path="/users/:userID">
+            <OneUserFull />
+          </Route>
           <Route exact path="/groups">
             <Groups />
           </Route>
@@ -111,6 +116,9 @@ function App() {
           </Route>
           <Route exact path="/articles">
             <Articles />
+          </Route>
+          <Route path="/articles/:articleID">
+            <OneArticleFull />
           </Route>
         </Switch>
       </div>

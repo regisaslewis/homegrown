@@ -81,7 +81,7 @@ function OneArticle({articleItem}) {
             }
         } else {
             return (
-                <p>Log in to like/dislike.</p>
+                <p>Log in to vote</p>
             )
         }
     }

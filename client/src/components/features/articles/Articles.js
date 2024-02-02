@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import OneArticle from "./OneArticle";
 
-import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility, getEditFormVisibility } from "./articlesSlice";
+import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility } from "./articlesSlice";
 import NewArticleForm from "../forms/NewArticleForm";
 import { switchButton } from "../navigation/buttonSlice";
 import { checkSession, getCurrentUser } from "../users/currentUserSlice";
@@ -15,7 +15,6 @@ function Articles() {
     const articlesStatus = useSelector(getArticlesStatus);
     const error = useSelector(getArticlesError)
     const newFormVisibility = useSelector(getNewFormVisibility)
-    const editFormVisibility = useSelector(getEditFormVisibility)
     const currentUser = useSelector(getCurrentUser)
     
     useEffect(() => {
@@ -63,7 +62,7 @@ function Articles() {
 
     return (
         <div>
-            <h2>Articles Page</h2>
+            <h2>Articles!</h2>
                 {newArticleButton()}
                 {currentUser.name ?
                 <div className="formContainer" style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
