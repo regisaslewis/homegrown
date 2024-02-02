@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import NewPlantForm from "../forms/NewPlantForm";
 import OnePlant from "./OnePlant";
 
@@ -41,7 +42,9 @@ function Plants() {
                 return <button onClick={() => dispatch(setFormVisibility(true))}>Add New Plant</button>
             }
         } else {
-            return <p>Log in to add Plant Families</p>
+            return <NavLink to="greet">
+            <p className="or">Log in to add Plant</p>
+            </NavLink>
         }
     }
 

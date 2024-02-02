@@ -10,8 +10,8 @@ function NewPlantFamilyForm() {
     const dispatch = useDispatch();
 
     const formSchema = yup.object().shape({
-        name: yup.string().required("Must give a name.").min(3).max(22),
-        description: yup.string().required("Descibe the family.").min(3),
+        name: yup.string().required("Must give a name").min(3).max(22),
+        description: yup.string().required("Descibe the family").min(3),
         image: yup.string()
     })
 
@@ -40,12 +40,12 @@ function NewPlantFamilyForm() {
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
                 <label>Name:</label>
                 <input name="name" value={formik.values.name} onChange={formik.handleChange} />
-                {formik.errors.name ? <b>{formik.errors.name}</b>: ""}
                 <label>Description:</label>
                 <textarea name="description" value={formik.values.description} onChange={formik.handleChange} />
-                {formik.errors.description ? <b>{formik.errors.description}</b>: ""}
                 <label>Image:</label>
                 <input name="image" value={formik.values.image} onChange={formik.handleChange} />
+                {formik.errors.name ? <b>{formik.errors.name}</b>: ""}
+                {formik.errors.description ? <b>{formik.errors.description}</b>: ""}
                 <button className='submitBut' type='submit'>Submit</button>
             </form>
             </div>

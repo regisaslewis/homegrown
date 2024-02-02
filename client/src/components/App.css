@@ -9,6 +9,14 @@ h1 {
     margin: auto;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    transform: scale(1.05);
+}
+
 button {
     background-color: white;
     height: 30px;
@@ -138,6 +146,13 @@ label {
     z-index: 9;
 }
 
+.editFormContainer {
+    background-color: bisque;
+    width: 500px;
+    position: static;
+    left: 20%;
+}
+
 .formTitle {
     width: 80%;
     height: 50px;
@@ -163,28 +178,34 @@ label {
 
 #login, #signup {
     position: static;
-    margin: 30px auto;
+    margin: 30px auto 0 auto;
     height: min-content;
 }
 
 #getInForms {
     display: grid;
-    grid-template-rows: 5fr 1fr 20fr;
-    margin: 40px auto 0 auto;
+    grid-template-rows: 5fr 1fr 9fr;
+    margin: auto;
     width: 600px;
 }
 
-#or {
+.or {
     background-color: rgb(220, 83, 124);
     color: white;
     font-size: 30px;
-    width: 90px;
     height: 50px;
-    margin: auto;
+    width: max-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 2px auto 0 0;
     border: solid 4px black;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
     box-shadow: -2px 2px black;
+}
+
+#bigOr {
+    margin: 2px auto 0 auto;
 }

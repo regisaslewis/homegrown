@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import OneArticle from "./OneArticle";
 
-import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility } from "./articlesSlice";
+import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility, getEditFormVisibility } from "./articlesSlice";
 import NewArticleForm from "../forms/NewArticleForm";
 import { switchButton } from "../navigation/buttonSlice";
 import { checkSession, getCurrentUser } from "../users/currentUserSlice";
@@ -14,6 +15,7 @@ function Articles() {
     const articlesStatus = useSelector(getArticlesStatus);
     const error = useSelector(getArticlesError)
     const newFormVisibility = useSelector(getNewFormVisibility)
+    const editFormVisibility = useSelector(getEditFormVisibility)
     const currentUser = useSelector(getCurrentUser)
     
     useEffect(() => {
@@ -45,7 +47,9 @@ function Articles() {
                 return <button onClick={() => dispatch(setNewFormVisibility(true))}>Add New Article</button>
             }
         } else {
-            return <p>Log in to add Articles</p>
+            return <NavLink to="/greet">
+                <p className="or">Log in to add Articles</p>
+                </NavLink>
         }
     }
 
@@ -60,7 +64,6 @@ function Articles() {
     return (
         <div>
             <h2>Articles Page</h2>
-            <div>
                 {newArticleButton()}
                 {currentUser.name ?
                 <div className="formContainer" style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
@@ -68,7 +71,6 @@ function Articles() {
                     <div className="cancelBut">{cancelButton()}</div>
                 </div> : 
                 ""}
-            </div>
             <div style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                 {items}
             </div> 

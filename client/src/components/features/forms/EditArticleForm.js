@@ -39,8 +39,8 @@ function EditArticleForm({articleItem}) {
         dispatch(deleteArticle({id: id}))
      }
     return (
-        <div>
-            <h4>EditArticleForm</h4>
+        <div className='editFormContainer'>
+            <h4 className='formTitle'>EditArticleForm</h4>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
             <label>Success Rating:
                     <select name="success_rating" type="number" value={formik.values.success_rating} onChange={formik.handleChange}>
@@ -55,7 +55,7 @@ function EditArticleForm({articleItem}) {
                     <textarea name='body' value={formik.values.body} onChange={formik.handleChange} />
                     {formik.errors.body ? <b>{formik.errors.body}</b> : ""}
                 </label>
-                <button type="submit">Submit</button>
+                <button className='submitBut' type="submit">Submit</button>
             </form>
             <button onClick={handleDelete}>Delete Article</button>
         </div>

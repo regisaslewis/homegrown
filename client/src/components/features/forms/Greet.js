@@ -16,7 +16,7 @@ function Greet() {
   return (
     <div id="getInForms">
         <Login />
-        <p id="or">OR</p>
+        <p id="bigOr" className="or">OR</p>
         <Signup />
     </div>
   )

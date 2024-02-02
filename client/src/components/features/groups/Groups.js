@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import OneGroup from "./OneGroup";
 import NewGroupForm from "../forms/NewGroupForm";
 
@@ -37,7 +38,9 @@ function Groups() {
                 return <button onClick={() => dispatch(setFormVisibility(true))}>Add New Group</button>
             }
         } else {
-            return <p>Log in to add Group</p>
+            return <NavLink to="/greet">
+                <p className="or">Log in to add Group</p>
+                </NavLink>
         }
     }
 
@@ -51,7 +54,7 @@ function Groups() {
 
     return (
         <div>
-            <h2>Groups Page</h2>
+            <h2>Groups!</h2>
             {newGroupButton()}
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>

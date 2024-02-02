@@ -30,7 +30,7 @@ function NewArticleForm() {
         likes: yup.number(),
         dislikes: yup.number(),
         user_id: yup.number(),
-        plant_id: yup.number().positive().integer().required(),
+        plant_id: yup.number().typeError("Please choose a plant").positive().integer().required("Please choose a plant"),
     })
 
     const formik = useFormik({
@@ -62,8 +62,13 @@ function NewArticleForm() {
 
     return (
         <div>
-            <h3 className='formTitle'>NewArticleForm goes here</h3>
+            <h3 className='formTitle'>Let's write about plant care</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
+                <label>Which plant?</label>
+                <select type="number" name="plant_id" value={formik.values.plant_id} onChange={formik.handleChange}>
+                    <option>Select a Plant:</option>
+                    {findOptions()}
+                </select>
                 <label>Success Rating:</label>
                 <select name="success_rating" type="number" value={formik.values.success_rating} onChange={formik.handleChange}>
                     <option value="1">1</option>
@@ -74,12 +79,8 @@ function NewArticleForm() {
                 </select>
                 <label>Body:</label>
                 <textarea name='body' value={formik.values.body} onChange={formik.handleChange} />
+                {formik.errors.plant_id ? <b>{formik.errors.plant_id}</b> : ""}
                 {formik.errors.body ? <b>{formik.errors.body}</b> : ""}
-                <label>Pick a Plant:</label>
-                <select type="number" name="plant_id" value={formik.values.plant_id} onChange={formik.handleChange}>
-                    <option>Select a Plant:</option>
-                    {findOptions()}
-                </select>
                 <button className='submitBut' type="submit">Submit</button>
             </form>
         </div>

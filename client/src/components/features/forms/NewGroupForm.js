@@ -12,8 +12,8 @@ function NewGroupForm() {
     const currentUser = useSelector(getCurrentUser);
 
     const formSchema = yup.object().shape({
-        name: yup.string().required("Must give a group name.").min(4).max(22),
-        description: yup.string().required("Say something about yourself!").min(6),
+        name: yup.string().required("Must give a group name").min(4).max(22),
+        description: yup.string().required("Say something about yourself").min(6),
         group_creator: yup.string(),
     })
 
@@ -43,10 +43,10 @@ function NewGroupForm() {
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
                 <label>Name:</label>
                 <input name="name" value={formik.values.name} onChange={formik.handleChange} />
-                {formik.errors.name ? <b>{formik.errors.name}</b> : ""}
                 <label>Description:</label>
                 <textarea name="description" value={formik.values.description} onChange={formik.handleChange} />
                 {formik.errors.description ? <b>{formik.errors.description}</b> : ""}
+                {formik.errors.name ? <b>{formik.errors.name}</b> : ""}
                 <button className='submitBut' type="submit">Submit</button>
             </form>
         </div>
