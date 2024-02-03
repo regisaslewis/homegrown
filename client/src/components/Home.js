@@ -37,13 +37,19 @@ function Home() {
         }
     }
 
+    function currentUserGroup() {
+        if (currentUser.group) {
+            return <OneGroup groupItem={currentUser.group} />
+        }
+    }
+
     const userPlants = currentUser.plants.map(e => <p key={e.id}>{e.name}</p>)
 
     return (
         <div>
             <h2>Home Page</h2>
             <h4>{userConditional}'s Group:</h4>
-            <OneGroup groupItem={currentUser.group} />
+            {currentUserGroup()}
             {userConditional}'s Plants: {userPlants}
             <p>_____________</p>
             Liked Articles:

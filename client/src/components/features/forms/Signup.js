@@ -1,21 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 import { addNewUser } from "../users/usersSlice";
 import { loginUser } from "../users/currentUserSlice";
-import { setGroups, selectAllGroups, fetchGroups } from "../groups/groupsSlice";
-import { selectAllUsers, setUsers } from "../users/usersSlice";
 
 
 function Signup() {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const allGroups = useSelector(selectAllGroups)
-    const allUsers = useSelector(selectAllUsers)
 
     const formSchema = yup.object().shape({
         name: yup.string().required("Must enter a name.").min(4).max(16),
@@ -39,15 +35,13 @@ function Signup() {
         validateOnBlur: false,
         onSubmit: (values) => {
             try {
-                dispatch(fetchGroups())
                 dispatch(addNewUser(values));
-                dispatch(setUsers(allUsers))
-                dispatch(setGroups(allGroups))
-                history.push("/")
+                
             } catch (err) {
                 console.error("Failed to add user", err)
             } finally {
                 dispatch(loginUser({name: values.name, password: values.password}))
+                history.push("/")
             }
         }
     })

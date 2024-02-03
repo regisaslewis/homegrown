@@ -74,7 +74,7 @@ function OneArticleFull() {
         if (currentUser.name) {
             if (article.user.name !== currentUser.name) {
                 return (
-                    <div>
+                    <div className="voteButtons">
                         <button onClick={() => handleLike()} disabled={liked === 1 ? true : false}>Like</button>                
                         <button onClick={() => handleDislike()} disabled={liked === 2 ? true: false}>Dislike</button>
                     </div>
@@ -88,30 +88,51 @@ function OneArticleFull() {
             )
         }
     }
+
+    function currentUserArticle() {
+        if (article.user_id === currentUser.id) {
+            return (
+                <div className="articleEditButton">
+                    {editFormVisibility !== params.articleID ?
+                    <button onClick={() => handleClick(params.articleID)}>Edit Article</button> :
+                    <button onClick={() => handleCancel()}>Cancel</button>
+                    }
+                </div>
+            )
+        }
+    }
     
     return (
-        <div>
-            <div>
-                <p>user: {article.user.name}</p>
-                <p>plant: {article.plant.name}</p>
-                <p>success rating: {article.success_rating}/5</p>
-                <p>body: {article.body}</p>
-                <p>likes: {article.likes}</p>
-                <p>dislikes: {article.dislikes}</p>
+        <div className="articleCard">
+            <div className="article">
+                <div className="articleTitle">
+                    <h3>
+                        {article.user.name}'s Care Guide
+                        <br />
+                        for {article.plant.name}
+                    </h3>
+                </div>
+                <div className="articleContents">
+                    <p>success rating: {article.success_rating}/5</p>
+                    <p className="articleBody">{article.body}</p>
+                    <p>likes: {article.likes}</p>
+                    <p>dislikes: {article.dislikes}</p>
+                </div>
             </div>
-            {article.user_id === currentUser.id ?
-            <div>
-                {editFormVisibility !== params.articleID ?
-                <button onClick={() => handleClick(params.articleID)}>Edit Article</button> :
-                <button onClick={() => handleCancel()}>Cancel</button>
-                }
-            </div>:
-            ""}
-            <div style={editFormVisibility === params.articleID ? {"display" : "block"} : {"display" : "none"}}>
-                <EditArticleForm articleItem={article} />
+            <div className="editOrVote">
+                <div>
+                    {currentUserArticle()}
+                    <div style={editFormVisibility === params.articleID ? {"display" : "block"} : {"display" : "none"}}>
+                        <EditArticleForm articleItem={article} />
+                    </div>
+                </div>
+                <div >
+                    {allowVote()}
+                </div>
             </div>
-            {allowVote()}
-            <button onClick={() => history.goBack()}>Return</button>
+            <div className="returnButton">
+                <button onClick={() => history.goBack()}>Return</button>
+            </div>
         </div>
     )
 }

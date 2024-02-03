@@ -299,3 +299,61 @@ label {
     display: grid;
     justify-items: center;
 }
+
+.articleCard {
+    background-color: rgb(224, 104, 67);
+    display: grid;
+    grid-template-rows: 6fr 1fr 1fr;
+    width: 80%;
+    border: solid 2px black;
+    margin: 40px 10% 0 9%;
+}
+
+.article {
+    width: 80%;
+    margin: auto;
+}
+
+.articleTitle {
+    width: max-content;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: -20px;
+    background-color: slateblue;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+}
+
+.articleContents {
+    font-size: 17px;
+    background-color: rgba(225, 247, 26, 0.455);
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.articleBody {
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    padding: 5px 0;
+}
+
+.voteButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;    
+}
+
+.voteButtons button {
+    width: 40%;
+}
+
+.articleEditButton {
+    width: max-content;
+    margin: auto;
+}
+
+.returnButton {
+    width: max-content;
+    margin-left: 10%;
+}

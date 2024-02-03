@@ -1,17 +1,20 @@
-import React  from "react";
+import React, { useEffect }  from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-import { selectAllUsers } from "../users/usersSlice";
-import { loginUser } from "../users/currentUserSlice";
+import { selectAllUsers, setUsers } from "../users/usersSlice";
+import { loginUser, setUser } from "../users/currentUserSlice";
+import { selectAllGroups, setGroups, fetchGroups } from "../groups/groupsSlice";
 
 function Login() {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const allUserNames = useSelector(selectAllUsers).map(e => e.name)
+    const allUsers = useSelector(selectAllUsers)
+    const allUserNames = allUsers.map(e => e.name)
+    const allGroups = useSelector(selectAllGroups)
 
     const formSchema = yup.object().shape({
         name: yup.string().test({ message: () => "Not a registered user.", test(value) {return allUserNames.includes(value)}}).required("Must enter a username."),
@@ -30,6 +33,8 @@ function Login() {
             try {
                 if (allUserNames.includes(formik.values.name)) {
                     dispatch(loginUser(values));
+                    dispatch(fetchGroups())
+                    dispatch(setGroups(allGroups))
                     history.push("/")
                 }
             } catch (err) {
