@@ -21,8 +21,6 @@ import { setFormVisibility as plantFormVisibility } from "./features/plants/plan
 import { setFormVisibility as pfFormVisibility } from "./features/plant_families/plantFamiliesSlice"
 import { setNewFormVisibility } from "./features/articles/articlesSlice"
 
-import { selectAllGroups } from "./features/groups/groupsSlice"
-
 function App() {
 
   const dispatch = useDispatch();

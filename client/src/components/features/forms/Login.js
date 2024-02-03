@@ -1,11 +1,11 @@
-import React, { useEffect }  from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-import { selectAllUsers, setUsers } from "../users/usersSlice";
-import { loginUser, setUser } from "../users/currentUserSlice";
+import { selectAllUsers } from "../users/usersSlice";
+import { loginUser } from "../users/currentUserSlice";
 import { selectAllGroups, setGroups, fetchGroups } from "../groups/groupsSlice";
 
 function Login() {

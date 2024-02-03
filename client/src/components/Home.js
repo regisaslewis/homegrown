@@ -6,7 +6,6 @@ import OneArticle from "./features/articles/OneArticle";
 import { getCurrentUser } from "./features/users/currentUserSlice";
 import { fetchArticles, selectAllArticles } from "./features/articles/articlesSlice";
 import { switchButton } from "./features/navigation/buttonSlice";
-import { all } from "axios";
 
 
 function Home() {
