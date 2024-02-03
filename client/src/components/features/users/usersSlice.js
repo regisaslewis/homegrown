@@ -3,7 +3,6 @@ import axios from "axios";
 
 const initialState = {
     users: [],
-    user: {},
     status: "idle",
     error: null
 }
@@ -22,19 +21,6 @@ export const fetchUsers = createAsyncThunk(
     } 
 )
 
-export const fetchOneUser = createAsyncThunk(
-    "users/fetchOneUser",
-    async (initialInfo) => {
-        const { id } = initialInfo
-        try {
-            const response = await axios.get(`${USERS_URL}/${id}`, initialInfo)
-            return response.data
-        } catch (err) {
-            return err.message;
-        }
-    }
-)
-
 export const addNewUser = createAsyncThunk(
     "users/addNewUser",
     async (initialInfo) => {
@@ -50,7 +36,11 @@ export const addNewUser = createAsyncThunk(
 const usersSlice = createSlice({
     name: "users",
     initialState,
-    reducers: {},
+    reducers: {
+        setUsers: (state, action) => {
+            state.users = action.payload;
+        }
+    },
     extraReducers (builder) {
         builder
         .addCase(fetchUsers.pending, (state, action) => {
@@ -67,16 +57,14 @@ const usersSlice = createSlice({
         .addCase(addNewUser.fulfilled, (state, action) => {
             state.users.push(action.payload[0])
         })
-        .addCase(fetchOneUser.fulfilled, (state, action) => {
-            state.user = action.payload
-        })
     }
 })
+
+export const { setUsers } = usersSlice.actions;
 
 export const selectAllUsers = state => state.users.users;
 export const getUsersStatus = state => state.users.status;
 export const getUsersError = state => state.users.error;
-export const getOneUser = state => state.users.user;
 
 export const selectUserByID = (state, id) => state.users.users.find(e => e.id === id)
 

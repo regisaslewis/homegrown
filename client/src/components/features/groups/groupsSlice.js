@@ -53,6 +53,9 @@ const groupsSlice = createSlice({
     reducers: {
         setFormVisibility: (state, action) => {
             state.formVisibility = action.payload;
+        },
+        setGroups: (state, action) => {
+            state.groups = action.payload;
         }
     },
     extraReducers (builder) {
@@ -87,12 +90,12 @@ const groupsSlice = createSlice({
     }
 })
 
-export const { setFormVisibility } = groupsSlice.actions;
+export const { setFormVisibility, setGroups } = groupsSlice.actions;
 
 export const getFormVisibility = state => state.groups.formVisibility;
 export const selectAllGroups = state => state.groups.groups;
 export const getGroupsStatus = state => state.groups.status;
 export const getGroupsError = state => state.groups.error;
-export const selectGroupById = (state, id) => state.groups.groups.find(e => e.id === id) 
+export const selectGroupById = (state, id) => state.groups.groups.find(e => e.id === id)
 
 export default groupsSlice.reducer

@@ -48,7 +48,7 @@ function Login() {
                 <label>Password:</label>
                 <input name="password" value={formik.values.password} onChange={formik.handleChange} type="password" />
                 {formik.errors.password ? <p style={{"color": "red"}}>{formik.errors.password}</p> : ""}
-                <button class="submitBut" type="submit">Submit</button>
+                <button className="submitBut" type="submit">Submit</button>
             </form>
         </div>
     )

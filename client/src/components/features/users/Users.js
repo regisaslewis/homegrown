@@ -33,8 +33,10 @@ function Users() {
 
     return (
         <div>
-            <h2>Users Page</h2>
-            {items}
+            <h2>Users!</h2>
+            <div id="usersContainer">
+                {items}
+            </div>
         </div>
     )
 }

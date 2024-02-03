@@ -3,24 +3,27 @@ import { NavLink } from "react-router-dom/";
 
 function OneUser({userItem}) {
 
-    const { id, name, articles, group, plants, climate, experience_level } = userItem
+    const { id, name, group, plants } = userItem
 
-    const userPlants = plants.map(e => <p key={e.id}>{e.name}<br />------</p>)
-    const userArticles = articles.map(e => <p key={e.id}>------<br />Plant: {e.plant.name}<br/>Success Rating: {e.success_rating}/5<br />Body: {e.body}</p>)
+    const userPlants = plants.map(e => <p key={e.id}>{e.name}<br /><img style={{"width": "40px"}} alt={e.name} src={e.image} /></p>)
 
     return (
-        <div>
-            <p>name: {name}</p>
-            <p>group: {group ? group.name : "none"}</p>
-            <p>climate: {climate}</p>
-            <p>experience level: {experience_level}</p>
-            plants: {plants.length ? userPlants : "none"}
+        <div className="userCard">
+            <div className="userTitle">
+                <div className="userName">{name}</div>
+                <div>{group ? `member of` : ""}</div>
+                <div className="userGroup">{group ? group.name : ""}</div>
+            </div>
+            <div className="userPlants">
+                <div>Proud caretaker of:</div>
+                <div className="userPlantTiles">{plants.length ? userPlants : "none"}</div>
+            </div>            
             <br />
-            articles: {articles.length ? userArticles : "none"}
-            <NavLink to={`/users/${id}`}>
-                <button>Go to User Page</button>
-            </NavLink>
-            <p>__________________________</p>
+            <div className="userButton">
+                <NavLink to={`/users/${id}`}>
+                    <button>Go to User Page</button>
+                </NavLink>
+            </div>
         </div>
     )
 }

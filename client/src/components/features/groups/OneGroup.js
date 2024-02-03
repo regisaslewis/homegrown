@@ -12,7 +12,12 @@ function OneGroup({groupItem}) {
     const dispatch = useDispatch();
     const history = useHistory();
     const group = useSelector(state => selectGroupById(state, Number(id)))
-    let usersList = group.users.map(e => <p key={e.id}>{e.name}</p>)
+
+    function usersList() {
+        if (group.users.length > 0) {
+            return group.users.map(e => <p key={e.id}>{e.name}</p>)
+        }
+    }
 
     function handleJoin() {
         dispatch(addCurrentUser(group))
@@ -22,7 +27,7 @@ function OneGroup({groupItem}) {
     }
 
     function joinVisibility() {
-        if (currentUser.name && currentUser.group.id !== group.id) {
+        if (currentUser.group && currentUser.group.id !== group.id) {
             return <button onClick={() => handleJoin()}>Join</button>
         }
     }
@@ -32,7 +37,7 @@ function OneGroup({groupItem}) {
             <p>name: {group.name}</p>
             <p>description: {group.description}</p>
             <p>group creator: {group.group_creator}</p>
-            users: {usersList}
+            users: {usersList()}
             {joinVisibility()}
             <p>__________________________</p>
         </div>

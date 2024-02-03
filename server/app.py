@@ -50,7 +50,8 @@ def users():
             name = request.get_json()["name"],
             climate = request.get_json()["climate"],
             experience_level = request.get_json()["experience_level"],
-            password_hash = request.get_json()["password"]
+            password_hash = request.get_json()["password"],
+            group = None
         )
         db.session.add(new_user)
         db.session.commit()
