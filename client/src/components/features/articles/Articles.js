@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import OneArticle from "./OneArticle";
 
-import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility } from "./articlesSlice";
+import { fetchArticles, selectAllArticles, getArticlesStatus, getArticlesError, setNewFormVisibility, getNewFormVisibility, setEditFormVisibility } from "./articlesSlice";
 import NewArticleForm from "../forms/NewArticleForm";
 import { switchButton } from "../navigation/buttonSlice";
 import { checkSession, getCurrentUser } from "../users/currentUserSlice";
@@ -43,7 +43,7 @@ function Articles() {
     function newArticleButton() {
         if (currentUser.name) {
             if (!newFormVisibility) {
-                return <button onClick={() => dispatch(setNewFormVisibility(true))}>Add New Article</button>
+                return <button onClick={() => {dispatch(setNewFormVisibility(true)); dispatch(setEditFormVisibility(0))}}>Add New Article</button>
             }
         } else {
             return <NavLink to="/greet">
@@ -70,7 +70,7 @@ function Articles() {
                     <div className="cancelBut">{cancelButton()}</div>
                 </div> : 
                 ""}
-            <div style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+            <div id="articleList" style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                 {items}
             </div> 
         </div>

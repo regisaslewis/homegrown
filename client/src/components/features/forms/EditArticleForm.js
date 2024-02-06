@@ -10,6 +10,10 @@ function EditArticleForm({articleItem}) {
     const dispatch = useDispatch();
     const article = useSelector((state) => selectArticleById(state, Number(id)))
 
+    function handleCancel() {
+        dispatch(setEditFormVisibility(0));
+    }
+
     const formSchema = yup.object().shape({
         success_rating: yup.number().positive().integer().required().min(1).max(5),
         body: yup.string().required().min(5)
@@ -40,9 +44,9 @@ function EditArticleForm({articleItem}) {
      }
     return (
         <div className='editFormContainer'>
-            <h4 className='formTitle'>EditArticleForm</h4>
+            <h3 className='formTitle'>Corrections, Updates, Etc.</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
-            <label>Success Rating:
+                <label>Success Rating:</label>
                     <select name="success_rating" type="number" value={formik.values.success_rating} onChange={formik.handleChange}>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -50,14 +54,15 @@ function EditArticleForm({articleItem}) {
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                </label>
-                <label>Body:
-                    <textarea name='body' value={formik.values.body} onChange={formik.handleChange} />
-                    {formik.errors.body ? <b>{formik.errors.body}</b> : ""}
-                </label>
-                <button className='submitBut' type="submit">Submit</button>
+                <label>Body:</label>
+                <textarea name='body' value={formik.values.body} onChange={formik.handleChange} />
+                {formik.errors.body ? <b>{formik.errors.body}</b> : ""}
+                <button className='submitBut' type="submit">Edit</button>
             </form>
-            <button onClick={handleDelete}>Delete Article</button>
+            <div className="editExitButtons">
+                <button onClick={() => handleCancel()}>Cancel</button>
+                <button className='delete' onClick={handleDelete}>Delete Article</button>
+            </div>
         </div>
     )
 }

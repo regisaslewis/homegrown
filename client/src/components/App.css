@@ -140,7 +140,7 @@ label {
     box-shadow: none;
 }
 
-.formContainer {
+.formContainer, .editFormContainer {
     background-color: bisque;
     width: 500px;
     position: fixed;
@@ -152,10 +152,7 @@ label {
 }
 
 .editFormContainer {
-    background-color: bisque;
-    width: 500px;
-    position: static;
-    left: 20%;
+    border: dashed 2px black;
 }
 
 .formTitle {
@@ -303,36 +300,42 @@ label {
     justify-items: center;
 }
 
+#articleList {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    width: 90%;
+    margin: 0 auto 20px;
+}
+
 .articleCard {
     background-color: rgb(224, 104, 67);
     display: grid;
-    grid-template-rows: 6fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    row-gap: 10px;
     width: 80%;
     border: solid 2px black;
     margin: 40px 10% 0 9%;
 }
 
-.article {
-    width: 80%;
-    margin: auto;
-}
-
 .articleTitle {
     width: max-content;
-    margin: auto;
+    height: 60px;
+    margin:  0 auto;
     padding-left: 10px;
     padding-right: 10px;
-    margin-top: -20px;
     background-color: slateblue;
     border-radius: 0 0 5px 5px;
     text-align: center;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .articleContents {
     font-size: 17px;
     background-color: rgba(225, 247, 26, 0.455);
     padding: 5px;
-    margin-bottom: 10px;
+    margin: 0 auto 10px;
+    width: 90%;
 }
 
 .articleBody {
@@ -356,9 +359,33 @@ label {
     margin: auto;
 }
 
+.editExitButtons {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(220, 83, 124);
+    width: 70%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 0 0;
+    margin: auto;
+}
+
+.delete {
+    background-color: rgb(205, 62, 0);
+    color: white;
+    font-weight: bolder;
+    border: solid 3px rgba(255, 255, 255, 0);
+}
+
+.delete:hover {
+    background-color: red;
+    border: solid 3px yellow;
+}
+
 .returnButton {
     width: max-content;
     margin-left: 10%;
+    margin-bottom: 20px;
 }
 
 #newGroupButton {

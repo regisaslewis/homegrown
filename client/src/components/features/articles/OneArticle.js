@@ -31,6 +31,7 @@ function OneArticle({articleItem}) {
     function handleClick(num) {
         dispatch(setEditFormVisibility(num))
     }
+
     function handleCancel() {
         dispatch(setEditFormVisibility(0));
     }
@@ -71,7 +72,7 @@ function OneArticle({articleItem}) {
         if (currentUser.name) {
             if (article.user.name !== currentUser.name) {
                 return (
-                    <div>
+                    <div className="voteButtons">
                         <button onClick={() => handleLike()} disabled={liked === 1 ? true : false}>Like</button>                
                         <button onClick={() => handleDislike()} disabled={liked === 2 ? true: false}>Dislike</button>
                     </div>
@@ -85,31 +86,38 @@ function OneArticle({articleItem}) {
             )
         }
     }
+
+    const displayOn = {
+        display: "block",
+    }
     
     return (
-        <div>
-            <div>
-                <p>user: {article.user.name}</p>
-                <p>plant: {article.plant.name}</p>
+        <div className="articleCard">
+            <div className="articleTitle">
+                {article.user.name}'s Care Guide
+                <br />
+                for {article.plant.name}
+            </div>
+            <div className="articleContents">
                 <p>success rating: {article.success_rating}/5</p>
-                <p>body: {article.body}</p>
+                <p className="articleBody">{article.body}</p>
                 <p>likes: {article.likes}</p>
                 <p>dislikes: {article.dislikes}</p>
             </div>
-            {article.user_id === currentUser.id ?
-            <div>
-                {editFormVisibility !== id ?
-                <button onClick={() => handleClick(id)}>Edit Article</button> :
-                <button onClick={() => handleCancel()}>Cancel</button>
-                }
-            </div>:
-            ""}
-            <div style={editFormVisibility === id ? {"display" : "block"} : {"display" : "none"}}>
-                <EditArticleForm articleItem={articleItem} />
+            <div className="editOrVote">
+                {article.user_id === currentUser.id ?
+                    <div className="articleEditButton">
+                        {editFormVisibility !== id ?
+                        <button onClick={() => handleClick(id)}>Edit Article</button> :
+                        <button onClick={() => handleCancel()}>Cancel</button>
+                        }
+                    </div>:
+                ""}
+                <div style={editFormVisibility === id ? displayOn : {"display" : "none"}}>
+                    <EditArticleForm articleItem={articleItem} />
+                </div>
+                <div>{allowVote()}</div>
             </div>
-            {allowVote()}
-            <p>__________________________</p>
-            
         </div>
     )
 }

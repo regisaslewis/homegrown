@@ -104,20 +104,16 @@ function OneArticleFull() {
     
     return (
         <div className="articleCard">
-            <div className="article">
-                <div className="articleTitle">
-                    <h3>
-                        {article.user.name}'s Care Guide
-                        <br />
-                        for {article.plant.name}
-                    </h3>
-                </div>
-                <div className="articleContents">
-                    <p>success rating: {article.success_rating}/5</p>
-                    <p className="articleBody">{article.body}</p>
-                    <p>likes: {article.likes}</p>
-                    <p>dislikes: {article.dislikes}</p>
-                </div>
+            <div className="articleTitle">
+                {article.user.name}'s Care Guide
+                <br />
+                for {article.plant.name}
+            </div>
+            <div className="articleContents">
+                <p>success rating: {article.success_rating}/5</p>
+                <p className="articleBody">{article.body}</p>
+                <p>likes: {article.likes}</p>
+                <p>dislikes: {article.dislikes}</p>
             </div>
             <div className="editOrVote">
                 <div>
