@@ -56,14 +56,14 @@ function Groups() {
     return (
         <div>
             <h2>Groups!</h2>
-            {newGroupButton()}
+            <div id="newGroupButton">{newGroupButton()}</div>
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewGroupForm />
                     <div className="cancelBut">{cancelButton()}</div>
             </div> : 
             ""}
-            <div style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+            <div id="groups" style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                 {items}
             </div>
         </div>

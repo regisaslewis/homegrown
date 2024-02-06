@@ -11,10 +11,12 @@ h1 {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 a:hover {
     transform: scale(1.05);
+    box-shadow: -2x 2px 3px ;
 }
 
 button {
@@ -257,12 +259,13 @@ label {
 }
 
 .userPlants, .userArticles {
-    background-color: rgb(115, 209, 134);
+    background-color: rgba(153, 232, 169, 0.77);
     display: flex;
     flex-direction: column;
     width: 80%;
     margin: auto;
-    border: solid black 2px;
+    border: solid 2px rgb(255, 255, 255);
+    padding: 10px;
 }
 
 .userPlantTiles, .userArticleTiles {
@@ -356,4 +359,100 @@ label {
 .returnButton {
     width: max-content;
     margin-left: 10%;
+}
+
+#newGroupButton {
+    width: max-content;
+    margin: -40px auto 20px 15%;
+}
+
+#groups {
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+    gap: 10px;
+    margin: 10px auto 0;
+    width: 90%;
+}
+
+.groupCard {
+    width: 90%;
+    min-width: 380px;
+    background-color: firebrick;
+    border: solid 2px black;
+    border-radius: 4px;
+}
+
+.groupTitle {
+    width: max-content;
+    margin: auto;
+    padding: 10px;
+    padding-right: 10px;
+    font-size: 28px;
+    background-color: rgb(144, 144, 214);
+    border-radius: 0 0 5px 5px;
+}
+
+.groupContents {
+    display: grid;
+    grid-template-rows: 10fr 9fr;
+    font-size: 20px;
+    width: 70%;
+    margin: auto;
+}
+
+.groupCreator{
+    border: solid white 2px;
+    width: max-content;
+    background-color: rgb(144, 144, 214);
+    border-radius: 2px;
+    padding-left: 40px;
+    padding-right: 15px;
+    font-weight: 500;
+}
+
+.groupDesc {
+    padding: 10px;
+    padding-left: 50px;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.254);
+}
+
+.groupList {
+    width: 60%;
+    margin: 0 auto 5px;
+    background-color: rgba(255, 255, 255, 0.332);
+    padding: 10px;
+}
+
+.groupMembers {
+    font-size: 14px;
+}
+
+.groupMembers:hover, .groupCreator:hover {
+    padding-left: 20px;
+    box-shadow: -2x 2px 3px black;
+    transition-duration: 500ms;
+}
+
+.joinButton {
+    width: 100px;
+}
+
+.groupJoinButton {
+    width: 30%;
+    margin: 10px auto 10px;
+}
+
+#homeGroup {
+    max-width: 600px;
+    margin: 20px auto auto 20%;
+}
+
+#homePlants {
+    width: 500px;
+    margin: 20px auto auto 20%;
+}
+
+#homeAddPlants {
+    margin-left: 80%;
 }

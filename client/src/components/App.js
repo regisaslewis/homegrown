@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { NavLink, Switch, Route, Redirect, useHistory } from "react-router-dom"
 import Navigation from "./features/navigation/Navigation"
 import { useSelector, useDispatch } from "react-redux"
@@ -14,6 +14,8 @@ import Plants from "./features/plants/Plants";
 import PlantFamilies from "./features/plant_families/PlantFamilies"
 import Articles from "./features/articles/Articles"
 
+import { fetchUsers } from "./features/users/usersSlice"
+
 import { getCurrentUser, logOutUser } from "./features/users/currentUserSlice"
 import { getCurrentButton, switchButton } from "./features/navigation/buttonSlice"
 import { setFormVisibility as groupFormVisibility } from "./features/groups/groupsSlice"
@@ -27,6 +29,10 @@ function App() {
   const history = useHistory();
   const currentUser = useSelector(getCurrentUser)
   const buttonStyle = useSelector(getCurrentButton)
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [dispatch])
 
   const buttonOn = {
     color: "rgba(0, 0, 0, 0)",

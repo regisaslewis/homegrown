@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
         pnw_superstars = Group(name="PNW Superstars", description="Representing Top-Left USA", users=[monica, thorton], group_creator=monica.name)
         van_dwellers = Group(name="The Caravan", description="Green-thumb Nomads", users=[angelica], group_creator=angelica.name)
-        the_swamp = Group(name="The Swamp", description="Born in the Muck")
+        the_swamp = Group(name="The Swamp", description="Born in the Muck", group_creator=thorton.name)
 
         groups = [pnw_superstars, van_dwellers, the_swamp]
 

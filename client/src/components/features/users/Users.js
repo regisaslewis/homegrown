@@ -13,14 +13,9 @@ function Users() {
     const error = useSelector(getUsersError)
 
     useEffect(() => {
-        dispatch(switchButton(4))
+        dispatch(switchButton(4))   
+        dispatch(fetchUsers())
     }, [dispatch])
-
-    useEffect(() => {
-        if (usersStatus === "idle") {
-            dispatch(fetchUsers())
-        }
-    }, [usersStatus, dispatch])
 
     let items;
     if (usersStatus === "loading") {

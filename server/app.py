@@ -65,7 +65,7 @@ def show_user(id):
         if request.method == "GET":
             return make_response(jsonify(user.to_dict()), 200)
         elif request.method == "POST":
-            user.group = request.get_data(["group"])
+            user.group_id = request.get_data(["new_group_id"])
             db.session.add(user)
             db.session.commit()
             return make_response(jsonify(user.to_dict()), 200)

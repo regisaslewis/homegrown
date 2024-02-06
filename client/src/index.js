@@ -14,14 +14,14 @@ import { fetchArticles } from "./components/features/articles/articlesSlice";
 import { checkSession } from "./components/features/users/currentUserSlice";
 
 function dispatchAll() {
-    if (store) {
-        store.dispatch(fetchGroups());
-        store.dispatch(fetchArticles());
-        store.dispatch(fetchUsers());
-        store.dispatch(fetchPlants());
-        store.dispatch(fetchPlantFamilies());
-        store.dispatch(checkSession());
-    }
+    store.dispatch(fetchGroups());
+    setTimeout(() => {
+    store.dispatch(checkSession());
+    store.dispatch(fetchArticles());
+    store.dispatch(fetchUsers());
+    store.dispatch(fetchPlants());
+    store.dispatch(fetchPlantFamilies());
+    }, 100)
 }
 
 dispatchAll();

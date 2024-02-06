@@ -36,12 +36,12 @@ function Signup() {
         onSubmit: (values) => {
             try {
                 dispatch(addNewUser(values));
-                
+                setTimeout(() => {
+                    dispatch(loginUser({name: values.name, password: values.password}))
+                    history.push("/")
+                }, "1500")
             } catch (err) {
                 console.error("Failed to add user", err)
-            } finally {
-                dispatch(loginUser({name: values.name, password: values.password}))
-                history.push("/")
             }
         }
     })

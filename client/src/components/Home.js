@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import OneGroup from "./features/groups/OneGroup";
 import OneArticle from "./features/articles/OneArticle";
@@ -38,19 +39,30 @@ function Home() {
 
     function currentUserGroup() {
         if (currentUser.group) {
-            return <OneGroup groupItem={currentUser.group} />
+            return <div>
+                <h4>{userConditional}'s Group:</h4>
+                <OneGroup groupItem={currentUser.group} />
+            </div>
         }
     }
 
-    const userPlants = currentUser.plants.map(e => <p key={e.id}>{e.name}</p>)
+    const userPlants = currentUser.plants.map(e => <div key={e.id}>
+            <p>{e.name}</p>
+            <br />
+            <img style={{"width": "80px"}} alt={e.name} src={e.image} />            
+        </div>)
 
     return (
         <div>
-            <h2>Home Page</h2>
-            <h4>{userConditional}'s Group:</h4>
-            {currentUserGroup()}
-            {userConditional}'s Plants: {userPlants}
-            <p>_____________</p>
+            <h2>Welcome, {userConditional}</h2>
+            <div id="homeGroup">
+                {currentUserGroup()}
+            </div>
+            <div id= "homePlants" className="userPlants">
+                <div>Your Plants:</div>
+                <div className="userPlantTiles">{userPlants.length ? userPlants : "None"}</div>
+                <div id="homeAddPlants">{userPlants.length ? <NavLink to="/plants"><button>Add More</button></NavLink> : <NavLink to="/plants"><button>Get Some</button></NavLink>}</div>
+            </div>
             Liked Articles:
             <br />
             {userLikedArticles()}

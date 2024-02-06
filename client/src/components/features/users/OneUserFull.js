@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, useHistory, NavLink } from 'react-router-dom/';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { selectUserByID } from './usersSlice';
+import { selectUserByID, fetchUsers } from './usersSlice';
+import { switchButton } from '../navigation/buttonSlice';
 
 function OneUserFull() {
 
     const history = useHistory();
     const params = useParams();
+    const dispatch = useDispatch();
     const oneUser = useSelector(state => selectUserByID(state, Number(params.userID)));
+
+    useEffect(() => {
+        dispatch(fetchUsers())
+        dispatch(switchButton(0))
+    }, [dispatch])
 
     function articles() {
         if (oneUser.articles.length > 0) {
@@ -23,11 +30,11 @@ function OneUserFull() {
     }
 
     function plants() {
-        if (oneUser.plants.length > 0) {
+        if (oneUser.plants) {
             return oneUser.plants.map(e => {
-                return ( <div>
-                    <p key={e.id}>{e.name}</p>
-                    <img style={{"width": "200px"}} key={e.id} alt={e.name} src={e.image} />
+                return ( <div key={e.id}>
+                    <p>{e.name}</p>
+                    <img style={{"width": "200px"}} alt={e.name} src={e.image} />
                 </div>
             )
         })}
@@ -39,6 +46,7 @@ function OneUserFull() {
                 <h3 className='userName'>{oneUser.name}'s Page</h3>
                 <p>Climate: {oneUser.climate}</p>
                 <p>Experience Level: {oneUser.experience_level}</p>
+                <p>{oneUser.group ? `Group: ${oneUser.group.name}` : ""}</p>
             </div>
             <div className='userPlants'>
                 <h4>Plants:</h4>
