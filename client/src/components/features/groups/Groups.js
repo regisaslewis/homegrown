@@ -55,7 +55,7 @@ function Groups() {
 
     return (
         <div>
-            <h2>Groups!</h2>
+            <h2 className="viewName groupsPage">Groups!</h2>
             <div id="newGroupButton">{newGroupButton()}</div>
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>

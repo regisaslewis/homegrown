@@ -483,3 +483,28 @@ label {
 #homeAddPlants {
     margin-left: 80%;
 }
+
+.viewName {
+    position: fixed;
+    left: 55px;
+}
+
+.articlesPage {
+    top: 87%;
+}
+
+.pfPage {
+    top: 67%
+}
+
+.plantsPage {
+    top: 51%
+}
+
+.groupsPage {
+    top: 33%;
+}
+
+.usersPage {
+    top: 15%;
+}

@@ -28,7 +28,7 @@ function Users() {
 
     return (
         <div>
-            <h2>Users!</h2>
+            <h2 className="viewName usersPage">Users!</h2>
             <div id="usersContainer">
                 {items}
             </div>

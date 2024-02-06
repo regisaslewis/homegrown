@@ -58,7 +58,7 @@ function Plants() {
 
     return (
         <div>
-            <h2>Plants!</h2>
+            <h2 className="viewName plantsPage">Plants!</h2>
             {newPlantButton()}
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>

@@ -62,7 +62,7 @@ function Articles() {
 
     return (
         <div>
-            <h2>Articles!</h2>
+            <h2 className="viewName articlesPage">Articles!</h2>
                 {newArticleButton()}
                 {currentUser.name ?
                 <div className="formContainer" style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>
