@@ -94,4 +94,6 @@ export const selectAllPlants = state => state.plants.plants;
 export const getPlantsStatus = state => state.plants.status;
 export const getPlantsError = state => state.plants.error;
 
+export const selectPlantByID = (state, id) => state.plants.plants.find(e => e.id === id)
+
 export default plantsSlice.reducer

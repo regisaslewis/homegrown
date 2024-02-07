@@ -8,11 +8,12 @@ import Home from "./Home"
 import Greet from "./features/forms/Greet"
 import Users from "./features/users/Users"
 import OneUserFull from "./features/users/OneUserFull"
-import OneArticleFull from "./features/articles/OneArticleFull"
 import Groups from "./features/groups/Groups"
 import Plants from "./features/plants/Plants";
+import OnePlantFull from "./features/plants/OnePlantFull"
 import PlantFamilies from "./features/plant_families/PlantFamilies"
 import Articles from "./features/articles/Articles"
+import OneArticleFull from "./features/articles/OneArticleFull"
 
 import { fetchUsers } from "./features/users/usersSlice"
 
@@ -116,6 +117,9 @@ function App() {
           </Route>
           <Route exact path="/plants">
             <Plants />
+          </Route>
+          <Route path="/plants/:plantID">
+            <OnePlantFull />
           </Route>
           <Route exact path="/plant_families">
             <PlantFamilies />

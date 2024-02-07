@@ -21,7 +21,7 @@ function OneGroup({groupItem}) {
         if (group.users.length > 0) {
             return group.users.map(e => 
             <NavLink key={e.id} to={`/users/${e.id}`}>
-                <p className="groupMembers">{e.name}</p>
+                {e.name === currentUser.name ? <p className="cuName groupMembers">{e.name}</p> : <p className="groupMembers">{e.name}</p>}
             </NavLink>)
         }
         return <p>None yet!</p>

@@ -67,7 +67,7 @@ function Plants() {
             </div> : 
             ""}
             <div style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
-                {items}
+                <div id="plantsList">{items}</div>
             </div>
         </div>
     )

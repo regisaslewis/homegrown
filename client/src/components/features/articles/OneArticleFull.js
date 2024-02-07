@@ -51,6 +51,7 @@ function OneArticleFull() {
         } else {
             setLiked(0)
         }
+        history.goBack();
     }
 
     function handleDislike() {
@@ -68,6 +69,7 @@ function OneArticleFull() {
         } else {
             setLiked(0)
         }
+        history.goBack();
     }
 
     function allowVote() {

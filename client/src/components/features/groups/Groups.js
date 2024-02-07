@@ -19,11 +19,8 @@ function Groups() {
     
     useEffect(() => {
         dispatch(switchButton(5))
-    }, [dispatch])
-
-    useEffect(() => {
         dispatch(fetchGroups())
-    }, [ dispatch])
+    }, [dispatch])
 
     let items;
     if (groupsStatus === "succeeded") {

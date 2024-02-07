@@ -22,25 +22,48 @@ function Home() {
     }, [dispatch])
 
     function userLikedArticles() {
-        if (currentUser.liked_articles) {
+        if (currentUser.liked_articles.length) {
             const userLikes = currentUser.liked_articles.map(e => e.id);
             const likeArray = allArticles.filter(e => userLikes.includes(e.id));
-            return likeArray.map(e => <OneArticle key={e.id} articleItem={e} />)
+            const shownLikes = likeArray.map(e => <div  key={e.id}>
+                <NavLink to={`/articles/${e.id}`}>
+                    <button className="dislikeArticleButton">{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
+                </NavLink>
+            </div>)
+            return (
+                <div className="likeBox">
+                    <h4 id="likeTitle">Liked Articles</h4>
+                    <div id="cuLikes">
+                        {shownLikes}
+                    </div>
+                </div>
+            )
         }
     }
 
     function userDislikedArticles() {
-        if (currentUser.disliked_articles) {
+        if (currentUser.disliked_articles.length) {
             const userDislikes = currentUser.disliked_articles.map(e => e.id);
             const dislikeArray = allArticles.filter(e => userDislikes.includes(e.id));
-            return dislikeArray.map(e => <OneArticle key={e.id} articleItem={e} />)
+            const shownDislikes = dislikeArray.map(e => <div  key={e.id}>
+                <NavLink to={`/articles/${e.id}`}>
+                    <button className="dislikeArticleButton">{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
+                </NavLink>
+            </div>)
+            return (
+                <div className="likeBox">
+                    <h4 id="dislikeTitle">Disliked Articles</h4>
+                    <div id="cuDislikes">
+                        {shownDislikes}
+                    </div>
+                </div>
+            )
         }
     }
 
     function currentUserGroup() {
         if (currentUser.group) {
             return <div>
-                <h4>{userConditional}'s Group:</h4>
                 <OneGroup groupItem={currentUser.group} />
             </div>
         }
@@ -55,21 +78,25 @@ function Home() {
     return (
         <div>
             <h2>Welcome, {userConditional}</h2>
-            <div id="homeGroup">
-                {currentUserGroup()}
+            <div id="homeContent">
+                <div id="homeGroup">
+                    {currentUserGroup()}
+                </div>
+                <div id= "homePlants" className="userPlants">
+                    <div>Your Plants:</div>
+                    <div className="userPlantTiles">{userPlants.length ? userPlants : "None"}</div>
+                    <div id="homeAddPlants">{userPlants.length ? 
+                        <NavLink to="/plants"><button>Add More</button></NavLink> : 
+                        <NavLink to="/plants"><button>Get Some</button></NavLink>}
+                    </div>
+                </div>
+                <div>
+                    {userLikedArticles()}
+                </div>
+                <div>
+                    {userDislikedArticles()}
+                </div>
             </div>
-            <div id= "homePlants" className="userPlants">
-                <div>Your Plants:</div>
-                <div className="userPlantTiles">{userPlants.length ? userPlants : "None"}</div>
-                <div id="homeAddPlants">{userPlants.length ? <NavLink to="/plants"><button>Add More</button></NavLink> : <NavLink to="/plants"><button>Get Some</button></NavLink>}</div>
-            </div>
-            Liked Articles:
-            <br />
-            {userLikedArticles()}
-            <p>_____________</p>
-            Disliked Articles:
-            <br />
-            {userDislikedArticles()}
         </div>
     )
 }
