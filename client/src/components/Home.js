@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import OneGroup from "./features/groups/OneGroup";
-import OneArticle from "./features/articles/OneArticle";
 import { getCurrentUser } from "./features/users/currentUserSlice";
 import { fetchArticles, selectAllArticles } from "./features/articles/articlesSlice";
 import { switchButton } from "./features/navigation/buttonSlice";
@@ -27,7 +26,7 @@ function Home() {
             const likeArray = allArticles.filter(e => userLikes.includes(e.id));
             const shownLikes = likeArray.map(e => <div  key={e.id}>
                 <NavLink to={`/articles/${e.id}`}>
-                    <button className="dislikeArticleButton">{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
+                    <button className="articleButton">{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
                 </NavLink>
             </div>)
             return (
@@ -47,7 +46,7 @@ function Home() {
             const dislikeArray = allArticles.filter(e => userDislikes.includes(e.id));
             const shownDislikes = dislikeArray.map(e => <div  key={e.id}>
                 <NavLink to={`/articles/${e.id}`}>
-                    <button className="dislikeArticleButton">{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
+                    <button className="articleButton">{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
                 </NavLink>
             </div>)
             return (

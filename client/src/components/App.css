@@ -15,8 +15,8 @@ a {
 }
 
 a:hover {
-    transform: scale(1.05);
-    box-shadow: -2x 2px 3px ;
+    transform: scale(1.005);
+    transition-duration: 200ms;
 }
 
 button {
@@ -25,10 +25,12 @@ button {
     border: solid 2px rgba(0, 0, 0, 0);
     box-shadow: -2px 2px 1px black;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: rgb(162, 229, 212);
+    background-color: rgb(19, 106, 84);
+    color: white;
     border: solid 2px black;
     transition-duration: 100ms;
     transform: scale(1.05);
@@ -138,6 +140,10 @@ label {
     border-radius: 0;
     border-right: solid 2px black;
     box-shadow: none;
+}
+
+.navBut:hover {
+    background-color: rgb(162, 229, 212);
 }
 
 .formContainer, .editFormContainer {
@@ -389,9 +395,9 @@ label {
     margin-bottom: 20px;
 }
 
-#newGroupButton {
+.newItemButton {
     width: max-content;
-    margin: -40px auto 20px 15%;
+    margin: 5px auto 20px 15%;
 }
 
 #groups {
@@ -513,6 +519,9 @@ label {
 
 .likeBox {
     margin: 10px;
+    border: solid 2px black;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #cuDislikes, #cuLikes {
@@ -523,7 +532,7 @@ label {
     margin: 10px auto 10px auto;
 }
 
-.dislikeArticleButton {
+.articleButton {
     height: 60px;
     width: 200px;
 }
@@ -565,6 +574,139 @@ label {
 #plantsList {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    row-gap: 15px;
     width: 90%;
+    margin: auto;
+}
+
+.onePlantCard {
+    width: 70%;
+    margin: 5% auto 0;
+    border: solid 2px black;
+    background-color: cadetblue;
+}
+
+.plantCardContents {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: auto;
+}
+
+.plantLeft {
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+}
+
+.plantRight {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.plantTitle {
+    width: max-content;
+    margin: 0 auto 10px;
+    padding: 10px;
+    padding-right: 10px;
+    font-size: 28px;
+    background-color: rgb(16, 63, 9);
+    color: white;
+    border-radius: 0 0 5px 5px;
+}
+
+.onePlantImage {
+    width: 350px;
+    border-radius: 5px;
+    border: solid 2px rgb(112, 123, 219);
+    box-shadow: -3px 2px 5px black;
+}
+
+.pa {
+    border: solid black 2px;
+    margin-top: 10px;
+    background-color: rgb(224, 104, 67);
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+.plantArticles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 95%;
+    margin: auto;
+}
+
+.pu {
+    border: solid 2px black;
+    background-color: pink;
+    margin-top: 10px;
+}
+
+.plantUsers {
+    background-color: rgb(198, 101, 101);
+    width: 300px;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    margin: auto;
+}
+
+.onePlantButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 400px;
+    margin: 10px auto auto 30px;
+}
+
+.plantCard {
+    width: 80%;
+    height: max-content;
+    margin: auto;
+    border: solid 2px black;
+    background-color: cadetblue;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.plantTitleMini {
+    width: max-content;
+    margin: 0 auto 10px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 28px;
+    background-color: rgb(16, 63, 9);
+    color: white;
+    border-radius: 0 0 5px 5px;
+}
+
+.plantCardContentsMini {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 95%;
+    height: 100%;
+    margin: auto;
+}
+
+.plantImage {
+    width: 300px;
+    margin: auto;
+    margin-bottom: -4px;
+    border-radius: 2px;
+}
+
+.plantDesc {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    font-size: 22px;
+}
+
+.plantFamily {
+    width: max-content;
+    font-size: 22px;
     margin: auto;
 }

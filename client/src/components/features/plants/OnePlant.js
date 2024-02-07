@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getCurrentUser, addPlant } from "../users/currentUserSlice";
@@ -6,17 +7,9 @@ import { linkUser } from "./plantsSlice";
 
 function OnePlant({plantItem}) {
 
-    const { name, family, description, articles, image } = plantItem
+    const { name, family, description, image } = plantItem
     const dispatch = useDispatch();
     const currentUser = useSelector(getCurrentUser)
-
-    function plantArtcles() {
-        if (articles && articles.length > 0) {
-            return articles.map(e => <p key={e.id}>-------<br />User: {e.user.name}<br /> Success Rating: {e.success_rating}/5<br /> Body: {e.body}</p>)
-        } else {
-            return "No Articles."
-        }
-    }
 
     function handleAdd() {
         dispatch(linkUser(plantItem))
@@ -35,14 +28,29 @@ function OnePlant({plantItem}) {
     
     return (
         <div>
-            <p>name: {name}</p>
-            <p>family: {family.name}</p>
-            <p>description: {description}</p>
-            image = <img alt={name} src={image} style={{"maxWidth": "50px"}} />
-            <br />
-            articles: {plantArtcles()}
-            {plantButton()}
-            <p>____________________</p>
+            <NavLink to={`/plants/${plantItem.id}`}>
+                <div className="plantCard">
+                    <div className="plantCardContentsMini">
+                        <div className="plantTitleMini">
+                            {name}
+                        </div>
+                        <div className="plantDesc">
+                            {description}
+                        </div>
+                        <div className="plantFamily">
+                            Family:
+                            <br />
+                            {family.name}
+                        </div>
+                        <div className="groupJoinButton">
+                            {plantButton()}
+                        </div>
+                    </div>
+                    <div>
+                        <img className="plantImage" alt={name} src={image} />
+                    </div>
+                </div>
+            </NavLink>
         </div>
     )
 }
