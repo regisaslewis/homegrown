@@ -36,11 +36,11 @@ if __name__ == '__main__':
 
         plants = [fiddle, aloe, money, rubber]
 
-        large = Plant_Family(name="Large", description="Expansive", image="https://en-gb.bakker.com/cdn/shop/articles/unnamed_05eb7209-c23e-42c3-a1d3-93feec6c7804.jpg?v=1651487894&width=1100", plants=[fiddle])
-        leafy = Plant_Family(name="Leafy", description="Broad and Beautiful", image="https://gardenerspath.com/wp-content/uploads/2019/12/Calathea.jpg", plants=[money, rubber])
+        tree = Plant_Family(name="Tree", description="Big Barkers", image="https://en-gb.bakker.com/cdn/shop/articles/unnamed_05eb7209-c23e-42c3-a1d3-93feec6c7804.jpg?v=1651487894&width=1100", plants=[fiddle, money])
+        leafy = Plant_Family(name="Leafy", description="Broad and Beautiful", image="https://gardenerspath.com/wp-content/uploads/2019/12/Calathea.jpg", plants=[rubber])
         succulent = Plant_Family(name="Succulent", description="Sturdy", image="https://wingardsmarket.com/wp-content/uploads/2021/07/image001.png", plants=[aloe])
         
-        plant_families = [large, leafy, succulent]
+        plant_families = [tree, leafy, succulent]
 
         a1 = Article(user=monica, plant=fiddle, success_rating=2, likes=10, dislikes=5, body="I made the mistake of moving it during a prolonged overcast period.  Even after I returned it to its initial location, it never regained it's vibrance, slowly drooping and yellowing.  Now only a few leaves remain.")
         a2 = Article(user=monica, plant=money, success_rating=5, likes=8, dislikes=2, body="By repurposing an old Lazy-Susan, I just walk in and do a quarter rotation every morning for my eight sweet Money babies.  A sprinkle of water every Tuesday and they're golden!")

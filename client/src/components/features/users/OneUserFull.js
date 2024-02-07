@@ -32,10 +32,14 @@ function OneUserFull() {
     function plants() {
         if (oneUser.plants) {
             return oneUser.plants.map(e => {
-                return ( <div key={e.id}>
-                    <p>{e.name}</p>
-                    <img style={{"width": "200px"}} alt={e.name} src={e.image} />
-                </div>
+                return (
+                <NavLink className="homePlantBox" key={e.id} to={`/plants/${e.id}`}>
+                    <div>
+                        <p>{e.name}</p>
+                        <img style={{"width": "200px"}} alt={e.name} src={e.image} />
+                    </div>
+                </NavLink>
+                
             )
         })}
     }

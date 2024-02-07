@@ -59,7 +59,7 @@ function PlantFamilies() {
     return (
         <div>
             <h2 className="viewName pfPage">Plant<br />Families!</h2>
-            {newPFButton()}
+            <div className="newItemButton">{newPFButton()}</div>
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewPlantFamilyForm />
@@ -67,7 +67,7 @@ function PlantFamilies() {
             </div> : 
             ""}
             <div style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
-                {items}
+                <div id="pfList">{items}</div>
             </div> 
         </div>
     )

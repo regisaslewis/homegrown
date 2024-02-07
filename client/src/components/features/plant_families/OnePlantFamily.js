@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function OnePlantFamily({plantFamilyItem}) {
 
@@ -6,22 +7,32 @@ function OnePlantFamily({plantFamilyItem}) {
 
     function plantFamilyPlants() {
         if (plants.length > 0) {
-            return plants.map(e => <p key={e.id}>{e.name}</p>)
+            return plants.map(e => 
+            <NavLink key={e.id} to={`/plants/${e.id}`}>
+                <div className="pfPlantLink">{e.name}</div>
+            </NavLink>)
         } else {
             return "None yet"
         }
     }
 
+    const backgroundStyling = {
+        backgroundImage: `url(${image})`,
+        backgroundBlendMode: "multiply"
+    }
+
     return (
-        <div>
-            <p>name: {name}</p>
-            <p>description: {description}</p>
-            image: <img alt={name} src={image} style={{"maxWidth": "50px"}} />
-            <br />
-            plants: {plantFamilyPlants()}
-            <p>__________________________</p>
+        <div className="pfCard" style={backgroundStyling}>
+            <div className="pfContents">
+                <div className="pfTitle">{name}</div>
+                <div className="pfDesc">{description}</div>
+                <div className="pfPlants">
+                    <div>Plants:</div>
+                    {plantFamilyPlants()}
+                </div>
+            </div>
         </div>
     )
 }
 
-export default OnePlantFamily
+export default OnePlantFamily;

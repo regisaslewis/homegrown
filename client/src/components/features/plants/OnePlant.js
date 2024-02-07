@@ -1,33 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-
-import { getCurrentUser, addPlant } from "../users/currentUserSlice";
-import { linkUser } from "./plantsSlice";
 
 function OnePlant({plantItem}) {
 
     const { name, family, description, image } = plantItem
-    const dispatch = useDispatch();
-    const currentUser = useSelector(getCurrentUser)
-
-    function handleAdd() {
-        dispatch(linkUser(plantItem))
-        dispatch(addPlant(plantItem))
-    }
-    
-    function plantButton() {
-        if (currentUser.name ) {
-        const userPlantNames = currentUser.plants.map(e => e.name)
-        const userHasPlant = userPlantNames.includes(name)
-            if (!userHasPlant) {
-                return <button onClick={() => handleAdd()}>Add Plant</button>
-            }
-        }
-    }
     
     return (
-        <div>
+        <div title={`Click for more on ${name}`}>
             <NavLink to={`/plants/${plantItem.id}`}>
                 <div className="plantCard">
                     <div className="plantCardContentsMini">
@@ -41,9 +20,6 @@ function OnePlant({plantItem}) {
                             Family:
                             <br />
                             {family.name}
-                        </div>
-                        <div className="groupJoinButton">
-                            {plantButton()}
                         </div>
                     </div>
                     <div>

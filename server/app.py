@@ -190,6 +190,7 @@ def groups():
             name = request.get_json()["name"],
             description = request.get_json()["description"],
             group_creator = request.get_json()["group_creator"],
+            image = request.get_json()["image"]
         )
         db.session.add(new_group)
         db.session.commit()

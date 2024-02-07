@@ -68,27 +68,31 @@ function Home() {
         }
     }
 
-    const userPlants = currentUser.plants.map(e => <div key={e.id}>
-            <p>{e.name}</p>
-            <br />
-            <img style={{"width": "80px"}} alt={e.name} src={e.image} />            
-        </div>)
+    const userPlants = currentUser.plants.map(e => <NavLink title="Click for more." to={`/plants/${e.id}`}>
+            <div className="homePlantBox" key={e.id}>
+                <p>{e.name}</p>
+                <br />
+                <img style={{"width": "90px"}} alt={e.name} src={e.image} />            
+            </div>
+        </NavLink>)
 
     return (
         <div>
             <h2>Welcome, {userConditional}</h2>
             <div id="homeContent">
-                <div id="homeGroup">
-                    {currentUserGroup()}
-                </div>
                 <div id= "homePlants" className="userPlants">
                     <div>Your Plants:</div>
+                    <br />
                     <div className="userPlantTiles">{userPlants.length ? userPlants : "None"}</div>
                     <div id="homeAddPlants">{userPlants.length ? 
                         <NavLink to="/plants"><button>Add More</button></NavLink> : 
                         <NavLink to="/plants"><button>Get Some</button></NavLink>}
                     </div>
                 </div>
+                <div id="homeGroup">
+                    {currentUserGroup()}
+                </div>
+                
                 <div>
                     {userLikedArticles()}
                 </div>

@@ -106,6 +106,7 @@ class Group(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    image = db.Column(db.String)
     description = db.Column(db.String)
     group_creator = db.Column(db.String)
 
