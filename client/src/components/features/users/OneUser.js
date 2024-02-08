@@ -22,7 +22,7 @@ function OneUser({userItem}) {
             <br />
             <div className="userButton">
                 <NavLink to={`/users/${id}`}>
-                    <button>Go to User Page</button>
+                    <button>Go to {name}'s Page</button>
                 </NavLink>
             </div>
         </div>

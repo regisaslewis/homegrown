@@ -68,8 +68,8 @@ function Home() {
         }
     }
 
-    const userPlants = currentUser.plants.map(e => <NavLink title="Click for more." to={`/plants/${e.id}`}>
-            <div className="homePlantBox" key={e.id}>
+    const userPlants = currentUser.plants.map(e => <NavLink key={e.id} title="Click for more." to={`/plants/${e.id}`}>
+            <div className="homePlantBox">
                 <p>{e.name}</p>
                 <br />
                 <img style={{"width": "90px"}} alt={e.name} src={e.image} />            
@@ -90,6 +90,7 @@ function Home() {
                     </div>
                 </div>
                 <div id="homeGroup">
+                    <div>Your Group:</div>
                     {currentUserGroup()}
                 </div>
                 

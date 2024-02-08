@@ -76,8 +76,8 @@ const groupsSlice = createSlice({
         })
         .addCase(addCurrentUser.fulfilled, (state, action) => {
             const { id } = action.payload[0];
-            const users = state.groups.filter(e => e.id !== id);
-            state.groups = [...users, action.payload[0]]
+            const otherGroups = state.groups.filter(e => e.id !== id);
+            state.groups = [...otherGroups, action.payload[0]]
             state.groups.sort((a, b) => {
                 if (a.id < b.id) {
                     return -1

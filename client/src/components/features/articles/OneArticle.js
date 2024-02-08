@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { selectArticleById, getEditFormVisibility, setEditFormVisibility, editArticle } from "./articlesSlice";
 import { getCurrentUser, likeArticle, dislikeArticle, removeLike, removeDislike } from "../users/currentUserSlice";
 
@@ -91,15 +92,28 @@ function OneArticle({articleItem}) {
         display: "block",
     }
     
+    let image;
+
+    if (article.plant.image) {
+        image = article.plant.image
+    } else {
+        image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+    }
+    
     return (
         <div className="articleCard">
             <div className="articleTitle">
-                {article.user.name}'s Care Guide
+                <NavLink to={`/users/${article.user_id}`}>{article.user.name}</NavLink>'s Care Guide
                 <br />
-                for {article.plant.name}
+                for <NavLink to={`/plants/${article.plant_id}`}>{article.plant.name}</NavLink>
             </div>
             <div className="articleContents">
-                <p>success rating: {article.success_rating}/5</p>
+                <div className="articleDetails">
+                    <p>success rating: {article.success_rating}/5</p>
+                    <NavLink to={`/plants/${article.plant_id}`}>
+                        <img className="articleImage" alt={article.plant.name} src={image} />
+                    </NavLink>
+                </div>
                 <p className="articleBody">{article.body}</p>
                 <p>likes: {article.likes}</p>
                 <p>dislikes: {article.dislikes}</p>
