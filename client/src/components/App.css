@@ -411,8 +411,16 @@ label {
 .groupCard {
     width: 90%;
     min-width: 380px;
-    background-color: firebrick;
-    border: solid 2px black;
+    background-color: rgba(93, 235, 228, 0.542);
+    border: solid 2px rgb(255, 127, 127);
+    border-radius: 4px;
+}
+
+.groupInner {
+    width: 80%;
+    margin: 10px auto;
+    background-color: rgba(255, 235, 205, 0.643);
+    border: solid 2px rgb(255, 127, 127);
     border-radius: 4px;
 }
 
@@ -448,13 +456,13 @@ label {
     padding: 10px;
     padding-left: 50px;
     width: 90%;
-    background-color: rgba(255, 255, 255, 0.254);
+    background-color: rgba(255, 255, 255, 0.552);
 }
 
 .groupList {
     width: 60%;
     margin: 0 auto 5px;
-    background-color: rgba(255, 255, 255, 0.332);
+    background-color: rgba(255, 255, 255, 0.552);
     padding: 10px;
 }
 
@@ -582,6 +590,7 @@ label {
 #plantsList {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
     row-gap: 15px;
     width: 90%;
     margin: auto;

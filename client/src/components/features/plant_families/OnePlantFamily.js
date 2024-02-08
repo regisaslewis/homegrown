@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function OnePlantFamily({plantFamilyItem}) {
 
-    const { name, description, plants, image } = plantFamilyItem
+    const { name, description, plants } = plantFamilyItem
 
     function plantFamilyPlants() {
         if (plants.length > 0) {
@@ -16,8 +16,17 @@ function OnePlantFamily({plantFamilyItem}) {
         }
     }
 
+    let image;
+
+    if (plantFamilyItem.image) {
+        image = plantFamilyItem.image
+    } else {
+        image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+    }
+
     const backgroundStyling = {
         backgroundImage: `url(${image})`,
+        backgroundSize: "100%",
         backgroundBlendMode: "multiply"
     }
 

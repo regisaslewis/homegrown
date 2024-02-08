@@ -42,7 +42,7 @@ function NewPlantFamilyForm() {
                 <input name="name" value={formik.values.name} onChange={formik.handleChange} />
                 <label>Description:</label>
                 <textarea name="description" value={formik.values.description} onChange={formik.handleChange} />
-                <label>Image:</label>
+                <label>Image URL:</label>
                 <input name="image" value={formik.values.image} onChange={formik.handleChange} />
                 {formik.errors.name ? <b>{formik.errors.name}</b>: ""}
                 {formik.errors.description ? <b>{formik.errors.description}</b>: ""}

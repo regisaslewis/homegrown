@@ -22,9 +22,9 @@ if __name__ == '__main__':
 
         users = [monica, thorton, angelica]
 
-        pnw_superstars = Group(name="PNW Superstars", description="Representing Top-Left USA", users=[monica, thorton], group_creator=monica.name)
-        van_dwellers = Group(name="The Caravan", description="Green-thumb Nomads", users=[angelica], group_creator=angelica.name)
-        the_swamp = Group(name="The Swamp", description="Born in the Muck", group_creator=thorton.name)
+        pnw_superstars = Group(name="PNW Superstars", description="Representing Top-Left USA", users=[monica, thorton], group_creator=monica.name, image="https://64.media.tumblr.com/42ea887bce3cc9e612b9ef03a83580ca/tumblr_p8s7cuGNQW1vjp0mpo1_1280.jpg")
+        van_dwellers = Group(name="The Caravan", description="Green-thumb Nomads", users=[angelica], group_creator=angelica.name, image="https://i.pinimg.com/1200x/ed/a4/ba/eda4ba47ad6c6c7ce7696b1cdcf26b67.jpg")
+        the_swamp = Group(name="The Swamp", description="Born in the Muck", group_creator=thorton.name, image="https://www.reconnectwithnature.org/getmedia/17586d83-4a02-4844-80ad-f9aa9709befc/WetlandRockRunPreserveKevinKuchler.jpg?width=2048&height=1365&ext=.jpg")
 
         groups = [pnw_superstars, van_dwellers, the_swamp]
 

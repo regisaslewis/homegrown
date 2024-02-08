@@ -3,7 +3,15 @@ import { NavLink } from "react-router-dom";
 
 function OnePlant({plantItem}) {
 
-    const { name, family, description, image } = plantItem
+    const { name, family, description } = plantItem;
+
+    let image;
+
+    if (plantItem.image) {
+        image = plantItem.image
+    } else {
+        image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+    }
     
     return (
         <div title={`Click for more on ${name}`}>

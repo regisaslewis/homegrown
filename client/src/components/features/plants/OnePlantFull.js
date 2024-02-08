@@ -59,9 +59,17 @@ function OnePlantFull() {
         const userPlantNames = currentUser.plants.map(e => e.name)
         const userHasPlant = userPlantNames.includes(onePlant.name)
             if (!userHasPlant) {
-                return <button onClick={() => handleAdd()}>Add Plant</button>
+                return <button onClick={() => handleAdd()}>Add to {currentUser.name}'s Plants</button>
             }
         }
+    }
+
+    let image;
+
+    if (onePlant.image) {
+        image = onePlant.image
+    } else {
+        image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
     }
 
     return (
@@ -72,7 +80,7 @@ function OnePlantFull() {
                         {onePlant.name}
                     </div>
                     <div>
-                        <img className='onePlantImage' alt={onePlant.name} src={onePlant.image} />
+                        <img className='onePlantImage' alt={onePlant.name} src={image} />
                     </div>
                 </div>            
                 <div className='plantRight'>

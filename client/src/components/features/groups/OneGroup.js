@@ -27,6 +27,15 @@ function OneGroup({groupItem}) {
         return <p>None yet!</p>
     }
 
+    let image;
+
+    if (group.image) {
+        image = group.image
+    } else {
+        image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+    }
+    
+
     function handleJoin() {
         dispatch(addCurrentUser(group))
         dispatch(changeGroup(group))
@@ -40,26 +49,34 @@ function OneGroup({groupItem}) {
         }
     }
 
+    const backgroundStyling = {
+        backgroundImage: `url(${image})`,
+        backgroundSize: "cover",
+        backgroundBlendMode: "multiply"
+    }
+
     return (
-        <div className="groupCard">
-            <div className="groupTitle">
-                {group.name}
-            </div>
-            <div className="groupContents">
-                Created By: 
-                <div className="groupCreator">
-                    <NavLink to={`/users/${groupCreator.id}`}>
-                        {group.group_creator}
-                    </NavLink>    
+        <div className="groupCard" style={backgroundStyling}>
+            <div className="groupInner">
+                <div className="groupTitle">
+                    {group.name}
                 </div>
-                <p className="groupDesc">{group.description}</p>
-            </div>
-            <div className="groupList">
-                Members:
-                {usersList()}
-            </div>
-            <div className="groupJoinButton">
-                {joinVisibility()}
+                <div className="groupContents">
+                    Created By: 
+                    <div className="groupCreator">
+                        <NavLink to={`/users/${groupCreator.id}`}>
+                            {group.group_creator}
+                        </NavLink>    
+                    </div>
+                    <p className="groupDesc">{group.description}</p>
+                </div>
+                <div className="groupList">
+                    Members:
+                    {usersList()}
+                </div>
+                <div className="groupJoinButton">
+                    {joinVisibility()}
+                </div>
             </div>
         </div>
     )

@@ -15,6 +15,7 @@ function NewGroupForm() {
         name: yup.string().required("Must give a group name").min(4).max(22),
         description: yup.string().required("Say something about yourself").min(6),
         group_creator: yup.string(),
+        image: yup.string(),
     })
 
     const formik = useFormik({
@@ -45,8 +46,11 @@ function NewGroupForm() {
                 <input name="name" value={formik.values.name} onChange={formik.handleChange} />
                 <label>Description:</label>
                 <textarea name="description" value={formik.values.description} onChange={formik.handleChange} />
+                <label>Image URL:</label>
+                <input name='image' value={formik.values.image} onChange={formik.handleChange} />
                 {formik.errors.description ? <b>{formik.errors.description}</b> : ""}
                 {formik.errors.name ? <b>{formik.errors.name}</b> : ""}
+                {formik.errors.image ? <b>{formik.errors.image}</b> : ""}
                 <button className='submitBut' type="submit">Submit</button>
             </form>
         </div>
