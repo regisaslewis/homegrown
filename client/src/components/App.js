@@ -38,8 +38,7 @@ function App() {
   const buttonOn = {
     color: "rgba(0, 0, 0, 0)",
     border: "none",
-    backgroundColor: "rgb(162, 229, 212)",
-    borderRadius: "40px 0 0 40px",
+    backgroundColor: "plum",
     zIndex: "-1"
   }
 
