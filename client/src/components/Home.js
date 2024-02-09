@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import { getCurrentUser } from "./features/users/currentUserSlice";
 import { fetchArticles, selectAllArticles } from "./features/articles/articlesSlice";
+import { fetchGroups, selectAllGroups } from "./features/groups/groupsSlice";
 import { switchButton } from "./features/navigation/buttonSlice";
 import { selectAllUsers } from "./features/users/usersSlice";
 
@@ -13,6 +14,7 @@ function Home() {
     const currentUser = useSelector(getCurrentUser);
     const allArticles = useSelector(selectAllArticles)
     const allUsers = useSelector(selectAllUsers)
+    const allGroups = useSelector(selectAllGroups)
 
     useEffect(() => {
         dispatch(switchButton(1));
@@ -70,9 +72,9 @@ function Home() {
                     image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
                 }
                 return (
-                <div className="homeArticleStack" style={{
+                <div key={e.id} className="homeArticleStack" style={{
                     "position" : "absolute",
-                    "top" : `${-5 * currentUser.articles.indexOf(e)}px`,
+                    "top" : `${30 + (5 * currentUser.articles.indexOf(e))}px`,
                     "left" : `${12 * currentUser.articles.indexOf(e)}px`,
                     "zIndex" : `${100 - currentUser.articles.indexOf(e)}`
                 }}> 
@@ -119,7 +121,8 @@ function Home() {
             }
             function usersList() {
                 if (currentUser.group.users.length > 0) {
-                    return currentUser.group.users.map(e => 
+                    const group = allGroups.find(e => e.users.find(x => x.name === currentUser.name))
+                    return group.users.map(e => 
                     <NavLink key={e.id} to={`/users/${e.id}`}>
                         {e.name === currentUser.name ? <p className="cuName groupMembers">{e.name}</p> : <p className="groupMembers">{e.name}</p>}
                     </NavLink>)
