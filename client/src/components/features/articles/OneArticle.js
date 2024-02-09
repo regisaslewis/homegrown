@@ -102,12 +102,12 @@ function OneArticle({articleItem}) {
     
     return (
         <div className="articleCard">
-            <div className="articleTitle">
-                <NavLink to={`/users/${article.user_id}`}>{article.user.name}</NavLink>'s Care Guide
+            <div className="articleTitle" style={editFormVisibility !== 0 ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+                <NavLink to={`/users/${article.user_id}`}>{currentUser.name === article.user.name ? <div className="your">Your</div> : `${article.user.name}'s`} </NavLink>Care Guide
                 <br />
                 for <NavLink to={`/plants/${article.plant_id}`}>{article.plant.name}</NavLink>
             </div>
-            <div className="articleContents">
+            <div className="articleContents" style={editFormVisibility !== 0 ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                 <div className="articleDetails">
                     <p>success rating: {article.success_rating}/5</p>
                     <NavLink to={`/plants/${article.plant_id}`}>
@@ -122,7 +122,7 @@ function OneArticle({articleItem}) {
                 {article.user_id === currentUser.id ?
                     <div className="articleEditButton">
                         {editFormVisibility !== id ?
-                        <button onClick={() => handleClick(id)}>Edit Article</button> :
+                        <button onClick={() => handleClick(id)}>Edit Guide</button> :
                         <button onClick={() => handleCancel()}>Cancel</button>
                         }
                     </div>:

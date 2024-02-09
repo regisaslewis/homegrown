@@ -89,7 +89,7 @@ function OnePlantFull() {
                         <div className='plantUsers'>{plantUsers()}</div>
                     </div>            
                     <div className='pa'>
-                        Articles:
+                        Guides:
                         <div className='plantArticles'>{plantArticles()}</div>
                     </div> 
                 </div>

@@ -43,7 +43,7 @@ function Articles() {
     function newArticleButton() {
         if (currentUser.name) {
             if (!newFormVisibility) {
-                return <button onClick={() => {dispatch(setNewFormVisibility(true)); dispatch(setEditFormVisibility(0))}}>Add New Article</button>
+                return <button onClick={() => {dispatch(setNewFormVisibility(true)); dispatch(setEditFormVisibility(0))}}>Add New Guide</button>
             }
         } else {
             return <NavLink to="/greet">
@@ -62,7 +62,7 @@ function Articles() {
 
     return (
         <div>
-            <h2 className="viewName articlesPage">Articles!</h2>
+            <h2 className="viewName articlesPage">Guides!</h2>
                 <div className="newItemButton">{newArticleButton()}</div>
                 {currentUser.name ?
                 <div className="formContainer" style={newFormVisibility ? {"display": "block"} : {"display" : "none"}}>

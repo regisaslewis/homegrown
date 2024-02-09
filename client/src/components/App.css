@@ -76,7 +76,7 @@ label {
     left: 0;
     width: 100%;
     height: 100px;
-    z-index: 11;
+    z-index: 10000;
 }
 
 #userButtons {
@@ -275,6 +275,7 @@ label {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
+    row-gap: 10px;
     text-align: center;
 }
 
@@ -314,7 +315,7 @@ label {
 }
 
 .articleCard {
-    background-color: rgba(224, 104, 67, 0.866);
+    background-color: rgb(228, 121, 88);
     display: grid;
     grid-template-rows: 1fr 4fr 1fr;
     row-gap: 10px;
@@ -499,14 +500,38 @@ label {
     margin: 10px auto 10px;
 }
 
+#homeArticles {
+    position: static;
+}
+
+.homeArticleStack {
+    height: max-content;
+    width: 500px;
+    margin: 10px 20px;
+    background-color: rgb(228, 121, 88);
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    border: solid 2px black;
+}
+
+.homeArticleStack:hover {
+    z-index: 2000 !important;
+}
+
+.moreButton {
+    width: max-content;
+    margin: auto;
+}
+
 #homeGroup {
     width: 70%;
     margin: 20px auto;
 }
 
 #homePlants {
-    width: 500px;
-    margin: 20px auto auto 20%;
+    width: 80%;
+    margin: 40px auto auto 90px;
+    z-index: 200;
 }
 
 .homePlantBox {
@@ -563,8 +588,13 @@ label {
 }
 
 .articleButton {
-    height: 60px;
+    height: 80px;
     width: 200px;
+}
+
+.articleButtonTitle {
+    text-decoration: underline;
+    margin-bottom: -5px;
 }
 
 #dislikeTitle, #likeTitle {
@@ -598,7 +628,18 @@ label {
 
 #homeContent {
     display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr
+    grid-template-rows: 2fr 1fr
+}
+
+#homeUpper {
+    height: 580px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#homeLower {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 #plantsList {
@@ -607,7 +648,7 @@ label {
     align-items: center;
     row-gap: 15px;
     width: 90%;
-    margin: auto;
+    margin: 10px auto;
 }
 
 .onePlantCard {
@@ -691,7 +732,7 @@ label {
 }
 
 .plantCard {
-    width: 80%;
+    width: 580px;
     height: max-content;
     margin: auto;
     border: solid 2px black;
@@ -798,4 +839,14 @@ label {
 
 .pfPlantLink {
     color: white
+}
+
+.your {
+    display: inline;
+    background-color: rgba(255, 255, 255, 0.404);
+    border-top: solid 2px rgba(255, 255, 255, 0.404);
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 0 0 3px 3px;
+
 }

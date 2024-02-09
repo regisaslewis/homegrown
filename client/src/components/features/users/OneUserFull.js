@@ -59,7 +59,7 @@ function OneUserFull() {
                 </div>
             </div>
             <div className='userArticles'>
-                <h4>Articles:</h4>
+                <h4>Guides:</h4>
                 <div className='userArticleTiles'>{articles()}</div>
             </div>            
             <br />

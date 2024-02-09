@@ -48,7 +48,7 @@ function Navigation({ buttonOn, buttonOff}) {
                 <button className="navBut" style={switchOn(7)} onClick={() => switchClose(7)}>Plant Families</button>
             </NavLink>
             <NavLink to="/articles" exact>
-                <button className="navBut" style={switchOn(8)} onClick={() =>switchClose(8)}>Articles</button>
+                <button className="navBut" style={switchOn(8)} onClick={() =>switchClose(8)}>Guides</button>
             </NavLink>
         </div>
     )

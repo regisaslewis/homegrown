@@ -76,7 +76,7 @@ function App() {
     <div>
       <div id="overhead">
         <h1>HomeGrown</h1>
-        <p>Current User: {currentUser.name ? currentUser.name : "nobody"}</p>
+        <h2>{currentUser.name ? ` Welcome, ${currentUser.name}` : ""}</h2>
       </div>
       <div id="userButtons">
           {currentUser.name ?

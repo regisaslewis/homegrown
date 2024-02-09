@@ -97,7 +97,7 @@ function OneArticleFull() {
             return (
                 <div className="articleEditButton">
                     {editFormVisibility !== params.articleID ?
-                    <button onClick={() => handleClick(params.articleID)}>Edit Article</button> :
+                    <button onClick={() => handleClick(params.articleID)}>Edit Guide</button> :
                     <button onClick={() => handleCancel()}>Cancel</button>
                     }
                 </div>
@@ -115,13 +115,13 @@ function OneArticleFull() {
     
     return (
         <div className="articleCard">
-            <div className="articleTitle">
-            <NavLink to={`/users/${article.user_id}`}>{article.user.name}</NavLink>'s Care Guide
+            <div className="articleTitle" style={editFormVisibility === params.articleID ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+            <NavLink to={`/users/${article.user_id}`}>Your</NavLink> Care Guide
                 <br />
                 for <NavLink to={`/plants/${article.plant_id}`}>{article.plant.name}</NavLink>
             </div>
-            <div className="articleContents">
-            <div className="articleDetails">
+            <div className="articleContents" style={editFormVisibility === params.articleID ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+                <div className="articleDetails">
                     <p>success rating: {article.success_rating}/5</p>
                     <NavLink to={`/plants/${article.plant_id}`}>
                         <img className="articleImage" alt={article.plant.name} src={image} />
