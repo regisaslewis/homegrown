@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { getCurrentUser } from "./features/users/currentUserSlice";
 import { fetchArticles, selectAllArticles } from "./features/articles/articlesSlice";
 import { fetchGroups, selectAllGroups } from "./features/groups/groupsSlice";
+import { fetchUsers } from "./features/users/usersSlice";
 import { switchButton } from "./features/navigation/buttonSlice";
 import { selectAllUsers } from "./features/users/usersSlice";
 
@@ -19,6 +20,8 @@ function Home() {
     useEffect(() => {
         dispatch(switchButton(1));
         dispatch(fetchArticles());
+        dispatch(fetchGroups());
+        dispatch(fetchUsers());
     }, [dispatch])
 
     function userLikedArticles() {
@@ -120,15 +123,32 @@ function Home() {
                 backgroundBlendMode: "multiply"
             }
             function usersList() {
-                if (currentUser.group.users.length > 0) {
-                    const group = allGroups.find(e => e.users.find(x => x.name === currentUser.name))
-                    return group.users.map(e => 
-                    <NavLink key={e.id} to={`/users/${e.id}`}>
-                        {e.name === currentUser.name ? <p className="cuName groupMembers">{e.name}</p> : <p className="groupMembers">{e.name}</p>}
-                    </NavLink>)
+                if (currentUser.group.users) {
+                    const cuGroupNames = currentUser.group.users.map(e => e.name)
+                    if (cuGroupNames.includes(currentUser.name)) {
+                        return currentUser.group.users.map(e => 
+                        <NavLink key={e.id} to={`/users/${e.id}`}>
+                            {e.name === currentUser.name ? <p className="cuName groupMembers">{e.name}</p> : <p className="groupMembers">{e.name}</p>}
+                        </NavLink>)
+                    } else {
+                        return (
+                            <div>
+                                {currentUser.group.users.map(e => 
+                                <NavLink key={e.id} to={`/users/${e.id}`}>
+                                    <p className="groupMembers">{e.name}</p>
+                                </NavLink>
+                                )}
+                                <NavLink key={currentUser.id} to={`/users${currentUser.id}`}>
+                                <p className="cuName groupMembers">{currentUser.name}</p>
+                                </NavLink>
+                            </div>
+                        )
+                    }
                 }
             }
+
             const groupCreator = allUsers.find(e => e.name === currentUser.group.group_creator)
+            
             return (
             <div className="groupCard" style={backgroundStyling}>
                 <div className="groupInner">
@@ -146,7 +166,7 @@ function Home() {
                     </div>
                     <div className="groupList">
                         Members:
-                        {usersList()}
+                        {usersList() ? usersList() : ""}
                     </div>
                 </div>
             </div>)
@@ -171,7 +191,7 @@ function Home() {
             <div id="homeContent">
                 <div id="homeUpper">
                     <div id="homeArticles">
-                        {userArticles()}
+                        {userArticles() ? userArticles() : <NavLink to="/articles"><button className="or checkOut">Check out Guides</button></NavLink>}
                     </div>
                     <div id="homePlants" className="userPlants">
                         <div>Your Plants:</div>
@@ -183,8 +203,8 @@ function Home() {
                         </div>
                     </div>
                     <div id="homeGroup">
-                        <div>Your Group:</div>
-                        {currentUserGroup()}
+                        <div>{currentUserGroup() ? "Your Group:" : ""}</div>
+                        {currentUserGroup() ? currentUserGroup() : <NavLink to="/groups"><button className="or checkOut">Join a Group</button></NavLink>}
                     </div>
                 </div>
                 <div id="homeLower">

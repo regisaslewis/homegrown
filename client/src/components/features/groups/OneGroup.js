@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { addCurrentUser, selectGroupById, fetchGroups } from "./groupsSlice";
 import { getCurrentUser, changeGroup } from "../users/currentUserSlice";
-import { selectAllUsers } from "../users/usersSlice";
+import { fetchUsers, selectAllUsers } from "../users/usersSlice";
 
 function OneGroup({groupItem}) {
 
@@ -40,6 +40,7 @@ function OneGroup({groupItem}) {
         dispatch(addCurrentUser(group))
         dispatch(changeGroup(group))
         dispatch(fetchGroups())
+        dispatch(fetchUsers())
         history.push("/")
     }
 

@@ -47,7 +47,7 @@ function Articles() {
             }
         } else {
             return <NavLink to="/greet">
-                <p className="or">Log in to add Articles</p>
+                <p className="or">Log in to add Guides</p>
                 </NavLink>
         }
     }
