@@ -138,7 +138,7 @@ function Home() {
                                     <p className="groupMembers">{e.name}</p>
                                 </NavLink>
                                 )}
-                                <NavLink key={currentUser.id} to={`/users${currentUser.id}`}>
+                                <NavLink key={currentUser.id} to={`/users/${currentUser.id}`}>
                                 <p className="cuName groupMembers">{currentUser.name}</p>
                                 </NavLink>
                             </div>

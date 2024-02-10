@@ -19,7 +19,7 @@ function Users() {
 
     let items;
     if (usersStatus === "loading") {
-        items = <p>Loading Users</p>
+        items = ""
     } else if (usersStatus === "succeeded") {
         items = allUsers.map(e => <OneUser key={e.id} userItem={e}/>)
     } else if (usersStatus === "failed") {
