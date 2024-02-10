@@ -22,7 +22,7 @@ function OneUserFull() {
             return oneUser.articles.map(e =>
                 <div key={e.id}>
                     <NavLink to={`/articles/${e.id}`}>
-                        <button>{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
+                        <button className='articleButton'>{e.plant.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
                     </NavLink>
                 </div>
             )

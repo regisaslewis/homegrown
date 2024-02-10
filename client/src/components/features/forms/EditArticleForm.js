@@ -44,6 +44,7 @@ function EditArticleForm({articleItem}) {
 
      function handleDelete() {
         dispatch(deleteArticle({id: id}));
+        dispatch(setEditFormVisibility(0));
         if (location.pathname !== "/articles/") {
             history.goBack();
         }        
