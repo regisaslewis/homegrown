@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import { selectArticleById, editArticle, deleteArticle, setEditFormVisibility } from '../articles/articlesSlice';
 import { useFormik } from 'formik';
 import * as yup from "yup";
@@ -7,6 +8,8 @@ import * as yup from "yup";
 function EditArticleForm({articleItem}) {
     
     const { id } = articleItem;
+    const history = useHistory();
+    const location = useLocation();
     const dispatch = useDispatch();
     const article = useSelector((state) => selectArticleById(state, Number(id)))
 
@@ -40,8 +43,12 @@ function EditArticleForm({articleItem}) {
      formik.values.likes = article.likes;
 
      function handleDelete() {
-        dispatch(deleteArticle({id: id}))
+        dispatch(deleteArticle({id: id}));
+        if (location.pathname !== "/articles/") {
+            history.goBack();
+        }        
      }
+     
     return (
         <div className='editFormContainer'>
             <h3 className='formTitle'>Corrections, Updates, Etc.</h3>

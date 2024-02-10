@@ -163,16 +163,26 @@ label {
 .formContainer, .editFormContainer {
     background-color: bisque;
     width: 500px;
-    position: fixed;
     border-radius: 5px;
-    box-shadow: -2px 2px 2px 1px black;
+    position: fixed;
     top: 250px;
-    left: 30%;
+    left: 40%;
+    box-shadow: -2px 2px 2px 1px black;
     z-index: 9;
 }
 
 .editFormContainer {
     border: dashed 2px black;
+    display: block;
+}
+
+.editButton {
+    width: 200px;
+    margin: auto;
+}
+
+.edBut {
+    width: 200px;
 }
 
 .formTitle {
@@ -283,6 +293,7 @@ label {
     margin: auto;
     border: solid 2px rgb(255, 255, 255);
     padding: 10px;
+    position: relative;
 }
 
 .userPlantTiles, .userArticleTiles {
@@ -673,9 +684,10 @@ label {
 
 #cuDislikes, #cuLikes {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 450px;
-    column-gap: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 700px;
+    column-gap: 5px;
+    row-gap: 15px;
     margin: 10px auto 10px auto;
 }
 
@@ -949,4 +961,15 @@ label {
 .checkOut {
     margin-top: 40px;
     margin-left: 40px;
+}
+
+.morePlants {
+    background-color: rgba(255, 255, 255, 0.443);
+    width: max-content;
+    margin: auto 0 auto auto;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding-right: 3px;
+    padding-left: 3px;
 }

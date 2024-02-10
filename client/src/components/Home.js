@@ -25,15 +25,17 @@ function Home() {
     }, [dispatch])
 
     function userLikedArticles() {
+        let shownLikes = "none yet"
         if (currentUser.liked_articles.length) {
             const userLikes = currentUser.liked_articles.map(e => e.id);
             const likeArray = allArticles.filter(e => userLikes.includes(e.id));
-            const shownLikes = likeArray.map(e => <div  key={e.id}>
+            shownLikes = likeArray.map(e => <div  key={e.id}>
                 <NavLink to={`/articles/${e.id}`}>
                     <button className="articleButton"><div className="articleButtonTitle">{e.plant.name} by {e.user.name}</div><br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
                 </NavLink>
             </div>)
-            return (
+        }
+        return (
                 <div className="likeBox">
                     <h4 id="likeTitle">Liked Guides</h4>
                     <div id="cuLikes">
@@ -41,19 +43,20 @@ function Home() {
                     </div>
                 </div>
             )
-        }
     }
 
     function userDislikedArticles() {
+        let shownDislikes = "none yet"
         if (currentUser.disliked_articles.length) {
             const userDislikes = currentUser.disliked_articles.map(e => e.id);
             const dislikeArray = allArticles.filter(e => userDislikes.includes(e.id));
-            const shownDislikes = dislikeArray.map(e => <div  key={e.id}>
+            shownDislikes = dislikeArray.map(e => <div  key={e.id}>
                 <NavLink to={`/articles/${e.id}`}>
                     <button className="articleButton"><div className="articleButtonTitle">{e.plant.name} by {e.user.name}</div> <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
                 </NavLink>
             </div>)
-            return (
+        }
+        return (
                 <div className="likeBox">
                     <h4 id="dislikeTitle">Disliked Guides</h4>
                     <div id="cuDislikes">
@@ -61,12 +64,11 @@ function Home() {
                     </div>
                 </div>
             )
-        }
     }    
 
     function userArticles() {
         if (currentUser.articles.length) {
-            const articleList = currentUser.articles.map(e => {
+            const articleList = () => currentUser.articles.map(e => {
                 let image;
 
                 if (e.plant.image) {
@@ -105,7 +107,7 @@ function Home() {
                         </div>
                     </div>
                 </div>)})
-            return articleList;
+            return articleList();
         }
     }
 

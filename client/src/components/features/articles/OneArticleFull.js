@@ -97,7 +97,7 @@ function OneArticleFull() {
             return (
                 <div className="articleEditButton">
                     {editFormVisibility !== params.articleID ?
-                    <button onClick={() => handleClick(params.articleID)}>Edit Guide</button> :
+                    <button onClick={() => handleClick(params.articleID)}>Edit This Guide</button> :
                     <button onClick={() => handleCancel()}>Cancel</button>
                     }
                 </div>
@@ -112,41 +112,49 @@ function OneArticleFull() {
     } else {
         image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
     }
-    
-    return (
-        <div className="articleCard">
-            <div className="articleTitle" style={editFormVisibility === params.articleID ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
-            <NavLink to={`/users/${article.user_id}`}>Your</NavLink> Care Guide
-                <br />
-                for <NavLink to={`/plants/${article.plant_id}`}>{article.plant.name}</NavLink>
-            </div>
-            <div className="articleContents" style={editFormVisibility === params.articleID ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
-                <div className="articleDetails">
-                    <p>success rating: {article.success_rating}/5</p>
-                    <NavLink to={`/plants/${article.plant_id}`}>
-                        <img className="articleImage" alt={article.plant.name} src={image} />
-                    </NavLink>
-                </div>
-                <p className="articleBody">{article.body}</p>
-                <p>likes: {article.likes}</p>
-                <p>dislikes: {article.dislikes}</p>
-            </div>
-            <div className="editOrVote">
-                <div>
-                    {currentUserArticle()}
-                    <div style={editFormVisibility === params.articleID ? {"display" : "block"} : {"display" : "none"}}>
-                        <EditArticleForm articleItem={article} />
+
+    function wholeArticle() {
+        if (article.id) {
+            return(
+                <div className="articleCard">
+                    <div className="articleTitle" style={editFormVisibility === params.articleID ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+                    <NavLink to={`/users/${article.user_id}`}>Your</NavLink> Care Guide
+                        <br />
+                        for <NavLink to={`/plants/${article.plant_id}`}>{article.plant.name}</NavLink>
+                    </div>
+                    <div className="articleContents" style={editFormVisibility === params.articleID ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+                        <div className="articleDetails">
+                            <p>success rating: {article.success_rating}/5</p>
+                            <NavLink to={`/plants/${article.plant_id}`}>
+                                <img className="articleImage" alt={article.plant.name} src={image} />
+                            </NavLink>
+                        </div>
+                        <p className="articleBody">{article.body}</p>
+                        <p>likes: {article.likes}</p>
+                        <p>dislikes: {article.dislikes}</p>
+                    </div>
+                    <div className="editOrVote">
+                        <div>
+                            {currentUserArticle()}
+                            <div style={editFormVisibility === params.articleID ? {"display" : "block"} : {"display" : "none"}}>
+                                <EditArticleForm articleItem={article} />
+                            </div>
+                        </div>
+                        <div >
+                            {allowVote()}
+                        </div>
+                    </div>
+                    <div className="returnButton">
+                        <button onClick={() => history.goBack()}>Return</button>
                     </div>
                 </div>
-                <div >
-                    {allowVote()}
-                </div>
-            </div>
-            <div className="returnButton">
-                <button onClick={() => history.goBack()}>Return</button>
-            </div>
-        </div>
-    )
+            )
+        } else {
+            history.goBack();
+        }
+    }
+    
+    return wholeArticle();
 }
 
 export default OneArticleFull;

@@ -5,7 +5,16 @@ function OneUser({userItem}) {
 
     const { id, name, group, plants } = userItem
 
-    const userPlants = plants.map(e => <NavLink className="homePlantBox" key={e.id} to={`/plants/${e.id}`}><p>{e.name}<br /><img style={{"width": "50px"}} alt={e.name} src={e.image} /></p></NavLink>)
+    const userPlants = () => {
+        if (plants.length < 4) {
+            return plants.map(e => <NavLink className="homePlantBox" key={e.id} to={`/plants/${e.id}`}><p>{e.name}<br /><img style={{"width": "50px"}} alt={e.name} src={e.image} /></p></NavLink>)
+        } else if (plants.length >= 4) {
+            const shortenedList = plants.map(e => <NavLink className="homePlantBox" key={e.id} to={`/plants/${e.id}`}><p>{e.name}<br /><img style={{"width": "50px"}} alt={e.name} src={e.image} /></p></NavLink>).slice(0, 3);
+            return shortenedList;
+        } else {
+            return "none"
+        }
+    }
 
     return (
         <div className="userCard">
@@ -17,7 +26,8 @@ function OneUser({userItem}) {
             <div className="userPlants">
                 <div>Proud caretaker of:</div>
                 <br />
-                <div className="userPlantTiles">{plants.length ? userPlants : "none"}</div>
+                <div className="userPlantTiles">{userPlants()}</div>
+                <div className="morePlants">{plants.length < 4 ? "" : <NavLink to={`/users/${id}`}>more plants on {name}'s page</NavLink>}</div>
             </div>            
             <br />
             <div className="userButton">

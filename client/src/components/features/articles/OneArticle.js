@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { selectArticleById, getEditFormVisibility, setEditFormVisibility, editArticle } from "./articlesSlice";
+import { selectArticleById, getEditFormVisibility, editArticle } from "./articlesSlice";
 import { getCurrentUser, likeArticle, dislikeArticle, removeLike, removeDislike } from "../users/currentUserSlice";
-
-import EditArticleForm from "../forms/EditArticleForm";
 
 function OneArticle({articleItem}) {
 
@@ -28,14 +26,6 @@ function OneArticle({articleItem}) {
             }
         }
     }, [article.id, currentUser.name, currentUser.disliked_articles, currentUser.liked_articles])
-
-    function handleClick(num) {
-        dispatch(setEditFormVisibility(num))
-    }
-
-    function handleCancel() {
-        dispatch(setEditFormVisibility(0));
-    }
 
     function handleLike() {
         if (liked !== 1) {
@@ -87,10 +77,6 @@ function OneArticle({articleItem}) {
             )
         }
     }
-
-    const displayOn = {
-        display: "block",
-    }
     
     let image;
 
@@ -119,16 +105,10 @@ function OneArticle({articleItem}) {
                 <p>dislikes: {article.dislikes}</p>
             </div>
             <div className="editOrVote">
-                {article.user_id === currentUser.id ?
-                    <div className="articleEditButton">
-                        {editFormVisibility !== id ?
-                        <button onClick={() => handleClick(id)}>Edit Guide</button> :
-                        <button onClick={() => handleCancel()}>Cancel</button>
-                        }
-                    </div>:
-                ""}
-                <div style={editFormVisibility === id ? displayOn : {"display" : "none"}}>
-                    <EditArticleForm articleItem={articleItem} />
+                <div className="editButton">
+                    {article.user_id === currentUser.id ?
+                    <NavLink to={`/articles/${article_id}`}><button title="Click here to Edit" className="edBut">To Guide Page</button></NavLink>:
+                    ""}
                 </div>
                 <div>{allowVote()}</div>
             </div>

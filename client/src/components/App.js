@@ -36,10 +36,10 @@ function App() {
   }, [dispatch])
 
   const buttonOn = {
+    backgroundColor: "rgba(0, 0, 0, 0)",
     color: "rgba(0, 0, 0, 0)",
     textShadow: "none",
     border: "none",
-    backgroundColor: "bisque",
     zIndex: "-1"
   }
 
