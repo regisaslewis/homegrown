@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -15,7 +15,7 @@ function OneGroup({groupItem}) {
     const currentUser = useSelector(getCurrentUser);
     const allUsers = useSelector(selectAllUsers)
 
-    const groupCreator = allUsers.find(e => e.name === group.group_creator)
+    const groupCreator = () => allUsers.find(e => e.name === group.group_creator)
 
     function usersList() {
         if (group.users.length > 0) {

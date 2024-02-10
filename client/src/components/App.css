@@ -308,7 +308,7 @@ label {
 
 .oneUserCard {
     width: 60%;
-    margin: 40px auto 0 auto;
+    margin: 40px auto 20px auto;
 }
 
 .oneUserTitle {
@@ -629,7 +629,7 @@ label {
 .groupsPage {
     top: 27%;
     width: 170px;
-    height: 169px;
+    height: 168px;
     margin: auto;
     color: white;
     font-size: 44px;

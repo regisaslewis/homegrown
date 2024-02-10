@@ -64,12 +64,15 @@ function OnePlantFull() {
         }
     }
 
-    let image;
+    function showImage() {
+        let image;
 
-    if (onePlant.image) {
-        image = onePlant.image
-    } else {
-        image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+        if (onePlant.image) {
+            image = onePlant.image
+        } else {
+            image = `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+        }
+        return image;
     }
 
     return (
@@ -80,7 +83,7 @@ function OnePlantFull() {
                         {onePlant.name}
                     </div>
                     <div>
-                        <img className='onePlantImage' alt={onePlant.name} src={image} />
+                        <img className='onePlantImage' alt={onePlant.name} src={showImage()} />
                     </div>
                 </div>            
                 <div className='plantRight'>

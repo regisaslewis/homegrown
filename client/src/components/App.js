@@ -76,7 +76,7 @@ function App() {
     <div>
       <div id="overhead">
         <h1>HomeGrown</h1>
-        <h2>{currentUser.name ? ` Welcome, ${currentUser.name}` : ""}</h2>
+        <h2>{currentUser.name ? <NavLink to="/">Welcome, {currentUser.name}</NavLink> : ""}</h2>
       </div>
       <div id="userButtons">
           {currentUser.name ?
@@ -129,6 +129,9 @@ function App() {
           </Route>
           <Route path="/articles/:articleID">
             <OneArticleFull />
+          </Route>
+          <Route path="*">
+            <Redirect to="/" />
           </Route>
         </Switch>
       </div>

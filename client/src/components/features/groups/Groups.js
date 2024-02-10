@@ -24,8 +24,10 @@ function Groups() {
 
     let items;
     if (groupsStatus === "succeeded") {
-        items = allGroups.map(e => <OneGroup key={e.id} groupItem={e} />
-        )
+        items = allGroups.map(e => {
+            return <OneGroup key={e.id} groupItem={e} />
+
+        })
     } else if (groupsStatus === "failed") {
         items = <p>{error}</p>
     }
