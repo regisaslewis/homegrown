@@ -89,10 +89,7 @@ function App() {
           {currentUser.name ? <button style={buttonOff} onClick={handleLogout}>Logout</button> : ""}
         </div>
       <div id="navigation">
-        <Navigation
-          buttonOn = {buttonOn}
-          buttonOff = {buttonOff}
-        />
+        <Navigation />
       </div>
       <div id="currentView">
         <Switch>

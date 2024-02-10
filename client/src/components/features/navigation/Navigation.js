@@ -8,10 +8,22 @@ import { setFormVisibility as plantFormVisibility } from "../plants/plantsSlice"
 import { setFormVisibility as pfFormVisibility } from "../plant_families/plantFamiliesSlice";
 import { setNewFormVisibility } from "../articles/articlesSlice";
 
-function Navigation({ buttonOn, buttonOff}) {
+function Navigation() {
 
     const buttonStyle = useSelector(getCurrentButton)
     const dispatch = useDispatch();
+
+    const buttonOn = {
+      backgroundColor: "bisque",
+      color: "rgba(0, 0, 0, 0)",
+      textShadow: "none",
+      border: "none",
+      zIndex: "-1"
+    }
+  
+    const buttonOff = {
+      color: "black",
+    }
 
     function switchOn(num) {
         if (buttonStyle === num) {
