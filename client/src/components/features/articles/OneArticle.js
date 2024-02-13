@@ -73,7 +73,7 @@ function OneArticle({articleItem}) {
             }
         } else {
             return (
-                <p>Log in to vote</p>
+                <NavLink to="/greet"><p className="or logToVote">Log in to vote</p></NavLink>
             )
         }
     }

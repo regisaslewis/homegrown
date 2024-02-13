@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
     newFormVisibility: false,
     editFormVisibility: 0,
+    buttonHighlight: 1,
     articles: [],
     status: "idle",
     error: null
@@ -73,7 +74,67 @@ const articlesSlice = createSlice({
         setEditFormVisibility: (state, action) => {
             state.editFormVisibility = action.payload
         },
-
+        highlightButton: (state, action) => {
+            state.buttonHighlight = action.payload;
+        },
+        sortNormal: (state) => {
+            state.articles.sort((a, b) => {
+                if (a.id < b.id) {
+                    return -1
+                } else if (a.id > b.id) {
+                    return 1
+                }
+                return 0;
+            })
+        },
+        sortByLikes: (state) => {
+            let sortedArticles = state.articles.sort((a, b) => {
+                if (a.likes > b.likes) {
+                    return -1
+                } else if (a.likes < b.likes) {
+                    return 1
+                }
+                
+                return 0;
+            })
+            state.articles = sortedArticles
+        },
+        sortByDislikes: (state) => {
+            let sortedArticles = state.articles.sort((a, b) => {
+                if (a.dislikes < b.dislikes) {
+                    return -1
+                } else if (a.dislikes > b.dislikes) {
+                    return 1
+                }
+                
+                return 0;
+            })
+            state.articles = sortedArticles
+        },
+        sortByUserName: (state) => {
+            let sortedArticles = state.articles.sort((a, b) => {
+                if (a.user.name < b.user.name) {
+                    return -1
+                } else if (a.user.name > b.user.name) {
+                    return 1
+                }
+                
+                return 0;
+            })
+            state.articles = sortedArticles
+        },
+        sortByPlantName: (state) => {
+            let sortedArticles = state.articles.sort((a, b) => {
+                if (a.plant.name < b.plant.name) {
+                    return -1
+                } else if (a.plant.name > b.plant.name) {
+                    return 1
+                }
+                
+                return 0;
+            })
+            state.articles = sortedArticles
+        },
     },
     extraReducers (builder) {
         builder
@@ -112,10 +173,19 @@ const articlesSlice = createSlice({
     }
 })
 
-export const { setNewFormVisibility, setEditFormVisibility } = articlesSlice.actions;
+export const { 
+    setNewFormVisibility, 
+    setEditFormVisibility,
+    highlightButton, 
+    sortNormal, 
+    sortByLikes, 
+    sortByDislikes,
+    sortByUserName,
+    sortByPlantName } = articlesSlice.actions;
 
 export const getNewFormVisibility = state => state.articles.newFormVisibility;
 export const getEditFormVisibility = state => state.articles.editFormVisibility;
+export const getButtonHighlight = state => state.articles.buttonHighlight;
 export const selectAllArticles = state => state.articles.articles;
 export const getArticlesStatus = state => state.articles.status;
 export const getArticlesError = state => state.articles.error;
