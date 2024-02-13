@@ -20,9 +20,16 @@ On visiting HomeGrown for the first time, you'll be prompted to create an accoun
     - Plant Families
     - Guides
 
+Let's go ahead and sign up, to gain the full experience.  Once logged in, you'll arrive at your home page.  It begins fairly empty, full of potential.  The first place to head is over to **plants**, where you can either link plants others have added to your account or add your own.
+
+![plants](/client/src/Images/readme_plants.png)
+or, if you're only know the type of general type of plant you have but would like to see plants grouped by type, you could head over to **plant families**.
+![plant families](/client/src/Images/readme_pf.png)
+
+
+
+
 ![users](/client/src/Images/readme_users.png)
 ![groups](/client/src/Images/readme_groups.png)
-![plants](/client/src/Images/readme_plants.png)
-![plant families](/client/src/Images/readme_pf.png)
 ![guides](/client/src/Images/readme_guides.png)
 ![home and logout](/client/src/Images/readme_cuButtons.png)
