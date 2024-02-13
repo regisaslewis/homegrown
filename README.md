@@ -23,13 +23,29 @@ On visiting HomeGrown for the first time, you'll be prompted to create an accoun
 Let's go ahead and sign up, to gain the full experience.  Once logged in, you'll arrive at your home page.  It begins fairly empty, full of potential.  The first place to head is over to **plants**, where you can either link plants others have added to your account or add your own.
 
 ![plants](/client/src/Images/readme_plants.png)
-or, if you're only know the type of general type of plant you have but would like to see plants grouped by type, you could head over to **plant families**.
+
+Or, if you're only know the type of general type of plant you have but would like to see plants grouped by type, you could head over to **plant families**.
+
 ![plant families](/client/src/Images/readme_pf.png)
 
+Clicking on a plant will take you to that plant's individualized page, where guides written about it are gathered and the other users who claim ownership of the plant are listed.
+Speaking of Guides, let's head over there.
 
+![guides](/client/src/Images/readme_guides.png)
 
+Here you can check out the collected guides of all other users and like or dislike what people have posted, in order elevate the good and downplay the bad actors.  There are buttons for sorting by along various guidlines as well as a button marked *Add New Guide* that will allow you to do just that.
+Choose from the plants you've added to your collect and begin describing your care, starting with an honest appraisal of your level of success with your care.  Once you've provided as much information as you'd like, submit the guide and it will be added to the library *as well as* your personal guidebook, collected on your homepage and userpage.  To head back to your personalized homepage, simply click the **home** button in the upper-right corner of the current page.
+
+![home and logout](/client/src/Images/readme_cuButtons.png)
+
+The final two stops are the **users** page:
 
 ![users](/client/src/Images/readme_users.png)
+
+where you can view all other users and click to view their collections, and the **groups** page:
+
 ![groups](/client/src/Images/readme_groups.png)
-![guides](/client/src/Images/readme_guides.png)
-![home and logout](/client/src/Images/readme_cuButtons.png)
+
+where users have joined together in groups to be more directly connected to others who share similar concerns.  If you find a group to your liking, you are invited to join them and peruse what other members have contributed.  If not, you can always make your own group and set out to find like-minded houseplant growers that way.
+
+Now that you know the basics, get out there and share your care.  With a little help from one another, we can all grow better.

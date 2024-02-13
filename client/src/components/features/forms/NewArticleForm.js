@@ -69,13 +69,13 @@ function NewArticleForm() {
                     <option>Select a Plant:</option>
                     {findOptions()}
                 </select>
-                <label>Success Rating:</label>
+                <label>Success Rating (1 = abysmal, 5 = perfection):</label>
                 <select name="success_rating" type="number" value={formik.values.success_rating} onChange={formik.handleChange}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1">🪴</option>
+                    <option value="2">🪴🪴</option>
+                    <option value="3">🪴🪴🪴</option>
+                    <option value="4">🪴🪴🪴🪴</option>
+                    <option value="5">🪴🪴🪴🪴🪴</option>
                 </select>
                 <label>Body:</label>
                 <textarea name='body' value={formik.values.body} onChange={formik.handleChange} />
