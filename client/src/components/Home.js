@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import { getCurrentUser } from "./features/users/currentUserSlice";
 import { fetchArticles, selectAllArticles } from "./features/articles/articlesSlice";
-import { fetchGroups, selectAllGroups } from "./features/groups/groupsSlice";
+import { fetchGroups } from "./features/groups/groupsSlice";
 import { fetchUsers } from "./features/users/usersSlice";
 import { switchButton } from "./features/navigation/buttonSlice";
 import { selectAllUsers } from "./features/users/usersSlice";
@@ -15,7 +15,6 @@ function Home() {
     const currentUser = useSelector(getCurrentUser);
     const allArticles = useSelector(selectAllArticles)
     const allUsers = useSelector(selectAllUsers)
-    const allGroups = useSelector(selectAllGroups)
 
     useEffect(() => {
         dispatch(switchButton(1));
@@ -85,7 +84,7 @@ function Home() {
                 }}> 
                     <div className="articleTitle">
                         <NavLink to={`/users/${e.user_id}`}>
-                            Your
+                            <div className="your">Your</div>
                         </NavLink> Care Guide
                         <br />
                         for <NavLink to={`/plants/${e.plant_id}`}>

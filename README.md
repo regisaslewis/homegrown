@@ -8,4 +8,14 @@ Guides abound with tips from professionals in the field, but their specific expe
 
 That's where HomeGrown steps in.
 
-By allowing users to create their own care guides, those details can be highlighted.  With this information in hand, one can more directly choose their sources of guidance and promote helpful posts presented by other users.  
+By allowing users to create their own care guides, those details can be highlighted.  With this information in hand, one can more directly choose their sources of guidance and promote helpful posts presented by other users.
+
+### Where to begin
+
+On visiting HomeGrown for the first time, you'll be prompted to create an account.  While not absolutely necessary, signing up is the only way to contribute to the site.  If you merely wish to view what others have contributed, the navigation bar along the left-hand side will direct you to five pages:
+    - Users
+    - Groups
+    - Plants
+    - Plant Families
+    - Guides
+

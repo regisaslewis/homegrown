@@ -108,9 +108,9 @@ function Articles() {
                 <div className="pageButtons" style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                     <div className="newItemButton">{newArticleButton()}</div>
                     <div className="sortButtons">
-                        <button className={highlitButton === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Sort</button>
+                        <button className={highlitButton === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
                         <button className={highlitButton === 2 ? "deadButton" : "livingButton"} onClick={() => likesSort()}>Most Likes</button>
-                        <button className={highlitButton === 3 ? "deadButton" : "livingButton"} onClick={() => dislikesSort()}>Least Dislikes</button>
+                        <button className={highlitButton === 3 ? "deadButton" : "livingButton"} onClick={() => dislikesSort()} style={{width: "max-content"}}>Fewest Dislikes</button>
                         <button className={highlitButton === 4 ? "deadButton" : "livingButton"} onClick={() => userSort()}>User Name</button>
                         <button className={highlitButton === 5 ? "deadButton" : "livingButton"} onClick={() => plantSort()}>Plant Name</button>
                     </div>

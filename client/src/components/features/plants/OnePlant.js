@@ -15,8 +15,8 @@ function OnePlant({plantItem}) {
     
     return (
         <div title={`Click for more on ${name}`}>
-            <NavLink to={`/plants/${plantItem.id}`}>
-                <div className="plantCard">
+            <div className="plantCard">
+                <NavLink to={`/plants/${plantItem.id}`}>
                     <div className="plantCardContentsMini">
                         <div className="plantTitleMini">
                             {name}
@@ -30,11 +30,13 @@ function OnePlant({plantItem}) {
                             {family.name}
                         </div>
                     </div>
-                    <div>
+                </NavLink>
+                <div>
+                    <NavLink to={`/plants/${plantItem.id}`}>
                         <img className="plantImage" alt={name} src={image} />
-                    </div>
+                    </NavLink>
                 </div>
-            </NavLink>
+            </div>
         </div>
     )
 }

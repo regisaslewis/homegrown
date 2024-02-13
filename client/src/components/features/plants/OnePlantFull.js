@@ -40,7 +40,7 @@ function OnePlantFull() {
         if (onePlant.articles.length) {
             const articles = onePlant.articles.map(e => <div  key={e.id}>
                 <NavLink to={`/articles/${e.id}`}>
-                    <button className='articleButton'>{e.user.name} <br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
+                    <button className='articleButton'><div className="articleButtonTitle">{e.user.name}</div><br /> {e.body.length < 50 ? e.body : e.body.substring(0, 46) + "..."} </button>
                 </NavLink>
             </div>)
             return articles;

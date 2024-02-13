@@ -91,7 +91,7 @@ function Plants() {
                 <div className="pageButtons plantPBs" style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                     <div className="newItemButton">{newPlantButton()}</div>
                     <div className="sortButtons">
-                        <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Sort</button>
+                        <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
                         <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => nameSort()}>Plant Name</button>
                         <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => familySort()}>Family Name</button>
                     </div>

@@ -58,7 +58,7 @@ function Users() {
             <div className="pageButtons plantPBs">
                 <div className="newItemButton"></div>
                 <div className="sortButtons">
-                    <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Sort</button>
+                    <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
                     <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => plantSort()}>Most Plants</button>
                     <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => articleSort()}>Most Guides</button>
                 </div>

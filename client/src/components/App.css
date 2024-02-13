@@ -9,10 +9,11 @@ h1 {
     height: max-content;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 50px;
+    font-weight: lighter;
     font-style: oblique;
     width: max-content;
     margin: 15px auto 0;
-    background-color: rgba(255, 255, 255, 0.629);
+    background-color: rgba(255, 255, 255, 0.568);
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -29,6 +30,7 @@ a {
     text-decoration: none;
     color: black;
 }
+
 button {
     background-color: white;
     height: 30px;
@@ -43,7 +45,6 @@ button:hover {
     color: white;
     border: solid 2px black;
     transition-duration: 100ms;
-    transform: scale(1.005);
 }
 
 form {
@@ -334,19 +335,24 @@ label {
 #articleList {
     display: grid;
     grid-template-columns:  1fr 1fr;
+    row-gap: 10px;
     width: 90%;
-    margin: 0 20% 20px auto;
+    margin: 10px 20% 20px auto;
 }
 
 .articleCard {
     background-color: rgb(228, 121, 88);
     display: grid;
     grid-template-rows: 1fr 4fr 1fr;
-    row-gap: 10px;
+    row-gap: 18px;
     width: 80%;
     max-width: 600px;
     border: solid 2px black;
-    margin: 40px auto;
+    margin: auto;
+}
+
+.articleCardFull {
+    margin-top: 3%;
 }
 
 .articleTitle {
@@ -436,7 +442,11 @@ label {
 
 .newItemButton {
     width: max-content;
-    margin: 10px 20%;
+    margin-left: 20%;
+}
+
+.pfIB {
+    margin-top: 20px;
 }
 
 #groups {
@@ -699,7 +709,7 @@ label {
 
 .articleButtonTitle {
     text-decoration: underline;
-    margin-bottom: -5px;
+    margin-bottom: -10px;
 }
 
 #dislikeTitle, #likeTitle {
@@ -753,7 +763,7 @@ label {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    row-gap: 15px;
+    gap: 15px;
     width: 90%;
     margin: 10px 10% 20px auto;
 }
@@ -770,16 +780,13 @@ label {
     grid-template-columns: 1fr 1fr;
     width: 80%;
     margin: auto;
+    align-items: center;
 }
 
 .plantLeft {
     display: grid;
     grid-template-rows: 1fr 6fr;
-}
-
-.plantRight {
-    display: grid;
-    grid-template-rows: 1fr 2fr;
+    align-items: center;
 }
 
 .plantTitle {
@@ -804,15 +811,15 @@ label {
     border: solid black 2px;
     margin-top: 10px;
     background-color: rgb(224, 104, 67);
-    display: grid;
-    grid-template-rows: 1fr 5fr;
+    height: min-content;
 }
 
 .plantArticles {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 95%;
-    margin: auto;
+    margin: 10px auto 30px;
+    justify-items: center;
 }
 
 .pu {
@@ -891,6 +898,7 @@ label {
 }
 
 #pfList {
+    margin-top: 20px;
     margin-right: 10%;
     display: grid;
     grid-template-columns:  1fr 1fr;
@@ -981,10 +989,11 @@ label {
 
 .pageButtons {
     width: 82%;
+    height: max-content;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin: 20px auto -20px 4px;
+    margin: 20px auto 0 4px;
 }
 
 .sortButtons button {
@@ -995,6 +1004,7 @@ label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .deadButton {
@@ -1009,6 +1019,12 @@ label {
     cursor: default;
 }
 
-.plantPBs {
-    margin-bottom: 10px;
+.sortZone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sort {
+    text-align: center;
 }
