@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
     users: [],
+    buttonHighlight: 1,
     status: "idle",
     error: null
 }
@@ -39,7 +40,40 @@ const usersSlice = createSlice({
     reducers: {
         setUsers: (state, action) => {
             state.users = action.payload;
-        }
+        },
+        highlightButton: (state, action) => {
+            state.buttonHighlight = action.payload
+        },
+        sortNormal: (state) => {
+            state.users.sort((a, b) => {
+                if (a.id < b.id) {
+                    return -1
+                } else if (a.id > b.id) {
+                    return 1
+                }
+                return 0
+            })
+        },
+        sortPlants: (state) => {
+            state.users.sort((a, b) => {
+                if (a.plants.length > b.plants.length) {
+                    return -1
+                } else if (a.plants.length < b.plants.length) {
+                    return 1
+                }
+                return 0
+            })
+        },
+        sortArticles: (state) => {
+            state.users.sort((a, b) => {
+                if (a.articles.length > b.articles.length) {
+                    return -1
+                } else if (a.articles.length < b.articles.length) {
+                    return 1
+                }
+                return 0
+            })
+        },
     },
     extraReducers (builder) {
         builder
@@ -60,11 +94,12 @@ const usersSlice = createSlice({
     }
 })
 
-export const { setUsers } = usersSlice.actions;
+export const { setUsers, highlightButton, sortNormal, sortPlants, sortArticles } = usersSlice.actions;
 
 export const selectAllUsers = state => state.users.users;
 export const getUsersStatus = state => state.users.status;
 export const getUsersError = state => state.users.error;
+export const getButtonHightlight = state => state.users.buttonHighlight
 
 export const selectUserByID = (state, id) => state.users.users.find(e => e.id === id)
 

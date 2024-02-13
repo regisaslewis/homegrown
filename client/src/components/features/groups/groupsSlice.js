@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
     groups: [],
     formVisibility: false,
+    buttonHighlight: 1,
     status: "idle",
     error: null
 }
@@ -56,7 +57,51 @@ const groupsSlice = createSlice({
         },
         setGroups: (state, action) => {
             state.groups = action.payload;
-        }
+        },
+        hightlightButton: (state, action) => {
+            state.buttonHighlight = action.payload
+        },
+        sortNormal: (state) => {
+            state.groups.sort((a, b) => {
+                if (a.id < b.id) {
+                    return -1
+                } else if (a.id > b.id) {
+                    return 1
+                }
+                return 0
+            })
+        },
+        sortName: (state) => {
+            state.groups.sort((a, b) => {
+                if (a.name < b.name) {
+                    return -1
+                } else if (a.name > b.name) {
+                    return 1
+                }
+                return 0
+            })
+        },
+        sortMembers: (state) => {
+            state.groups.sort((a, b) => {
+                if (a.users.length > b.users.length) {
+                    return -1
+                } else if (a.users.length < b.users.length) {
+                    return 1
+                } else {
+                    return 0
+                }
+            })
+        },
+        sortNewest: (state) => {
+            state.groups.sort((a, b) => {
+                if (a.id > b.id) {
+                    return -1
+                } else if (a.id < b.id) {
+                    return 1
+                }
+                return 0
+            })
+        },
     },
     extraReducers (builder) {
         builder
@@ -90,12 +135,21 @@ const groupsSlice = createSlice({
     }
 })
 
-export const { setFormVisibility, setGroups } = groupsSlice.actions;
+export const { 
+    setFormVisibility, 
+    setGroups,
+    hightlightButton,
+    sortNormal,
+    sortName,
+    sortMembers,
+    sortNewest } = groupsSlice.actions;
 
 export const getFormVisibility = state => state.groups.formVisibility;
 export const selectAllGroups = state => state.groups.groups;
 export const getGroupsStatus = state => state.groups.status;
 export const getGroupsError = state => state.groups.error;
+export const getButtonHighlight = state => state.groups.buttonHighlight;
+
 export const selectGroupById = (state, id) => state.groups.groups.find(e => e.id === id)
 
 export default groupsSlice.reducer

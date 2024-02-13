@@ -62,7 +62,7 @@ function NewArticleForm() {
 
     return (
         <div>
-            <h3 className='formTitle'>Let's write about plant care</h3>
+            <h3 className='formTitle'>Share the deets on Plant Care</h3>
             <form autoComplete='off' onSubmit={formik.handleSubmit}>
                 <label>Which plant?</label>
                 <select type="number" name="plant_id" value={formik.values.plant_id} onChange={formik.handleChange}>

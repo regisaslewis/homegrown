@@ -79,8 +79,8 @@ function Home() {
                 return (
                 <div key={e.id} className="homeArticleStack" style={{
                     "position" : "absolute",
-                    "top" : `${30 + (5 * currentUser.articles.indexOf(e))}px`,
-                    "left" : `${12 * currentUser.articles.indexOf(e)}px`,
+                    "top" : `${10 + (20 * currentUser.articles.indexOf(e))}px`,
+                    "left" : `${20 * currentUser.articles.indexOf(e)}px`,
                     "zIndex" : `${100 - currentUser.articles.indexOf(e)}`
                 }}> 
                     <div className="articleTitle">

@@ -88,7 +88,7 @@ function Plants() {
     return (
         <div>
             <h2 className="viewName plantsPage">Plants!</h2>
-                <div className="pageButtons plantPBs">
+                <div className="pageButtons plantPBs" style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                     <div className="newItemButton">{newPlantButton()}</div>
                     <div className="sortButtons">
                         <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Sort</button>

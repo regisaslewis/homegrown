@@ -105,7 +105,7 @@ function Articles() {
     return (
         <div>
             <h2 className="viewName articlesPage">Guides!</h2>
-                <div className="pageButtons">
+                <div className="pageButtons" style={newFormVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
                     <div className="newItemButton">{newArticleButton()}</div>
                     <div className="sortButtons">
                         <button className={highlitButton === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Sort</button>
