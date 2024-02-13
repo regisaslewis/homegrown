@@ -44,7 +44,7 @@ The final two stops are the **users** page:
 
 where you can view all other users and click to view their collections, and the **groups** page:
 
-![groups](/client/src/Images/readme_groups.png)
+![groups](/client/src/Images/readme_groups2.png)
 
 where users have joined together in groups to be more directly connected to others who share similar concerns.  If you find a group to your liking, you are invited to join them and peruse what other members have contributed.  If not, you can always make your own group and set out to find like-minded houseplant growers that way.
 
