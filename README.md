@@ -22,7 +22,7 @@ On visiting HomeGrown for the first time, you'll be prompted to create an accoun
 
 Let's go ahead and sign up, to gain the full experience.  Once logged in, you'll arrive at your home page.  It begins fairly empty, full of potential.  The first place to head is over to **plants**, where you can either link plants others have added to your account or add your own.
 
-![plants](/client/src/Images/readme_plants.png)
+![plants](/client/src/Images/readme_plants2.png)
 
 Or, if you're only know the type of general type of plant you have but would like to see plants grouped by type, you could head over to **plant families**.
 
