@@ -20,3 +20,9 @@ On visiting HomeGrown for the first time, you'll be prompted to create an accoun
     - Plant Families
     - Guides
 
+![users](/client/src/Images/readme_users.png)
+![groups](/client/src/Images/readme_groups.png)
+![plants](/client/src/Images/readme_plants.png)
+![plant families](/client/src/Images/readme_pf.png)
+![guides](/client/src/Images/readme_guides.png)
+![home and logout](/client/src/Images/readme_cuButtons.png)
