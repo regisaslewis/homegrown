@@ -13,6 +13,7 @@ By allowing users to create their own care guides, those details can be highligh
 ### Where to begin
 
 On visiting HomeGrown for the first time, you'll be prompted to create an account.  While not absolutely necessary, signing up is the only way to contribute to the site.  If you merely wish to view what others have contributed, the navigation bar along the left-hand side will direct you to five pages:
+
     - Users
     - Groups
     - Plants

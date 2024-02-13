@@ -43,7 +43,6 @@ button {
 button:hover {
     background-color: rgb(19, 106, 84);
     color: white;
-    border: solid 2px black;
     transition-duration: 100ms;
 }
 
@@ -157,8 +156,8 @@ label {
 }
 
 .navBut:hover {
-    background-color: rgb(162, 229, 212);
-    transform: scale(1);
+    background-color: bisque;
+    border-right: solid 2px bisque;
 }
 
 .formContainer, .editFormContainer {
@@ -709,7 +708,7 @@ label {
 
 .articleButtonTitle {
     text-decoration: underline;
-    margin-bottom: -10px;
+    margin-bottom: -px;
 }
 
 #dislikeTitle, #likeTitle {

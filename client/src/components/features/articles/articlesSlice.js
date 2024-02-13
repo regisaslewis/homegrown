@@ -156,14 +156,6 @@ const articlesSlice = createSlice({
             const { id } = action.payload;
             const articles = state.articles.filter(e => e.id !== id);
             state.articles = [...articles, action.payload]
-            state.articles.sort((a, b) => {
-                if (a.id < b.id) {
-                    return -1
-                } else if (a.id > b.id) {
-                    return 1
-                }
-                return 0;
-            })
         })
         .addCase(deleteArticle.fulfilled, (state, action) => {
             const { id } = action.payload;

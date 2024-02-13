@@ -59,7 +59,7 @@ function OnePlantFull() {
         const userPlantNames = currentUser.plants.map(e => e.name)
         const userHasPlant = userPlantNames.includes(onePlant.name)
             if (!userHasPlant) {
-                return <button onClick={() => handleAdd()}>Add to {currentUser.name}'s Plants</button>
+                return <button onClick={() => handleAdd()}>Add to Your Plants</button>
             }
         }
     }

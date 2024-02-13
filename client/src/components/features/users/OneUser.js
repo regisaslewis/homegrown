@@ -19,7 +19,7 @@ function OneUser({userItem}) {
     return (
         <div className="userCard">
             <div className="userTitle">
-                <div className="userName">{name}</div>
+                <div className="userName"><NavLink to={`/users/${id}`}>{name}</NavLink></div>
                 <div>{group ? `member of` : ""}</div>
                 <div className="userGroup">{group ? group.name : ""}</div>
             </div>
