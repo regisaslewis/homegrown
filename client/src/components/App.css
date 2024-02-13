@@ -1006,3 +1006,7 @@ label {
     transform: none;
     cursor: default;
 }
+
+.plantPBs {
+    margin-bottom: 10px;
+}

@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
     plants: [],
     formVisibility: false,
+    buttonHightlight: 1,
     status: "idle",
     error: null
 }
@@ -53,6 +54,39 @@ const plantsSlice = createSlice({
     reducers: {
         setFormVisibility: (state, action) => {
             state.formVisibility = action.payload
+        },
+        highlightButton: (state, action) => {
+            state.buttonHightlight = action.payload
+        },
+        sortNormal: (state) => {
+            state.plants.sort((a, b) => {
+                if (a.id < b.id) {
+                    return -1
+                } else if (a.id > b.id) {
+                    return 1
+                }
+                return 0
+            })
+        },
+        sortName: (state) => {
+            state.plants.sort((a, b) => {
+                if (a.name < b.name) {
+                    return -1
+                } else if (a.name > b.name) {
+                    return 1
+                }
+                return 0
+            })
+        },
+        sortFamily: (state) => {
+            state.plants.sort((a, b) => {
+                if (a.family.name < b.family.name) {
+                    return -1
+                } else if (a.family.name > b.family.name) {
+                    return 1
+                }
+                return 0
+            })
         }
     },
     extraReducers (builder) {
@@ -87,12 +121,13 @@ const plantsSlice = createSlice({
     }
 })
 
-export const { setFormVisibility } = plantsSlice.actions;
+export const { setFormVisibility, highlightButton, sortNormal, sortName, sortFamily } = plantsSlice.actions;
 
 export const getFormVisibility = state => state.plants.formVisibility;
 export const selectAllPlants = state => state.plants.plants;
 export const getPlantsStatus = state => state.plants.status;
 export const getPlantsError = state => state.plants.error;
+export const getButtonHighlight = state => state.plants.buttonHightlight;
 
 export const selectPlantByID = (state, id) => state.plants.plants.find(e => e.id === id)
 

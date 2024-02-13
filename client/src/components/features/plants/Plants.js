@@ -4,7 +4,18 @@ import { NavLink } from "react-router-dom";
 import NewPlantForm from "../forms/NewPlantForm";
 import OnePlant from "./OnePlant";
 
-import { fetchPlants, selectAllPlants, getPlantsStatus, getPlantsError, getFormVisibility, setFormVisibility } from "./plantsSlice";
+import { 
+    fetchPlants, 
+    selectAllPlants, 
+    getPlantsStatus, 
+    getPlantsError,
+    getFormVisibility, 
+    setFormVisibility,
+    getButtonHighlight,
+    highlightButton,
+    sortNormal,
+    sortName,
+    sortFamily,} from "./plantsSlice";
 import { switchButton } from "../navigation/buttonSlice";
 import { getCurrentUser } from "../users/currentUserSlice";
 
@@ -15,10 +26,13 @@ function Plants() {
     const plantsStatus = useSelector(getPlantsStatus);
     const error = useSelector(getPlantsError)
     const formVisibility = useSelector(getFormVisibility)
+    const highlit = useSelector(getButtonHighlight)
     const currentUser = useSelector(getCurrentUser)
 
     useEffect(() => {
         dispatch(switchButton(6))
+        dispatch(sortNormal())
+        dispatch(highlightButton(1))
     }, [dispatch])
 
     useEffect(() => {
@@ -55,11 +69,33 @@ function Plants() {
             }
         }
     }
+    
+    function normalSort() {
+        dispatch(sortNormal())
+        dispatch(highlightButton(1))
+    }
+    
+    function nameSort() {
+        dispatch(sortName())
+        dispatch(highlightButton(2))
+    }
+    
+    function familySort() {
+        dispatch(sortFamily())
+        dispatch(highlightButton(3))
+    }
 
     return (
         <div>
             <h2 className="viewName plantsPage">Plants!</h2>
-            <div className="newItemButton">{newPlantButton()}</div>
+                <div className="pageButtons plantPBs">
+                    <div className="newItemButton">{newPlantButton()}</div>
+                    <div className="sortButtons">
+                        <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Sort</button>
+                        <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => nameSort()}>Plant Name</button>
+                        <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => familySort()}>Family Name</button>
+                    </div>
+                </div>
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewPlantForm />
