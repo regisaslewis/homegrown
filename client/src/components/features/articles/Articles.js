@@ -44,10 +44,6 @@ function Articles() {
         }
     }, [articlesStatus, dispatch])
 
-    useEffect(() => {
-        dispatch(checkSession());
-    }, [dispatch, currentUser.name])
-
     let items;
     if (articlesStatus === "loading") {
         items = <p>Loading Articles</p>

@@ -34,14 +34,13 @@ function Groups() {
         dispatch(switchButton(5))
         dispatch(fetchGroups())
         dispatch(hightlightButton(1))
-    }, [dispatch])
+    }, [dispatch, OneGroup])
 
     let items;
-    if (groupsStatus === "succeeded") {
-        items = allGroups.map(e => {
-            return <OneGroup key={e.id} groupItem={e} />
-
-        })
+    if (groupsStatus === "loading") {
+        items = allGroups.map(e => <OneGroup key={e.id} groupItem={e} />)
+    } else if (groupsStatus === "succeeded") {
+        items = allGroups.map(e => <OneGroup key={e.id} groupItem={e} />)
     } else if (groupsStatus === "failed") {
         items = <p>{error}</p>
     }

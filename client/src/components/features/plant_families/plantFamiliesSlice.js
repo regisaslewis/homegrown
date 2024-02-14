@@ -55,6 +55,16 @@ const plantFamiliesSlice = createSlice({
                 return 0
             })
         },
+        sortName: (state) => {
+            state.plantFamilies.sort((a, b) => {
+                if (a.name < b.name) {
+                    return -1
+                } else if (a.name > b.name) {
+                    return 1
+                }
+                return 0
+            })
+        },        
         sortNumber: (state) => {
             state.plantFamilies.sort((a, b) => {
                 if (a.plants.length > b.plants.length) {
@@ -95,7 +105,7 @@ const plantFamiliesSlice = createSlice({
     }
 })
 
-export const { setFormVisibility, highlightButton, sortNormal, sortNumber, sortNewest } = plantFamiliesSlice.actions;
+export const { setFormVisibility, highlightButton, sortNormal, sortName, sortNumber, sortNewest } = plantFamiliesSlice.actions;
 
 export const getFormVisibility = state => state.plantFamilies.formVisibility;
 export const selectAllPlantFamilies = state => state.plantFamilies.plantFamilies;

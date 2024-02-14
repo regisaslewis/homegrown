@@ -56,13 +56,13 @@ function OneUserFull() {
             </div>
             <div className='userPlants'>
                 <h4>Plants:</h4>
-                <div className='userPlantTiles'>
+                <div className='userPlantTiles uptFull'>
                     {plants()}
                 </div>
             </div>
             <div className='userArticles'>
                 <h4>Guides:</h4>
-                <div className='userArticleTiles'>{articles()}</div>
+                <div className='userArticleTiles uptFull'>{articles()}</div>
             </div>            
             <br />
             <div className='userButton'>

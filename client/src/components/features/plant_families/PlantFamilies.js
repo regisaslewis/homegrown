@@ -13,6 +13,7 @@ import { fetchPlantFamilies,
     getButtonHighlight,
     highlightButton,
     sortNormal,
+    sortName,
     sortNumber,
     sortNewest } from "./plantFamiliesSlice";
 import { switchButton } from "../navigation/buttonSlice";
@@ -30,6 +31,7 @@ function PlantFamilies() {
 
     useEffect(() => {
         dispatch(switchButton(7))
+        dispatch(fetchPlantFamilies())
         dispatch(highlightButton(1))
         dispatch(sortNormal())
     }, [dispatch])
@@ -42,7 +44,7 @@ function PlantFamilies() {
 
     let items;
     if (plantFamiliesStatus === "loading") {
-        items = <p>Loading PlantFamilies</p>
+        items = allPlantFamilies.map(e => <OnePlantFamily key={e.id} plantFamilyItem={e} />)
     } else if (plantFamiliesStatus === "succeeded") {
         items = allPlantFamilies.map(e => <OnePlantFamily key={e.id} plantFamilyItem={e} />)
     } else if (plantFamiliesStatus === "failed") {
@@ -74,14 +76,19 @@ function PlantFamilies() {
         dispatch(highlightButton(1))
     }
 
+    function nameSort() {
+        dispatch(sortName())
+        dispatch(highlightButton(2))
+    }
+
     function plantSort() {
         dispatch(sortNumber())
-        dispatch(highlightButton(2))
+        dispatch(highlightButton(3))
     }
 
     function newSort() {
         dispatch(sortNewest())
-        dispatch(highlightButton(3))
+        dispatch(highlightButton(4))
     }
 
     return (
@@ -91,8 +98,9 @@ function PlantFamilies() {
                 <div className="newItemButton">{newPFButton()}</div>
                 <div className="sortButtons">
                     <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
-                    <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => plantSort()}>Most Plants</button>
-                    <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => newSort()}>Newest</button>
+                    <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => nameSort()}>Family Name</button>
+                    <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => plantSort()}>Most Plants</button>
+                    <button className={highlit === 4 ? "deadButton" : "livingButton"} onClick={() => newSort()}>Newest</button>
                 </div>
             </div>
             {currentUser.name ?

@@ -43,7 +43,7 @@ function Plants() {
 
     let items;
     if (plantsStatus === "loading") {
-        items = <p>Loading Plants</p>
+        items = allPlants.map(e => <OnePlant key={e.id} plantItem={e} />)
     } else if (plantsStatus === "succeeded") {
         items = allPlants.map(e => <OnePlant key={e.id} plantItem={e} />)
     } else if (plantsStatus === "failed") {

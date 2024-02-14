@@ -87,6 +87,10 @@ function OnePlantFull() {
                     </div>
                 </div>            
                 <div className='plantRight'>
+                    <div className='onePlantFullDesc'>
+                        <div>Family: <strong>{onePlant.family.name}</strong></div>
+                        <div>Description: <em>{onePlant.description}</em></div>
+                    </div>
                     <div className='pu'>
                         Users:
                         <div className='plantUsers'>{plantUsers()}</div>

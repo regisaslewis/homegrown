@@ -1,16 +1,16 @@
 import React from "react";
-import { useHistory, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addCurrentUser, selectGroupById, fetchGroups } from "./groupsSlice";
+import { addCurrentUser, selectGroupById, fetchGroups, hightlightButton } from "./groupsSlice";
 import { getCurrentUser, changeGroup } from "../users/currentUserSlice";
 import { fetchUsers, selectAllUsers } from "../users/usersSlice";
+import { highlightButton } from "../plants/plantsSlice";
 
 function OneGroup({groupItem}) {
 
     const { id } = groupItem;
     const dispatch = useDispatch();
-    const history = useHistory();
     const group = useSelector(state => selectGroupById(state, Number(id)))
     const currentUser = useSelector(getCurrentUser);
     const allUsers = useSelector(selectAllUsers)
@@ -37,11 +37,11 @@ function OneGroup({groupItem}) {
     
 
     function handleJoin() {
+        dispatch(highlightButton(1))
         dispatch(addCurrentUser(group))
         dispatch(changeGroup(group))
         dispatch(fetchGroups())
         dispatch(fetchUsers())
-        history.push("/")
     }
 
     function joinVisibility() {

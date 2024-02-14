@@ -296,11 +296,17 @@ label {
 }
 
 .userPlantTiles, .userArticleTiles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    row-gap: 10px;
+    column-gap: 3px;
+    text-align: center;
+}
+
+.uptFull {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-    row-gap: 10px;
-    text-align: center;
 }
 
 .userArticles button {
@@ -700,11 +706,15 @@ label {
 .articleButton {
     height: 80px;
     width: 200px;
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
+    border-top: solid 2px rgba(0, 0, 0, 0.2);
+    border-right: solid 2px rgba(0, 0, 0, 0.2);
 }
 
 .articleButtonTitle {
     text-decoration: underline;
-    margin-bottom: -px;
+    margin-bottom: -10px;
 }
 
 #dislikeTitle, #likeTitle {
@@ -893,8 +903,7 @@ label {
 }
 
 #pfList {
-    margin-top: 20px;
-    margin-right: 10%;
+    margin: 20px 10% 15px auto;
     display: grid;
     grid-template-columns:  1fr 1fr;
     row-gap: 30px;
@@ -906,7 +915,7 @@ label {
     background-color: rgba(39, 97, 169, 0.619);
     border: solid 3px rgb(255, 135, 135);
     border-radius: 4px;
-    box-shadow: -4px 4px 5px 1px black;
+    box-shadow: -3px 3px 2px black;
 }
 
 .pfContents {
@@ -1022,4 +1031,14 @@ label {
 
 .sort {
     text-align: center;
+}
+
+.onePlantFullDesc {
+    width: 50%;
+    margin: 0 auto 15px;
+    background-color: rgba(0, 0, 0, 0.57);
+    color: white;
+    border: solid 2px white;
+    padding-left: 10px;
+    padding-right: 10px;
 }
