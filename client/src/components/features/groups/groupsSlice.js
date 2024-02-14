@@ -58,7 +58,7 @@ const groupsSlice = createSlice({
         setGroups: (state, action) => {
             state.groups = action.payload;
         },
-        hightlightButton: (state, action) => {
+        highlightButton: (state, action) => {
             state.buttonHighlight = action.payload
         },
         sortNormal: (state) => {
@@ -138,7 +138,7 @@ const groupsSlice = createSlice({
 export const { 
     setFormVisibility, 
     setGroups,
-    hightlightButton,
+    highlightButton,
     sortNormal,
     sortName,
     sortMembers,

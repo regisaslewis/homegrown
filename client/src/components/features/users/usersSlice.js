@@ -38,9 +38,6 @@ const usersSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        setUsers: (state, action) => {
-            state.users = action.payload;
-        },
         highlightButton: (state, action) => {
             state.buttonHighlight = action.payload
         },

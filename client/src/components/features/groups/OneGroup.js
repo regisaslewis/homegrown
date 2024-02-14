@@ -2,10 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addCurrentUser, selectGroupById, fetchGroups, hightlightButton } from "./groupsSlice";
+import { addCurrentUser, selectGroupById, fetchGroups, highlightButton } from "./groupsSlice";
 import { getCurrentUser, changeGroup } from "../users/currentUserSlice";
 import { fetchUsers, selectAllUsers } from "../users/usersSlice";
-import { highlightButton } from "../plants/plantsSlice";
 
 function OneGroup({groupItem}) {
 
@@ -40,8 +39,10 @@ function OneGroup({groupItem}) {
         dispatch(highlightButton(1))
         dispatch(addCurrentUser(group))
         dispatch(changeGroup(group))
-        dispatch(fetchGroups())
-        dispatch(fetchUsers())
+        setTimeout(() => {
+            dispatch(fetchGroups())
+            dispatch(fetchUsers())
+        }, 500)
     }
 
     function joinVisibility() {

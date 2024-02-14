@@ -20,7 +20,7 @@ import {
     sortByPlantName } from "./articlesSlice";
 import NewArticleForm from "../forms/NewArticleForm";
 import { switchButton } from "../navigation/buttonSlice";
-import { checkSession, getCurrentUser } from "../users/currentUserSlice";
+import { getCurrentUser } from "../users/currentUserSlice";
 
 function Articles() {
 

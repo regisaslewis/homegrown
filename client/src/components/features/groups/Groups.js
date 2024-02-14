@@ -5,14 +5,13 @@ import OneGroup from "./OneGroup";
 import NewGroupForm from "../forms/NewGroupForm";
 
 import { 
-    fetchGroups, 
     selectAllGroups,
     getGroupsStatus, 
     getGroupsError, 
     getFormVisibility, 
     setFormVisibility,
     getButtonHighlight,
-    hightlightButton,
+    highlightButton,
     sortNormal,
     sortName,
     sortMembers,
@@ -32,9 +31,8 @@ function Groups() {
     
     useEffect(() => {
         dispatch(switchButton(5))
-        dispatch(fetchGroups())
-        dispatch(hightlightButton(1))
-    }, [dispatch, OneGroup])
+        dispatch(highlightButton(1))
+    }, [dispatch])
 
     let items;
     if (groupsStatus === "loading") {
@@ -67,22 +65,22 @@ function Groups() {
 
     function normalSort() {
         dispatch(sortNormal())
-        dispatch(hightlightButton(1))
+        dispatch(highlightButton(1))
     }
 
     function nameSort() {
         dispatch(sortName())
-        dispatch(hightlightButton(2))
+        dispatch(highlightButton(2))
     }
 
     function memberSort() {
         dispatch(sortMembers())
-        dispatch(hightlightButton(3))
+        dispatch(highlightButton(3))
     }
 
     function newSort() {
         dispatch(sortNewest())
-        dispatch(hightlightButton(4))
+        dispatch(highlightButton(4))
     }
 
     return (
