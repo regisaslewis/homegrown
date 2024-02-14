@@ -4,7 +4,17 @@ import { NavLink } from "react-router-dom";
 import OnePlantFamily from "./OnePlantFamily";
 import NewPlantFamilyForm from "../forms/NewPlantFamilyForm";
 
-import { fetchPlantFamilies, selectAllPlantFamilies, getPlantFamiliesStatus, getPlantFamiliesError, setFormVisibility, getFormVisibility } from "./plantFamiliesSlice";
+import { fetchPlantFamilies,
+    selectAllPlantFamilies,
+    getPlantFamiliesStatus, 
+    getPlantFamiliesError,
+    setFormVisibility, 
+    getFormVisibility,
+    getButtonHighlight,
+    highlightButton,
+    sortNormal,
+    sortNumber,
+    sortNewest } from "./plantFamiliesSlice";
 import { switchButton } from "../navigation/buttonSlice";
 import { getCurrentUser } from "../users/currentUserSlice";
 
@@ -15,10 +25,13 @@ function PlantFamilies() {
     const plantFamiliesStatus = useSelector(getPlantFamiliesStatus);
     const error = useSelector(getPlantFamiliesError)
     const formVisibility = useSelector(getFormVisibility)
+    const highlit = useSelector(getButtonHighlight)
     const currentUser = useSelector(getCurrentUser)
 
     useEffect(() => {
         dispatch(switchButton(7))
+        dispatch(highlightButton(1))
+        dispatch(sortNormal())
     }, [dispatch])
 
     useEffect(() => {
@@ -56,10 +69,32 @@ function PlantFamilies() {
         }
     }
 
+    function normalSort() {
+        dispatch(sortNormal())
+        dispatch(highlightButton(1))
+    }
+
+    function plantSort() {
+        dispatch(sortNumber())
+        dispatch(highlightButton(2))
+    }
+
+    function newSort() {
+        dispatch(sortNewest())
+        dispatch(highlightButton(3))
+    }
+
     return (
         <div>
             <h2 className="viewName pfPage">Plant<br />Families!</h2>
-            <div className="newItemButton pfIB">{newPFButton()}</div>
+            <div className="pageButtons">
+                <div className="newItemButton">{newPFButton()}</div>
+                <div className="sortButtons">
+                    <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
+                    <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => plantSort()}>Most Plants</button>
+                    <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => newSort()}>Newest</button>
+                </div>
+            </div>
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewPlantFamilyForm />

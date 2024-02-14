@@ -12,14 +12,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-print(os.getenv("SECRET_KEY"))
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 app.secret_key = b'SECRET_KEY'
-
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",

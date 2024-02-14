@@ -4,12 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { selectUserByID, fetchUsers } from './usersSlice';
 import { switchButton } from '../navigation/buttonSlice';
+import { getCurrentUser } from './currentUserSlice';
 
 function OneUserFull() {
 
     const history = useHistory();
     const params = useParams();
     const dispatch = useDispatch();
+    const currentUser = useSelector(getCurrentUser)
     const oneUser = useSelector(state => selectUserByID(state, Number(params.userID)));
 
     useEffect(() => {
@@ -47,7 +49,7 @@ function OneUserFull() {
     return (
         <div className='oneUserCard userCard'>
             <div className='oneUserTitle'>
-                <h3 className='userName'>{oneUser.name}'s Page</h3>
+                <h3 className='userName'>{currentUser.name === oneUser.name ? <div className='your'>{currentUser.name}'s</div> : `${oneUser.name}'s`} Page</h3>
                 <p>Climate: {oneUser.climate}</p>
                 <p>Experience Level: {oneUser.experience_level}</p>
                 <p>{oneUser.group ? `Group: ${oneUser.group.name}` : ""}</p>

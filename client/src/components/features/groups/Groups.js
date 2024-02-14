@@ -89,15 +89,15 @@ function Groups() {
     return (
         <div>
             <h2 className="viewName groupsPage">Groups!</h2>
-                <div className="pageButtons plantPBs">
-                    <div className="newItemButton">{newGroupButton()}</div>
-                    <div className="sortButtons">
-                        <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Sort</button>
-                        <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => nameSort()}>Group Name</button>
-                        <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => memberSort()} style={{width: "max-content"}}>Most Members</button>
-                        <button className={highlit === 4 ? "deadButton" : "livingButton"} onClick={() => newSort()}>Newest</button>
-                    </div>
+            <div className="pageButtons plantPBs">
+                <div className="newItemButton">{newGroupButton()}</div>
+                <div className="sortButtons">
+                    <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
+                    <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => nameSort()}>Group Name</button>
+                    <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => memberSort()} style={{width: "max-content"}}>Most Members</button>
+                    <button className={highlit === 4 ? "deadButton" : "livingButton"} onClick={() => newSort()}>Newest</button>
                 </div>
+            </div>
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewGroupForm />
