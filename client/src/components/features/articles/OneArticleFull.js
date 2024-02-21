@@ -118,7 +118,7 @@ function OneArticleFull() {
             return(
                 <div className="articleCard articleCardFull">
                     <div className="articleTitle" style={editFormVisibility === params.articleID ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
-                    <NavLink to={`/users/${article.user_id}`}><div className="your">Your</div></NavLink> Care Guide
+                    <NavLink to={`/users/${article.user_id}`}>{currentUser.id === article.user_id ? <div className="your">Your</div> : `${article.user.name}'s`}</NavLink> Care Guide
                         <br />
                         for <NavLink to={`/plants/${article.plant_id}`}>{article.plant.name}</NavLink>
                     </div>
