@@ -46,7 +46,7 @@ function Articles() {
 
     let items;
     if (articlesStatus === "loading") {
-        items = <p>Loading Articles</p>
+        items = allArticles.map(e => <OneArticle key={`article${e.id}`} articleItem={e} />)
     } else if (articlesStatus === "succeeded") {
         items = allArticles.map(e => <OneArticle key={`article${e.id}`} articleItem={e} />)
     } else if (articlesStatus === "failed") {

@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { selectArticleById, editArticle, deleteArticle, setEditFormVisibility } from '../articles/articlesSlice';
 import { useFormik } from 'formik';
+import { fetchArticles } from '../articles/articlesSlice';
+import { checkSession } from '../users/currentUserSlice';
 import * as yup from "yup";
 
 function EditArticleForm({articleItem}) {
@@ -32,6 +34,10 @@ function EditArticleForm({articleItem}) {
             try {
                 dispatch(editArticle(values))
                 dispatch(setEditFormVisibility(0))
+                setTimeout(() => {
+                    dispatch(fetchArticles())
+                    dispatch(checkSession())
+                }, 300)
             } catch (err) {
                 console.error("Could not edit", err)
             }
@@ -45,6 +51,8 @@ function EditArticleForm({articleItem}) {
      function handleDelete() {
         dispatch(deleteArticle({id: id}));
         dispatch(setEditFormVisibility(0));
+            dispatch(fetchArticles())
+            dispatch(checkSession())
         if (location.pathname !== "/articles/") {
             history.goBack();
         }        

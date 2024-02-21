@@ -42,7 +42,6 @@ export const editArticle = createAsyncThunk(
         const { id } = initialInfo;
         try {
             const response = await axios.patch(`${ARTICLES_URL}/${id}`, initialInfo)
-            console.log(response.data)
             return response.data
         } catch (err) {
             return err.message
@@ -94,7 +93,6 @@ const articlesSlice = createSlice({
                 } else if (a.likes < b.likes) {
                     return 1
                 }
-                
                 return 0;
             })
             state.articles = sortedArticles
@@ -106,7 +104,6 @@ const articlesSlice = createSlice({
                 } else if (a.dislikes > b.dislikes) {
                     return 1
                 }
-                
                 return 0;
             })
             state.articles = sortedArticles
@@ -118,7 +115,6 @@ const articlesSlice = createSlice({
                 } else if (a.user.name > b.user.name) {
                     return 1
                 }
-                
                 return 0;
             })
             state.articles = sortedArticles
@@ -130,7 +126,6 @@ const articlesSlice = createSlice({
                 } else if (a.plant.name > b.plant.name) {
                     return 1
                 }
-                
                 return 0;
             })
             state.articles = sortedArticles
@@ -156,6 +151,56 @@ const articlesSlice = createSlice({
             const { id } = action.payload;
             const articles = state.articles.filter(e => e.id !== id);
             state.articles = [...articles, action.payload]
+            if (state.buttonHighlight === 1) {
+                state.articles.sort((a, b) => {
+                    if (a.id < b.id) {
+                        return -1
+                    } else if (a.id > b.id) {
+                        return 1
+                    }
+                    return 0;
+                })                
+            } else if (state.buttonHighlight === 2) {
+                let sortedArticles = state.articles.sort((a, b) => {
+                    if (a.likes > b.likes) {
+                        return -1
+                    } else if (a.likes < b.likes) {
+                        return 1
+                    }
+                    return 0;
+                })
+                state.articles = sortedArticles
+            } else if (state.buttonHighlight === 3) {
+                let sortedArticles = state.articles.sort((a, b) => {
+                    if (a.dislikes < b.dislikes) {
+                        return -1
+                    } else if (a.dislikes > b.dislikes) {
+                        return 1
+                    }
+                    return 0;
+                })
+                state.articles = sortedArticles
+            } else if (state.buttonHighlight === 4) {
+                let sortedArticles = state.articles.sort((a, b) => {
+                    if (a.user.name < b.user.name) {
+                        return -1
+                    } else if (a.user.name > b.user.name) {
+                        return 1
+                    }
+                    return 0;
+                })
+                state.articles = sortedArticles
+            } else if (state.buttonHighlight === 5) {
+                let sortedArticles = state.articles.sort((a, b) => {
+                    if (a.plant.name < b.plant.name) {
+                        return -1
+                    } else if (a.plant.name > b.plant.name) {
+                        return 1
+                    }
+                    return 0;
+                })
+                state.articles = sortedArticles
+            }
         })
         .addCase(deleteArticle.fulfilled, (state, action) => {
             const { id } = action.payload;

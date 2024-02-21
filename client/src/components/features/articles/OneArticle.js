@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { selectArticleById, getEditFormVisibility, editArticle } from "./articlesSlice";
+import { selectArticleById,
+    getEditFormVisibility,
+    editArticle,
+    highlightButton,
+    sortNormal } from "./articlesSlice";
 import { getCurrentUser, likeArticle, dislikeArticle, removeLike, removeDislike } from "../users/currentUserSlice";
 
 function OneArticle({articleItem}) {
@@ -30,8 +34,12 @@ function OneArticle({articleItem}) {
     function handleLike() {
         if (liked !== 1) {
             if (currentUser.disliked_articles.find(e => e.id === article.id)) {
-                let dislikesMinus = article.dislikes - 1
-                dispatch(editArticle({id: article.id, dislikes: dislikesMinus})) 
+                if (article.dislikes > 0 ) {
+                    let dislikesMinus = article.dislikes - 1
+                    dispatch(editArticle({id: article.id, dislikes: dislikesMinus}))
+                } else {
+                    dispatch(editArticle({id: article.id, dislikes: 0}))
+                }
             }
             let likesPlus = article.likes + 1
             dispatch(editArticle({id: article.id, likes: likesPlus}))
@@ -47,8 +55,12 @@ function OneArticle({articleItem}) {
             const user_id = currentUser.id
             const article_id = article.id
             if (currentUser.liked_articles.find(e => e.id === article.id)) {
-                let likesMinus = article.likes - 1
-                dispatch(editArticle({id: article.id, likes: likesMinus})) 
+                if (article.likes > 0) {
+                    let likesMinus = article.likes - 1
+                    dispatch(editArticle({id: article.id, likes: likesMinus}))
+                } else {
+                    dispatch(editArticle({id: article.id, likes: 0}))
+                }
             }
             let dislikesPlus = article.dislikes + 1
             dispatch(editArticle({id: article.id, dislikes: dislikesPlus}))
@@ -56,7 +68,7 @@ function OneArticle({articleItem}) {
             dispatch(dislikeArticle({user_id, article_id}))
         } else {
             setLiked(0)
-        }
+        } 
     }
 
     function allowVote() {

@@ -756,6 +756,7 @@ label {
     height: 580px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-right: 30px;
 }
 
 #homeLower {
