@@ -900,6 +900,7 @@ label {
 .plantFamily {
     width: max-content;
     font-size: 22px;
+    border-top: solid 2px black;
     margin: auto;
 }
 
