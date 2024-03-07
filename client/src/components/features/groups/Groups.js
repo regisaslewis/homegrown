@@ -85,7 +85,6 @@ function Groups() {
 
     return (
         <div>
-            <h2 className="viewName groupsPage">Groups!</h2>
             <div className="pageButtons plantPBs">
                 <div className="newItemButton">{newGroupButton()}</div>
                 <div className="sortButtons">

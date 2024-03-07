@@ -14,10 +14,9 @@ function Navigation() {
     const dispatch = useDispatch();
 
     const buttonOn = {
+      textShadow: "-2px 2px black",
       backgroundColor: "bisque",
-      color: "rgba(0, 0, 0, 0)",
-      textShadow: "none",
-      border: "none",
+      borderRight: "none",
       zIndex: "-1"
     }
   
@@ -48,19 +47,19 @@ function Navigation() {
     return (
         <div id="navButtons">        
             <NavLink to="/users" exact>
-                <button className="navBut" style={switchOn(4)} onClick={() => switchClose(4)}>Users</button>
+                <button className="navBut" style={switchOn(4)} onClick={() => switchClose(4)}>{buttonStyle !== 4 ? <div>Users</div> : <div className="viewName usersPage">Users!</div>}</button>
             </NavLink>
             <NavLink to="/groups" exact>
-                <button className="navBut" style={switchOn(5)} onClick={() => switchClose(5)}>Groups</button>
+                <button className="navBut" style={switchOn(5)} onClick={() => switchClose(5)}>{buttonStyle !== 5 ? <div>Groups</div> : <div className="viewName groupsPage">Groups!</div>}</button>
             </NavLink>
             <NavLink to="/plants" exact>
-                <button className="navBut" style={switchOn(6)} onClick={() => switchClose(6)}>Plants</button>
+                <button className="navBut" style={switchOn(6)} onClick={() => switchClose(6)}>{buttonStyle !== 6 ? <div>Plants</div> : <div className="viewName plantsPage">Plants!</div>}</button>
             </NavLink>
             <NavLink to="/plant_families" exact>
-                <button className="navBut" style={switchOn(7)} onClick={() => switchClose(7)}>Plant Families</button>
+                <button className="navBut" style={switchOn(7)} onClick={() => switchClose(7)}>{buttonStyle !== 7 ? <div>Plant Families</div> : <div className="viewName pfPage">Plant Families!</div>}</button>
             </NavLink>
             <NavLink to="/articles" exact>
-                <button className="navBut" style={switchOn(8)} onClick={() =>switchClose(8)}>Guides</button>
+                <button className="navBut" style={switchOn(8)} onClick={() =>switchClose(8)}>{buttonStyle !== 8 ? <div>Guides</div> : <div className="viewName articlesPage">Guides!</div>}</button>
             </NavLink>
         </div>
     )

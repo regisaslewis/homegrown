@@ -87,15 +87,14 @@ function Plants() {
 
     return (
         <div>
-            <h2 className="viewName plantsPage">Plants!</h2>
-                <div className="pageButtons plantPBs" style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
-                    <div className="newItemButton">{newPlantButton()}</div>
-                    <div className="sortButtons">
-                        <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
-                        <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => nameSort()}>Plant Name</button>
-                        <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => familySort()}>Family Name</button>
-                    </div>
+            <div className="pageButtons plantPBs" style={formVisibility ? {"filter": "blur(0.8px)"} : {"filter" : "blur(0)"}}>
+                <div className="newItemButton">{newPlantButton()}</div>
+                <div className="sortButtons">
+                    <button className={highlit === 1 ? "deadButton" : "livingButton"} onClick={() => normalSort()}>Normal Order</button>
+                    <button className={highlit === 2 ? "deadButton" : "livingButton"} onClick={() => nameSort()}>Plant Name</button>
+                    <button className={highlit === 3 ? "deadButton" : "livingButton"} onClick={() => familySort()}>Family Name</button>
                 </div>
+            </div>
             {currentUser.name ?
             <div className="formContainer" style={formVisibility ? {"display": "block"} : {"display" : "none"}}>
                     <NewPlantForm />

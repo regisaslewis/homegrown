@@ -54,7 +54,6 @@ function Users() {
 
     return (
         <div>
-            <h2 className="viewName usersPage">Users!</h2>
             <div className="pageButtons plantPBs">
                 <div className="newItemButton"></div>
                 <div className="sortButtons">

@@ -93,7 +93,6 @@ function PlantFamilies() {
 
     return (
         <div>
-            <h2 className="viewName pfPage">Plant<br />Families!</h2>
             <div className="pageButtons">
                 <div className="newItemButton">{newPFButton()}</div>
                 <div className="sortButtons">
