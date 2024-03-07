@@ -26,8 +26,8 @@ function OnePlantFamily({plantFamilyItem}) {
 
     const backgroundStyling = {
         backgroundImage: `url(${image})`,
-        backgroundSize: "100%",
-        backgroundBlendMode: "multiply"
+        backgroundSize: "cover",
+        backgroundBlendMode: "multiply",
     }
 
     return (

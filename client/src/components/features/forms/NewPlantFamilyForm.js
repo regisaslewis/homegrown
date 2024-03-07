@@ -24,10 +24,11 @@ function NewPlantFamilyForm() {
         validationSchema: formSchema,
         validateOnChange: false,
         validateOnBlur: false,
-        onSubmit: (values) => {
+        onSubmit: (values, { resetForm }) => {
             try {
                 dispatch(addNewPlantFamily(values))
                 dispatch(setFormVisibility(false))
+                resetForm();
             } catch (err) {
                 console.error("Didn't add plant family", err)
             }
